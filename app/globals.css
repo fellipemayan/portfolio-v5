@@ -1,23 +1,34 @@
 :root {
+  color-scheme: light dark;
+
   --color-yellow: oklch(0.86 0.1705 88.22);
 	--color-yellow-light: oklch(0.98 0.15 89.22);
 	--color-yellow-dark: oklch(0.7 0.2 70);
 	--color-yellow-darker: oklch(55% 0.2 70);
+
+  --color-primary: light-dark(var(--color-yellow-darker), var(--color-yellow));
+
+  --color-black: oklch(0.1 0.01 90);
+  --color-white: oklch(0.99 0.01 90);
   
   /* Cores: modo claro */
-  --color-bg-base: oklch(0.9911 0 0);
-  --color-bg-base-hover: oklch(0.94 0 0);
-  --color-bg-secondary: oklch(0.95 0.01 90);
-  --color-bg-secondary-hover: oklch(0.83 0.01 90);
+  --color-bg-base: light-dark(oklch(0.9911 0 0), oklch(0.1 0.01 90));
+  --color-bg-base-hover: light-dark(oklch(0.94 0 0), oklch(0.15 0.01 90));
+  --color-bg-secondary: light-dark(oklch(0.95 0.01 90), oklch(0.2 0.01 90));
+  --color-bg-secondary-hover: light-dark(oklch(0.83 0.01 90), oklch(0.3 0.01 90));
 
-  --color-text-base: oklch(0.15 0.01 90);
-  --color-text-hover: oklch(0.1 0.01 90);
-  --color-text-heading: oklch(0.1 0.01 90);
-  --color-text-muted: oklch(0.3 0.01 90);
+  --color-border: light-dark(oklch(0.8 0.01 90), oklch(0.3 0.01 90));
 
-  --color-surface-primary: oklch(0.15 0.01 90);
-  --color-surface-primary-hover: oklch(0.1 0.01 90);
-  --color-text-surface-primary: oklch(0.95 0.01 90);
+  --color-text-base: light-dark(oklch(0.15 0.01 90), oklch(0.95 0.01 90));
+  --color-text-hover: light-dark(oklch(0.1 0.01 90), oklch(0.98 0.01 90));
+  --color-text-heading: light-dark(oklch(0.1 0.01 90), oklch(0.98 0.01 90));
+  --color-text-muted: light-dark(oklch(0.3 0.01 90), oklch(0.7 0.01 90));
+  --color-text-primary: light-dark(var(--color-yellow-darker), var(--color-yellow));
+
+  --color-surface-primary: light-dark(oklch(0.15 0.01 90), oklch(25% 25% -45));
+
+  --color-surface-primary-hover: light-dark(oklch(0.1 0.01 90), oklch(0.2 0.01 90));
+  --color-text-surface-primary: light-dark(oklch(0.95 0.01 90), oklch(0.85 0.01 90));
 
   --color-surface-secondary: var(--color-bg-base);
   --color-surface-secondary-hover: var(--color-bg-base-hover);
@@ -25,9 +36,10 @@
   --color-text-surface-secondary-hover: var(--color-text-hover);
 
   --color-selection-bg: var(--color-yellow);
-  --color-selection-text: oklch(0.1 0.01 90);
+  --color-selection-text: light-dark(oklch(0.1 0.01 90), oklch(0.85 0.01 90));
 
   /* Espaçamento */
+  --spacing-2xs: 0.125rem;
   --spacing-xs: 0.25rem;
   --spacing-sm: 0.5rem;
   --spacing-md: 1rem;
@@ -37,7 +49,7 @@
 
   /* Tipografia */
   --font-family-sans: var(--font-geist-sans), "Inter", sans-serif;
-  --font-family-mono: "Fira Code", monospace;
+  --font-family-mono: var(--font-trispace) "Fira Code", monospace;
 
   --font-size-xs: 0.75rem;
   --font-size-sm: 0.875rem;
@@ -53,87 +65,30 @@
 
   /* Animações */
   --transition-fast: 150ms ease-out;
-  --transition-medium: 300ms ease-out;
+  --transition-medium: 300ms cubic-bezier(0.85, 0.09, 0.15, 0.91);;
   --transition-slow: 500ms ease-out;
 
   /* Grid */
   --padding-inline: var(--spacing-xl);
-  --content-max-width: 60ch;
-  --breakout-max-width: 120vw;
+  --content-max-width: 120ch;
+  --breakout-max-width: 120ch;
+
+  --header-height: 52px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    /* Cores: modo escuro */
-    --color-bg-base: oklch(0.1 0.01 90);
-    --color-bg-base-hover: oklch(0.15 0.01 90);
-    --color-bg-secondary: oklch(0.2 0.01 90);
-    --color-bg-secondary-hover: oklch(0.3 0.01 90);
-
-    --color-text-base: oklch(0.95 0.01 90);
-    --color-text-hover: oklch(0.98 0.01 90);
-    --color-text-heading: oklch(0.98 0.01 90);
-    --color-text-muted: oklch(0.7 0.01 90);
-
-    --color-surface-primary: var(--color-bg-base);
-    --color-surface-primary-hover: var(--color-bg-base-hover);
-    --color-text-surface-primary: var(--color-text-base);
-
-    --color-surface-secondary: var(--color-bg-secondary);
-    --color-surface-secondary-hover: var(--color-bg-secondary-hover);
-    --color-text-surface-secondary: var(--color-text-muted);
-    --color-text-surface-secondary-hover: var(--color-text-hover);
-  }
+:root[data-theme="light"],
+:root:has(button[id="light-theme"][class*="active"]) {
+  color-scheme: light;
 }
 
-@media (prefers-contrast: more) {
-  :root {
-    --color-bg-base: oklch(0.95 0.01 90);
-    --color-bg-base-hover: oklch(0.9 0.01 90);
-    --color-bg-secondary: oklch(0.85 0.01 90);
-    --color-bg-secondary-hover: oklch(0.8 0.01 90);
-
-    --color-text-base: oklch(0.1 0.01 90);
-    --color-text-hover: oklch(0.05 0.01 90);
-    --color-text-heading: oklch(0.05 0.01 90);
-    --color-text-muted: oklch(0.2 0.01 90);
-
-    --color-surface-primary: var(--color-bg-base);
-    --color-surface-primary-hover: var(--color-bg-base-hover);
-    --color-text-surface-primary: var(--color-text-base);
-
-    --color-surface-secondary: var(--color-bg-secondary);
-    --color-surface-secondary-hover: var(--color-bg-secondary-hover);
-    --color-text-surface-secondary: var(--color-text-muted);
-    --color-text-surface-secondary-hover: var(--color-text-hover);
-  }
-
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --color-bg-base: oklch(0.15 0.01 90);
-      --color-bg-base-hover: oklch(0.2 0.01 90);
-      --color-bg-secondary: oklch(0.25 0.01 90);
-      --color-bg-secondary-hover: oklch(0.3 0.01 90);
-
-      --color-text-base: oklch(0.98 0.01 90);
-      --color-text-hover: oklch(0.99 0.01 90);
-      --color-text-heading: oklch(0.99 0.01 90);
-      --color-text-muted: oklch(0.8 0.01 90);
-
-      --color-surface-primary: var(--color-bg-base);
-      --color-surface-primary-hover: var(--color-bg-base-hover);
-      --color-text-surface-primary: var(--color-text-base);
-
-      --color-surface-secondary: var(--color-bg-secondary);
-      --color-surface-secondary-hover: var(--color-bg-secondary-hover);
-      --color-text-surface-secondary: var(--color-text-muted);
-      --color-text-surface-secondary-hover: var(--color-text-hover);
-    }
-  }
+:root[data-theme="dark"],
+:root:has(button[id="dark-theme"][class*="active"]) {
+  color-scheme: dark;
 }
 
 * {
 	box-sizing: border-box;
+  transition: background-color var(--transition-fast), border-color var(--transition-fast);
 }
 
 body {
@@ -150,6 +105,53 @@ body {
 	}
 }
 
+.text-mono {
+	font-family: var(--font-family-mono);
+}
+
+
+/* Layout */
+.content-grid,
+.full-width {
+  --breakout-size: calc((var(--breakout-max-width) - var(--content-max-width)) /2 );
+
+  display: grid;
+  grid-template-columns: 
+    [full-width-start] minmax(var(--padding-inline), 1fr)
+    [content-start] repeat(6, min(
+      (100% - (var(--padding-inline) * 2)) / 6 , 
+      (var(--content-max-width) / 6)
+    )) 
+    [content-end]
+    minmax(var(--padding-inline), 1fr) [full-width-end] 
+  ;
+}
+
+.content-grid > :not(.breakout, .full-width),
+.full-width > :not(.breakout, .full-width) {
+  grid-column: 3 / 7;
+}
+
+.content-grid > .full-width {
+  grid-column: full-width;
+  display: grid;
+	grid-template-columns: inherit;
+}
+
+.content-grid > .content {
+  grid-column: content;
+}
+
+.content-grid > .left {
+  grid-column: 2 / content-start;
+}
+
+.content-grid > .right {
+  grid-column: 7 / content-end ;
+}
+
+/* Tipografia */
+
 h1,
 h2,
 h3,
@@ -157,8 +159,74 @@ h4,
 h5,
 h6 {
 	color: var(--color-text-heading);
+  line-height: var(--line-height-xs);
+  &:first-child {
+    margin-top: 0;
+  }
+}
+h1 {
+  font-size: var(--font-size-3xl);
+  font-weight: 300;
+  line-height: var(--line-height-sm);
 }
 
-.text-mono {
-	font-family: var(--font-family-mono);
+/* Componentes básicos */
+.btn {
+  display: flex;
+  align-items: center;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: 0.4rem;
+  font-family: var(--font-trispace);
+  text-transform: uppercase;
+  height: 2.5rem;
+} 
+.secondary-btn {
+  background-color: transparent;
+  border: 1px solid var(--color-border);
+  color: var(--color-text-surface-secondary);
+  transition: background-color var(--transition-medium), color var(--transition-medium);
+
+  &:hover {
+    background-color: var(--color-surface-secondary-hover);
+    color: var(--color-text-surface-secondary-hover);
+  }
+}
+
+.icon-md {
+  width: var(--spacing-md);
+  height: var(--spacing-md);
+}
+
+.highlight-text {
+  color: var(--color-text-primary);
+}
+
+
+@animation slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@animation slide-out {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+
+@media (max-width: 600px) {
+  :root {
+    --padding-inline: var(--spacing-md);
+  }
 }

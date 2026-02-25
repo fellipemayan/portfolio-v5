@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Trispace } from "next/font/google";
+import { Header } from "./components/header/Header";
 import "./globals.css";
 
 const inter = Inter({
@@ -22,15 +23,35 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  
+
   return (
-    <html lang="pt-BR">
+    <html lang="pt-BR" >
+      <head>
+        <script dangerouslySetInnerHTML={{
+          __html: `
+            (function() {
+              try {
+                var theme = localStorage.getItem('portfolio-theme');
+                var scheme = theme === 'system'
+                  ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+                  : theme;
+                document.documentElement.setAttribute('data-theme', scheme || 'light');
+              } catch(e) {}
+            })();
+          `
+        }} />
+      </head>
       <body
         className={`
           ${inter.variable} 
           ${trispace.variable}
         `}
       >
-        {children}
+        <Header />
+        <main className="content-grid">
+          {children}
+        </main>
       </body>
     </html>
   );

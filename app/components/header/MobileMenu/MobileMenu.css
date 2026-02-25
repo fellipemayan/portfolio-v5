@@ -1,0 +1,104 @@
+.mobile-menu {
+	inset: auto; /* reseta o posicionamento central do popover */
+	position: absolute;
+	margin: 0;
+	background-color: var(--color-bg-base);
+	padding: var(--spacing-lg) var(--padding-inline);
+	border: none;
+	border-bottom: 1px solid var(--color-border);
+  transform: translateX(-100%);
+  transform-origin: top;
+	top: var(--header-height);
+	left: 0;
+	width: 100%;
+	display: none;
+
+  transition: display var(--transition-medium), transform var(--transition-medium);
+  transition-behavior: allow-discrete;
+}
+
+.mobile-menu:popover-open {
+	display: block;
+  transform: translateX(0);
+  top: var(--header-height);
+
+  @starting-style {
+    z-index: -1;
+    transform: translateX(-100%);
+    /* o starting-style precisa ficar no final */
+  }
+}
+
+.mobile-menu nav {
+	display: flex;
+	flex-direction: column;
+	gap: var(--spacing-lg);
+	isolation: isolate;
+
+	> ul {
+		display: flex;
+		flex-direction: column;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		font-family: var(--font-trispace);
+		text-transform: uppercase;
+		font-weight: 400;
+		font-size: var(--font-size-sm);
+	}
+
+	a {
+		display: block;
+		color: var(--color-text-base);
+		padding-left: var(--spacing-sm);
+		margin-left: var(--spacing-sm);
+		text-decoration: none;
+		padding: var(--spacing-md) var(--spacing-sm);
+
+		transition: color var(--transition-medium);
+
+		&:hover {
+			color: var(--color-black);
+		}
+	}
+
+	li:hover,
+	li:has(a:hover),
+	li:has(a:focus),
+	li:has(.active) {
+		anchor-name: --active-link;
+	}
+
+	&::after {
+		content: "";
+		position: absolute;
+		z-index: -1;
+		background-color: var(--color-text-base);
+		top: calc(anchor(top) + var(--spacing-xs));
+		left: calc(anchor(left));
+		right: calc(anchor(left) - 2px);
+		bottom: calc(anchor(bottom) + var(--spacing-xs));
+		border-radius: 4px;
+
+		position-anchor: --active-link;
+
+		transition: var(--transition-medium);
+	}
+
+	&:has(a:hover)::after,
+	&:has(a:focus)::after {
+		top: anchor(top);
+		left: calc(anchor(left) + 4px);
+		right: anchor(right);
+		bottom: anchor(bottom);
+		border-radius: var(--spacing-sm);
+
+		background-color: var(--color-yellow);
+		color: var(--color-black);
+	}
+}
+.close-btn {
+	position: absolute;
+	top: var(--spacing-xl);
+	right: var(--spacing-xl);
+}
