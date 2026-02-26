@@ -62,15 +62,7 @@ header {
       }
     }
 
-    li:has(.active) {
-      anchor-name: --default-anchor;
-    }
-
-    li:hover,
-    li:has(a:hover),
-    li:has(a:focus) {
-      anchor-name: --active-link;
-    }
+    
 
     &::after {
       content: '';
@@ -101,6 +93,16 @@ header {
 
       background-color: var(--color-yellow);
       color: var(--color-bg-base);
+    }
+
+    li:hover,
+    li:has(a:hover),
+    li:has(a:focus-within) {
+      anchor-name: --active-link;
+    }
+
+    li:has(.active) {
+      anchor-name: --default-anchor;
     }
   }
 

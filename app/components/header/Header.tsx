@@ -1,11 +1,15 @@
+"use client";
 import './Header.css'
 import '../../globals.css'
 import Link from 'next/link'
 import { Bars3Icon } from '@heroicons/react/20/solid'
 import { ThemeToggle } from './ThemeToggle/ThemeToggle'
 import { MobileMenu } from './MobileMenu/MobileMenu'
+import { usePathname } from 'next/navigation'
 
 export function Header() {
+  const pathName = usePathname()
+
   return (
     <>
       <header className="header full-width">
@@ -15,18 +19,22 @@ export function Header() {
         <nav className="header-nav">
           <ul>
             <li>
-              <Link href="/" className="active">
+              <Link href="/" className={pathName === '/' ? 'active' : ''} onClick={e => e.currentTarget.blur()}>
                 Início
               </Link>
             </li>
             <li>
-              <Link href="/projetos">Projetos</Link>
+              <Link href="/projetos" className={pathName === '/projetos' ? 'active' : ''} onClick={e => e.currentTarget.blur()}>
+                Projetos
+              </Link>
             </li>
             <li>
-              <Link href="/sobre">Sobre</Link>
+              <Link href="/sobre" className={pathName === '/sobre' ? 'active' : ''} onClick={e => e.currentTarget.blur()}>
+                Sobre
+              </Link>
             </li>
             <li>
-              <Link href="/contato">Contato</Link>
+              <Link href="/contato" className={pathName === '/contato' ? 'active' : ''} onClick={e => e.currentTarget.blur()}>Contato</Link>
             </li>
           </ul>
         </nav>
