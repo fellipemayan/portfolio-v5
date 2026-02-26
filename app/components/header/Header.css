@@ -1,109 +1,110 @@
 header {
-	z-index: 10;
-	align-items: center;
-	padding-block: var(--spacing-sm);
-	background: var(--color-bg-base);
-	border: 1px solid var(--color-border);
-	position: sticky;
-	top: 0;
+  z-index: 10;
+  align-items: center;
+  padding-block: var(--spacing-sm);
+  background: var(--color-bg-base);
+  border-bottom: 1px solid var(--color-border);
+  position: sticky;
+  top: 0;
 }
 
 .name-link {
-	color: var(--color-text-base);
-	text-decoration: none;
-	transition: var(--transition-fast);
-	text-wrap: nowrap;
+  color: var(--color-text-base);
+  text-decoration: none;
+  transition: var(--transition-fast);
+  text-wrap: nowrap;
 
-	&:hover {
-		color: var(--color-text-base-hover);
-	}
+  &:hover {
+    color: var(--color-text-base-hover);
+  }
 }
 
 .header-nav {
-	display: none;
+  display: none;
 }
 
 .options {
-	display: flex;
-	gap: var(--spacing-sm);
-	justify-content: flex-end;
+  display: flex;
+  gap: var(--spacing-sm);
+  justify-content: flex-end;
 }
 
 @media (min-width: 1024px) {
-	.header-nav {
-		display: flex;
-		align-items: center;
-		gap: var(--spacing-lg);
-		isolation: isolate;
+  .header-nav {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-lg);
+    isolation: isolate;
 
-		transform: translateX(calc(var(--spacing-sm) * -1));
+    transform: translateX(calc(var(--spacing-sm) * -1));
 
-		> ul {
-			display: flex;
-			margin: 0;
-			padding: 0;
-			list-style: none;
-			font-family: var(--font-trispace);
-			text-transform: uppercase;
-			font-weight: 400;
-			font-size: var(--font-size-sm);
-		}
+    > ul {
+      display: flex;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      font-family: var(--font-trispace);
+      text-transform: uppercase;
+      font-weight: 400;
+      font-size: var(--font-size-sm);
+    }
 
-		a {
-			display: block;
-			color: var(--color-text-base);
-			padding: var(--spacing-sm) var(--spacing-sm);
-			text-decoration: none;
+    a {
+      display: block;
+      color: var(--color-text-base);
+      padding: var(--spacing-sm) var(--spacing-sm);
+      text-decoration: none;
 
-			transition: color var(--transition-medium);
+      transition: color var(--transition-medium);
 
-			&:hover {
-				color: var(--color-black);
-			}
-		}
+      &:hover {
+        color: var(--color-black);
+      }
+    }
 
-		li:has(.active) {
-			anchor-name: --default-anchor;
-		}
+    li:has(.active) {
+      anchor-name: --default-anchor;
+    }
 
-		li:hover,
-		li:has(a:hover),
-		li:has(a:focus) {
-			anchor-name: --active-link;
-		}
+    li:hover,
+    li:has(a:hover),
+    li:has(a:focus) {
+      anchor-name: --active-link;
+    }
 
-		&::after {
-			content: "";
-			position: absolute;
-			z-index: -1;
-			background-color: var(--color-primary);
-			top: calc(anchor(bottom) - 4px);
-			left: calc(anchor(left) + var(--spacing-sm));
-			right: calc(anchor(right) + var(--spacing-sm));
-			bottom: calc(anchor(bottom) + 2px);
-			border-radius: 4px;
+    &::after {
+      content: '';
+      position: absolute;
+      z-index: -1;
+      background-color: var(--color-primary);
+      border-radius: 4px;
 
-			position-anchor: --default-anchor;
+      top: calc(anchor(bottom) - 4px);
+      left: calc(anchor(left) + var(--spacing-sm));
+      right: calc(anchor(right) + var(--spacing-sm));
+      bottom: calc(anchor(bottom) + 2px);
 
-			transition: var(--transition-medium);
-		}
+      position-anchor: --default-anchor;
 
-		&:has(a:hover)::after,
-		&:has(a:focus)::after {
-			top: anchor(top);
-			left: anchor(left);
-			right: anchor(right);
-			bottom: anchor(bottom);
-			border-radius: var(--spacing-sm);
+      transition: var(--transition-medium);
+    }
 
-			position-anchor: --active-link;
+    &:has(a:hover)::after,
+    &:has(a:focus)::after {
+      top: anchor(top);
+      left: anchor(left);
+      right: anchor(right);
+      bottom: anchor(bottom);
+      border-radius: var(--spacing-sm);
 
-			background-color: var(--color-yellow);
-			color: var(--color-bg-base);
-		}
-	}
+      position-anchor: --active-link;
 
-	.menu-btn {
-		display: none !important;
-	}
+      background-color: var(--color-yellow);
+      color: var(--color-bg-base);
+    }
+  }
+
+  .menu-btn {
+    display: none !important;
+  }
 }
