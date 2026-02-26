@@ -68,7 +68,7 @@ header {
       content: '';
       position: absolute;
       z-index: -1;
-      background-color: var(--color-primary);
+      background-color: var(--color-text-base);
       border-radius: 4px;
 
       top: calc(anchor(bottom) - 4px);

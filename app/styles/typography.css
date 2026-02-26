@@ -1,0 +1,25 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--color-text-heading);
+  line-height: var(--line-height-xs);
+  text-wrap: balance;
+  &:first-child {
+    margin-top: 0;
+  }
+}
+h1 {
+  font-size: var(--font-size-3xl);
+  font-weight: 300;
+}
+
+p {
+  text-wrap: balance;
+}
+
+.highlight-text {
+  color: var(--color-text-primary);
+}

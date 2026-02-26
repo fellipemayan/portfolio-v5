@@ -1,6 +1,7 @@
 'use client'
-import { useWeather } from '@/app/hooks/useWeather'
+import contactInfo from '../../constants/contatInfo.json'
 import './Footer.css'
+import { useWeather } from '@/app/hooks/useWeather'
 import { ArrowUpIcon } from '@heroicons/react/16/solid'
 
 export function Footer() {
@@ -27,26 +28,13 @@ export function Footer() {
       </div>
       <div className="middle-left">
         <ul>
-          <li>
-            <a href="https://www.behance.net/fellipeMsilva" target="_blank">
-              Behance
-            </a>
-          </li>
-          <li>
-            <a href="https://github.com/fellipemayan" target="_blank">
-              Github
-            </a>
-          </li>
-          <li>
-            <a href="https://www.linkedin.com/in/fellipemayan" target="_blank">
-              Linkedin
-            </a>
-          </li>
-          <li>
-            <a href="https://dribbble.com/fellipemayan" target="_blank">
-              Dribbble
-            </a>
-          </li>
+          {contactInfo.map((contact) => (
+            <li key={contact.name}>
+              <a href={contact.url} target="_blank" rel="noopener noreferrer">
+                {contact.name}
+              </a>
+            </li>
+          ))}
         </ul>
       </div>
       <div className="middle-right">

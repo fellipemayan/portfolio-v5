@@ -1,0 +1,48 @@
+/* Componentes básicos */
+.btn {
+  display: flex;
+  align-items: center;
+  padding-block: var(--spacing-sm);
+  padding-inline: var(--spacing-md);
+  border-radius: 0.4rem;
+  font-family: var(--font-trispace);
+  text-transform: uppercase;
+  height: 2.5rem;
+  cursor: pointer;
+
+  &:has(.icon-md) {
+    padding-left: calc(var(--spacing-md) - var(--spacing-xs));
+    gap: var(--spacing-xs);
+  }
+}
+
+.primary-btn {
+  background-color: var(--color-surface-primary);
+  border: none;
+  color: var(--color-text-surface-primary);
+  transition:
+    background-color var(--transition-medium),
+    color var(--transition-medium);
+
+  &:hover {
+    background-color: var(--color-surface-primary-hover);
+  }
+}
+.secondary-btn {
+  background-color: transparent;
+  border: 1px solid var(--color-border);
+  color: var(--color-text-surface-secondary);
+  transition:
+    background-color var(--transition-medium),
+    color var(--transition-medium);
+
+  &:hover {
+    background-color: var(--color-surface-secondary-hover);
+    color: var(--color-text-surface-secondary-hover);
+  }
+}
+
+.icon-md {
+  width: var(--spacing-md);
+  height: var(--spacing-md);
+}
