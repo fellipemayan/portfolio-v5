@@ -47,10 +47,11 @@ export default function RootLayout({
         className={`
           ${inter.variable} 
           ${trispace.variable}
+          content-grid
         `}
       >
         <Header />
-        <main className="content-grid">{children}</main>
+        <main className="full-width">{children}</main>
         <Footer />
       </body>
     </html>

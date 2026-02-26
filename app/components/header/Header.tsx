@@ -8,7 +8,7 @@ import { MobileMenu } from './MobileMenu/MobileMenu'
 export function Header() {
   return (
     <>
-      <header className="header content-grid">
+      <header className="header full-width">
         <Link href="/" className="name-link left">
           Fellipe Mayan
         </Link>

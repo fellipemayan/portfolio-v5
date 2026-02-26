@@ -19,23 +19,13 @@ export function Footer() {
   const currentWeather = useWeather()
 
   return (
-    <footer className="content-grid">
+    <footer className="full-width footer">
       <div className="left">
         <button className="btn primary-btn" onClick={scrollToTop}>
           <ArrowUpIcon className="icon-md" /> Topo
         </button>
       </div>
       <div className="middle-left">
-        <p className="footer-location">Quixadá&ndash;CE</p>
-        <p>No momento são {currentTime}</p>
-        {currentWeather?.data && (
-          <p>
-            O clima está {currentWeather.data.description.toLowerCase()}, e
-            fazem de {currentWeather.data.temp}°C
-          </p>
-        )}
-      </div>
-      <div className="middle-right">
         <ul>
           <li>
             <a href="https://www.behance.net/fellipeMsilva" target="_blank">
@@ -59,10 +49,20 @@ export function Footer() {
           </li>
         </ul>
       </div>
+      <div className="middle-right">
+        <p className="footer-location">Quixadá&ndash;CE</p>
+        <p>No momento são {currentTime}</p>
+        {currentWeather?.data && (
+          <p>
+            O clima está {currentWeather.data.description.toLowerCase()}, e
+            fazem de {currentWeather.data.temp}°C
+          </p>
+        )}
+      </div>
+
       <div className="copy-right">
-        <p>
-          &copy; {new Date().getFullYear()} Fellipe Mayan. Copyright & Afins.
-        </p>
+        <p>&copy; {new Date().getFullYear()} Fellipe Mayan.</p>
+        <p>Copyright & Afins.</p>
       </div>
     </footer>
   )

@@ -33,6 +33,7 @@ export function MobileMenu() {
           className="highlight-text"
         >{`//////////////`}</span>
       </nav>
+
       <button
         popoverTarget="mobile-menu"
         popoverTargetAction="hide"

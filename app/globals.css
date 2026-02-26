@@ -82,8 +82,11 @@
 
   /* Grid */
   --padding-inline: var(--spacing-xl);
-  --content-max-width: 120ch;
+  --content-max-width: 60ch;
   --breakout-max-width: 120ch;
+  --breakout-size: calc(
+    (var(--breakout-max-width) - var(--content-max-width)) / 2
+  );
 
   --header-height: 52px;
 }
@@ -135,28 +138,30 @@ main {
 /* Layout */
 .content-grid,
 .full-width {
-  --breakout-size: calc(
-    (var(--breakout-max-width) - var(--content-max-width)) / 2
-  );
   gap: var(--spacing-lg) 0;
 
   display: grid;
   grid-template-columns:
     [full-width-start] minmax(var(--padding-inline), 1fr)
-    [content-start] repeat(
-      2,
-      min(
-        (100% - (var(--padding-inline) * 2)) / 2,
-        (var(--content-max-width) / 2)
-      )
+    [breakout-start] minmax(0, var(--breakout-size))
+    [content-start]
+    min(
+      (100% - (var(--padding-inline) * 2)) / 2,
+      (var(--content-max-width) / 2)
+    )
+    [middle]
+    min(
+      (100% - (var(--padding-inline) * 2)) / 2,
+      (var(--content-max-width) / 2)
     )
     [content-end]
+    minmax(0, var(--breakout-size)) [breakout-end]
     minmax(var(--padding-inline), 1fr) [full-width-end];
 }
 
-.content-grid > :not(.breakout, .full-width),
-.full-width > :not(.breakout, .full-width) {
-  grid-column: 2 / -1;
+.content-grid > :not(.breakout, .full-width, .left, .right),
+.full-width > :not(.breakout, .full-width, .left, .right) {
+  grid-column: content;
 }
 
 .content-grid > .full-width {
@@ -169,25 +174,25 @@ main {
   grid-column: content;
 }
 
-.content-grid > .left {
-  grid-column: 2 / 3;
+.content-grid > .left,
+.full-width > .left {
+  grid-column: breakout-start / middle;
 }
-.content-grid > .middle-left {
-  grid-column: 2 / -1;
+.content-grid > .right,
+.full-width > .right {
+  grid-column: middle / breakout-end;
+}
+.content-grid > .copy-right,
+.content-grid > .middle-left,
+.content-grid > .middle-right {
+  grid-column: breakout;
 }
 
-.content-grid > .middle-right {
-  grid-column: 2 / -1;
-}
-.content-grid > .right {
-  grid-column: 3 / 4;
-}
-.copy-right {
-  grid-column: 3 / 4;
+.content-grid > .full-width {
+  grid: inherit;
 }
 
 /* Tipografia */
-
 h1,
 h2,
 h3,
@@ -287,88 +292,29 @@ h1 {
 }
 
 @media (min-width: 768px) {
-  .content-grid,
-  .full-width {
-    --breakout-size: calc(
-      (var(--breakout-max-width) - var(--content-max-width)) / 2
-    );
-
-    display: grid;
-    grid-template-columns:
-      [full-width-start] minmax(var(--padding-inline), 1fr)
-      [content-start] repeat(
-        4,
-        min(
-          (100% - (var(--padding-inline) * 2)) / 4,
-          (var(--content-max-width) / 4)
-        )
-      )
-      [content-end]
-      minmax(var(--padding-inline), 1fr) [full-width-end];
-  }
-
-  .content-grid > .left {
-    grid-column: 2 / 3;
-  }
   .content-grid > .middle-left {
-    grid-column: 3 / 4;
+    grid-column: breakout-start / middle;
   }
   .content-grid > .middle-right {
-    grid-column: 4 / 5;
-  }
-  .content-grid > .right,
-  .content-grid > .copy-right {
-    grid-column: 5 / 6;
+    grid-column: middle / breakout-end;
   }
 }
 
 @media (min-width: 1024px) {
-  .content-grid,
-  .full-width {
-    --breakout-size: calc(
-      (var(--breakout-max-width) - var(--content-max-width)) / 2
-    );
-
-    display: grid;
-    grid-template-columns:
-      [full-width-start] minmax(var(--padding-inline), 1fr)
-      [content-start] repeat(
-        6,
-        min(
-          (100% - (var(--padding-inline) * 2)) / 6,
-          (var(--content-max-width) / 6)
-        )
-      )
-      [content-end]
-      minmax(var(--padding-inline), 1fr) [full-width-end];
+  .content-grid > .left,
+  .full-width > .left {
+    grid-column: breakout-start / content-start;
   }
-
-  .content-grid > :not(.breakout, .full-width),
-  .full-width > :not(.breakout, .full-width) {
-    grid-column: 3 / 7;
+  .full-width > .middle-left {
+    grid-column: content-start / middle;
   }
-
-  .content-grid > .full-width {
-    grid-column: full-width;
-    display: grid;
-    grid-template-columns: inherit;
+  .full-width > .middle-right {
+    grid-column: middle / content-end;
   }
-
-  .content-grid > .content {
-    grid-column: content;
+  .full-width > .right {
+    grid-column: content-end / breakout-end;
   }
-
-  .content-grid > .left {
-    grid-column: 2 / content-start;
-  }
-  .content-grid > .middle-left {
-    grid-column: 3 / 5;
-  }
-  .content-grid > .middle-right {
-    grid-column: 5 / 7;
-  }
-  .content-grid > .right,
-  .content-grid > .copy-right {
-    grid-column: 7 / content-end;
+  .full-width > .copy-right {
+    grid-column: content-end / breakout-end;
   }
 }
