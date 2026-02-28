@@ -15,15 +15,17 @@
   --color-bg-base: 
     light-dark(oklch(0.9911 0 0), oklch(0.1 0.01 90));
   --color-bg-base-hover: 
-    light-dark(oklch(0.94 0 0), oklch(0.15 0.01 90));
+    light-dark(oklch(0.94 0 0), oklch(0.15 0.01 190));
   --color-bg-secondary: 
-    light-dark(oklch(0.95 0.01 90), oklch(0.2 0.01 90));
+    light-dark(oklch(0.95 0.01 90), oklch(0.19 0.005 190));
   --color-bg-secondary-hover: light-dark(
-    oklch(0.83 0.01 90), oklch(0.3 0.01 90)
+    oklch(0.90 0.01 90), oklch(0.3 0.01 190)
   );
 
   --color-border: 
     light-dark(oklch(0.8 0.01 90), oklch(0.3 0.01 90));
+  --color-border-overlay: 
+    light-dark(oklch(0.1 0.01 90) / 0.5, oklch(0.3 0.01 90) / 0.5);
 
   --color-text-base: 
     light-dark(oklch(0.3 0.01 90), oklch(0.95 0.01 90));
@@ -32,7 +34,7 @@
   --color-text-heading: 
     light-dark(oklch(0.1 0.01 90), oklch(0.98 0.01 90));
   --color-text-muted: 
-    light-dark(oklch(0.3 0.01 90), oklch(0.7 0.01 90));
+    light-dark(oklch(0.4 0.01 90), oklch(0.7 0.01 90));
   --color-text-primary: 
     light-dark(
     var(--color-yellow-darker), var(--color-yellow)
@@ -52,7 +54,7 @@
   --color-text-surface-secondary-hover: var(--color-text-hover);
 
   --color-selection-bg: var(--color-yellow);
-  --color-selection-text: light-dark(oklch(0.1 0.01 90), oklch(0.85 0.01 90));
+  --color-selection-text: var(--color-black);
 
   /* Espaçamento */
   --spacing-2xs: 0.125rem;
@@ -103,4 +105,8 @@
 :root[data-theme='dark'],
 :root:has(button[id='dark-theme'][class*='active']) {
   color-scheme: dark;
+
+  p {
+    font-weight: 300;
+  }
 }

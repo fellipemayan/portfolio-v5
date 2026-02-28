@@ -23,3 +23,31 @@ main {
   min-height: calc(100dvh - var(--header-height));
   background-color: var(--color-bg-base);
 }
+
+section {
+  margin-bottom: var(--spacing-2xl);
+  &:first-child {
+    margin-top: var(--spacing-2xl);
+  }
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+#cta {
+  padding-block: var(--spacing-2xl);
+  background-color: var(--color-bg-secondary);
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: var(--spacing-md);
+  }
+
+  li > a {
+    text-decoration: none;
+  }
+}

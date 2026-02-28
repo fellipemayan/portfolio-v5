@@ -1,0 +1,61 @@
+[
+  {
+    "slug": "site-ufc-quixada",
+    "featured": true,
+    "featuredOrder": 2,
+    "title": "Redesign Site UFC Quixadá",
+    "description": "Reorganização e o redesign do site da Universidade Federal do Ceará, campus Quixadá.",
+    "category": "Design",
+    "period": {
+      "start": "2023-01",
+      "end": "2023-12"
+    },
+    "role": [
+      "UI/UX Designer"
+    ],
+    "tags": [
+      "Interface",
+      "Arquitetura da Informação",
+      "Engenharia Semiótica",
+      "Figma"
+
+    ],
+    "toolsAndskills": [
+      "Figma",
+      "Design de Interface",
+      "Arquitetura da Informação"
+    ],
+    "thumbnailImage": {
+      "url": "/projects/site-ufc/thumbnail.png",
+      "alt": "Proposta de interface para a página inicial do site da UFC Quixadá, com destaque para a navegação simplificada."
+    }
+  },
+  {
+    "slug": "mago-do-espaco",
+    "featured": true,
+    "featuredOrder": 1,
+    "title": "Mago do espaço",
+    "description": "Projeto de um sistema white label para que restaurantes gerenciem mesas, clientes, pedidos e entregas.",
+    "category": "Branding",
+    "period": {
+      "start": "2023-01",
+      "end": "2023-12"
+    },
+    "role": [
+      "UI/UX Designer"
+    ],
+    "tags": [
+      "Branding",
+      "Identidade visual"
+    ],
+    "toolsAndskills": [
+      "Figma",
+      "Design de Interface",
+      "Arquitetura da Informação"
+    ],
+    "thumbnailImage": {
+      "url": "/projects/mago-do-espaco/thumbnail.png",
+      "alt": "Proposta de interface para a página inicial do site da UFC Quixadá, com destaque para a navegação simplificada."
+    }
+  }
+]

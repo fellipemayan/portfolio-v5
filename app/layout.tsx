@@ -25,7 +25,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="pt-BR">
+    <html lang="pt-BR" suppressHydrationWarning>
       <head>
         <script
           dangerouslySetInnerHTML={{
@@ -51,7 +51,7 @@ export default function RootLayout({
         `}
       >
         <Header />
-        <main className="full-width">{children}</main>
+        <main className="content-grid full-width">{children}</main>
         <Footer />
       </body>
     </html>

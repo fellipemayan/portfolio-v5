@@ -29,15 +29,15 @@ export function useWeather(
     const fetchWeather = async () => {
       const apiKey = process.env.NEXT_PUBLIC_OPENWEATHER_API_KEY
 
-      console.log('Fetching weather data...')
-
       if (!apiKey) {
         setWeatherData({
           data: null,
           loading: false,
           error: 'API não configurada',
         })
+        return
       }
+      
 
       try {
         const url = `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&units=metric&lang=${lang}&appid=${apiKey}`
@@ -48,13 +48,12 @@ export function useWeather(
         }
 
         const data = await res.json()
-        console.log(data)
 
         const weatherInfo: WeatherData = {
-          temp: data.main.temp,
+          temp: Math.round(data.main.temp),
           minTemp: data.main.temp_min,
           maxTemp: data.main.temp_max,
-          description: data.weather.description,
+          description: data.weather[0].description,
         }
 
         try {
@@ -64,12 +63,7 @@ export function useWeather(
         } catch {}
 
         setWeatherData({
-          data: {
-            temp: data.main.temp,
-            minTemp: data.main.temp_min,
-            maxTemp: data.main.temp_max,
-            description: data.weather[0].description,
-          },
+          data: weatherInfo,
           loading: false,
           error: null,
         })

@@ -9,7 +9,7 @@ import { useEffect, useState } from 'react'
 
 export type Theme = 'light' | 'dark' | 'system'
 
-export function ThemeToggle() {
+export function ThemeToggle() {  
   const [theme, setTheme] = useState<Theme>(() => {
     if (typeof window === 'undefined') return 'light'
     const saved = localStorage.getItem('portfolio-theme') as Theme | null
@@ -23,9 +23,8 @@ export function ThemeToggle() {
     if (typeof window === 'undefined') return
 
     localStorage.setItem('portfolio-theme', theme)
-    document.documentElement.style.setProperty(
-      'color-scheme',
-      theme === 'system'
+    document.documentElement.setAttribute(
+      'data-theme', theme === 'system'
         ? window.matchMedia('(prefers-color-scheme: dark)').matches
           ? 'dark'
           : 'light'

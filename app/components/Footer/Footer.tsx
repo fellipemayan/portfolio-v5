@@ -43,7 +43,7 @@ export function Footer() {
         {currentWeather?.data && (
           <p>
             O clima está {currentWeather.data.description.toLowerCase()}, e
-            fazem de {currentWeather.data.temp}°C
+            fazem {currentWeather.data.temp}°C
           </p>
         )}
       </div>

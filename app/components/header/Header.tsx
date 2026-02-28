@@ -43,7 +43,7 @@ export function Header() {
           <ThemeToggle />
           <button
             popoverTarget="mobile-menu"
-            className="menu-btn btn secondary-btn"
+            className="menu-btn btn secondary-btn icon-only"
           >
             <Bars3Icon className="icon-md" />
           </button>

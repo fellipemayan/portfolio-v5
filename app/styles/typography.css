@@ -6,6 +6,7 @@ h5,
 h6 {
   color: var(--color-text-heading);
   line-height: var(--line-height-xs);
+  letter-spacing: -0.02em;
   text-wrap: balance;
   &:first-child {
     margin-top: 0;
@@ -16,6 +17,10 @@ h1 {
   font-weight: 300;
 }
 
+h2 {
+  font-size: var(--font-size-2xl);
+  font-weight: 300;
+}
 p {
   text-wrap: balance;
 }

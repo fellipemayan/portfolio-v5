@@ -37,7 +37,7 @@ export function MobileMenu() {
       <button
         popoverTarget="mobile-menu"
         popoverTargetAction="hide"
-        className="btn secondary-btn close-btn right"
+        className="btn secondary-btn close-btn right icon-only"
       >
         <XMarkIcon className="icon-md" />
       </button>

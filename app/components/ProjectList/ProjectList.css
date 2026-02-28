@@ -1,0 +1,215 @@
+.project-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  
+  li > a {  
+    text-decoration: none;
+    color: inherit;
+  
+    .thumbnail-container {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--color-border-overlay);
+      border-radius: 4px;
+    }
+  
+    .thumbnail {
+      width: 100%;
+      height: 100%; 
+      object-fit: cover;
+      object-position: center;
+      transition: transform 0.3s var(--transition-fast); 
+    }
+  
+    h3 {
+      font-weight: 500;
+      margin-bottom: var(--spacing-sm);
+    }
+  
+    &:hover { 
+      img {
+        transform: scale(1.05);
+      }
+      h3 {
+        text-decoration: underline;
+      }
+    }
+
+  
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      list-style: none;
+      padding: 0;
+      gap: var(--spacing-xs);
+  
+      .tag {
+        height: fit-content;
+        background-color: var(--color-bg-secondary);
+        color: var(--color-tag-text);
+        font-family: var(--font-trispace);
+        font-weight: 400;
+        text-transform: uppercase;
+        padding: 4px 6px;
+        border-radius: 4px;
+        font-size: var(--font-size-sm);
+      }
+    }
+  }
+  
+  li:focus-within {
+    outline: 2px solid var(--color-text-base);
+    outline-offset: 4px;
+    border-radius: 4px;
+    z-index: 1;
+
+    > * {
+      outline: none;
+    }
+  }
+
+  &.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+
+    .project-card-content {
+      margin-top: var(--spacing-md);
+    }
+  } 
+
+  &.list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+
+    li > a {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--spacing-md);
+
+      .thumbnail-container {
+        flex: 1 0 200px;
+        align-self: flex-start;
+        aspect-ratio: 16 / 9;
+        
+      } 
+
+      .project-card-content {
+        flex: 2 1 200px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+      }
+    }
+  }
+}
+
+.project-list-controls {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-xl);
+}
+
+.project-filters {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+}
+
+.view-toggle-container {
+  display: flex;
+  flex-direction: row;
+  padding: var(--spacing-xs);
+  border-radius: 0.4rem;
+  background-color: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  isolation: isolate;
+  height: 2.5rem;
+  flex-grow: 0;
+  margin-left: auto;
+
+  &:hover {
+    border-color: var(--color-border-hover);
+    background-color: var(--color-bg-secondary-hover);
+    color: var(--color-text-hover);
+  }
+
+  button {
+    background: none;
+    display: flex;
+    border: none;
+    border-radius: 0.2rem;
+    padding: var(--spacing-sm) var(--spacing-md);
+    align-items: center;
+  }
+
+  button.active {
+    anchor-name: --active-theme;
+  }
+
+  button:hover,
+  button:focus {
+    anchor-name: --hover-theme;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    background-color: var(--color-bg-base);
+    top: anchor(top);
+    left: anchor(left);
+    right: anchor(right);
+    bottom: anchor(bottom);
+    border-radius: var(--spacing-xs);
+
+    position-anchor: --active-theme;
+
+    transition: var(--transition-medium);
+  }
+
+  &:has(button:hover)::after,
+  &:has(button:focus)::after {
+    position-anchor: --hover-theme;
+  }
+}
+
+
+
+@media (min-width: 768px) {
+  .project-list.grid {
+    grid-template-columns: 1fr 1fr;
+    column-gap: var(--spacing-xl);
+    row-gap: var(--spacing-xl);
+  }
+  .card-grid {
+    display: grid;
+    grid-row: span 4;
+    grid-template-rows: subgrid;
+    column-gap: var(--spacing-md);
+    row-gap: 0;
+  }
+  .card-grid a {
+    display: grid;
+    grid-row: span 4;
+    grid-template-rows: subgrid;
+  }
+  .card-grid .project-card-content {
+    display: grid;
+    grid-row: span 3;
+    grid-template-rows: subgrid;
+  }
+  .project-list-controls {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-xl);
+  }
+}
