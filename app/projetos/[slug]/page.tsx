@@ -58,7 +58,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       <section id="project-overview">
         <Link href="/projetos" className='btn ghost-btn back-link'><ArrowLeftIcon className="icon-md"></ArrowLeftIcon> Voltar</Link>
         <h1>{project.title}</h1>
-        <p>{project.description}</p>
+        <p className="project-subtitle">{project.description}</p>
       </section>
 
       <Image 

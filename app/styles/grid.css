@@ -59,7 +59,7 @@
 
 @media (max-width: 600px) {
   :root {
-    --padding-inline: var(--spacing-md);
+    --padding-inline: var(--spacing-lg);
   }
 }
 

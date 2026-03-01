@@ -14,9 +14,11 @@ export function Header() {
   return (
     <>
       <header className="header full-width">
-        <Link href="/" className="name-link left">
-          Fellipe Mayan
-        </Link>
+        <div className="left">
+          <Link href="/" className="name-link left">
+            Fellipe Mayan
+          </Link>
+        </div>
         <nav className="header-nav">
           <ul>
             <li>

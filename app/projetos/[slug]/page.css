@@ -1,6 +1,11 @@
 #project-overview {
-  margin-top: var(--gap-lg);
+  margin-top: 0
 }
+
+.project-subtitle {
+  font-size: var(--font-size-lg);
+}
+
 .back-link {
   display: inline-flex;
   transform: translateX(calc(var(--spacing-sm) * -1));
@@ -200,6 +205,12 @@ img {
 }
 
 @media (min-width: 1200px) {
+  .project-image {
+    margin-bottom: 0;
+  }
+  #project-overview {
+    margin-top: var(--gap-lg);
+  }
   #project-toc,
   #projet-metadata {
     position: sticky;
