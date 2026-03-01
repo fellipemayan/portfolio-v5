@@ -29,7 +29,7 @@ export function ProjectCard({ project, style }: { project: ProjectCardData, styl
 
   return (
     <li className={`card-${style}`}>
-      <Link href={`/projects/${project.slug}`}>
+      <Link href={`/projetos/${project.slug}`}>
         <div className='thumbnail-container'>
           <Image 
             src={project.thumbnailImage.url} 

@@ -21,6 +21,11 @@ h2 {
   font-size: var(--font-size-2xl);
   font-weight: 300;
 }
+
+h3 {
+  font-size: var(--font-size-xl);
+  font-weight: 400;
+}
 p {
   text-wrap: balance;
 }

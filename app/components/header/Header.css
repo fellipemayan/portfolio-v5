@@ -57,12 +57,10 @@ header {
 
       transition: color var(--transition-medium);
 
-      &:hover {
+      &:hover, &:focus {
         color: var(--color-black);
       }
     }
-
-    
 
     &::after {
       content: '';

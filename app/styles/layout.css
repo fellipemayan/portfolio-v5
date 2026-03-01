@@ -24,20 +24,14 @@ main {
   background-color: var(--color-bg-base);
 }
 
-section {
-  margin-bottom: var(--spacing-2xl);
+main > section {
+  margin-bottom: var(--gap-lg);
   &:first-child {
-    margin-top: var(--spacing-2xl);
-  }
-  &:last-child {
-    margin-bottom: 0;
+    margin-top: var(--gap-lg);
   }
 }
 
 #cta {
-  padding-block: var(--spacing-2xl);
-  background-color: var(--color-bg-secondary);
-
   ul {
     display: flex;
     flex-wrap: wrap;
@@ -49,5 +43,13 @@ section {
 
   li > a {
     text-decoration: none;
+  }
+}
+
+@media (min-width: 768px) {
+  :root {
+    --gap-md: var(--spacing-md);
+    --gap-lg: var(--spacing-2xl);
+
   }
 }

@@ -87,7 +87,6 @@
   background-color: var(--color-yellow);
   color: var(--color-black);
   padding-block: var(--spacing-xl);
-  margin-bottom: 0;
 
   h2 {
     color: var(--color-black);

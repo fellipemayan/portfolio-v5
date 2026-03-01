@@ -9,6 +9,7 @@ import { usePathname } from 'next/navigation'
 
 export function Header() {
   const pathName = usePathname()
+  const isProjetosActive = pathName.startsWith('/projetos');
 
   return (
     <>
@@ -24,7 +25,7 @@ export function Header() {
               </Link>
             </li>
             <li>
-              <Link href="/projetos" className={pathName === '/projetos' ? 'active' : ''} onClick={e => e.currentTarget.blur()}>
+              <Link href="/projetos" className={isProjetosActive ? 'active' : ''} onClick={e => e.currentTarget.blur()}>
                 Projetos
               </Link>
             </li>

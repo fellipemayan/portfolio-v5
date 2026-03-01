@@ -1,6 +1,5 @@
 /* Layout */
 .content-grid {
-
   display: grid;
   grid-template-columns:
     [full-width-start] minmax(var(--padding-inline), 1fr)
@@ -29,6 +28,9 @@
   grid-column: full-width;
   display: grid;
   grid-template-columns: inherit;
+  grid-template-areas:
+    "padding toc content metadata padding";
+  
 }
 
 .content-grid > .breakout {
@@ -77,6 +79,9 @@
 }
 
 @media (min-width: 1024px) {
+  .content-grid, .full-width {
+    column-gap: var(--spacing-xl);
+  }
   .content-grid > .left,
   .full-width > .left {
     grid-column: breakout-start / content-start;
@@ -93,4 +98,5 @@
   .full-width > .copy-right {
     grid-column: content-end / breakout-end;
   }
+  
 }
