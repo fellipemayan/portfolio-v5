@@ -1,14 +1,22 @@
+"use client"
 import Link from 'next/link'
 import contactInfo from './constants/contatInfo.json'
 import './home.css'
 import { HeroProjectList } from './components/ProjectList/ProjectList'
+import { motion } from 'motion/react'
+import { containerVariants, itemVariants } from './constants/motionVariants';
+
 export default function Home() {
   return (
     <>
-      <section id="hero">
-        <h1>Designer full-stack com foco em produtos digitais, Arquitetura da Informação, Interface e Interação</h1>
-        <p className="">Quixadá&ndash;CE, Brasil.</p>
-        <ul>
+      <motion.section id="hero"
+        variants={containerVariants} initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, margin: "0px 0px -10% 0px" }}
+      >
+        <motion.h1 variants={itemVariants}>Designer full-stack com foco em produtos digitais, Arquitetura da Informação, Interface e Interação</motion.h1>
+        <motion.p className="" variants={itemVariants}>Quixadá&ndash;CE, Brasil.</motion.p>
+        <motion.ul variants={itemVariants}>
           {contactInfo.map((contact) => (
             <li key={contact.name}>
               <a href={contact.url} target="_blank" rel="noopener noreferrer" className='external-link'>
@@ -16,27 +24,39 @@ export default function Home() {
               </a>
             </li>
           ))}
-        </ul>
-        <button className="btn primary-btn">Entre em contato</button>
-        <button className="btn secondary-btn">Currículo</button>
-      </section>
+        </motion.ul>
+        <motion.button className="btn primary-btn" variants={itemVariants}>Entre em contato</motion.button>
+        <motion.button className="btn secondary-btn" variants={itemVariants}>Currículo</motion.button>
+      </motion.section>
 
-      <section className="content-grid full-width" id="projects">
+      <motion.section
+        className="content-grid full-width"
+        id="projects"
+        variants={containerVariants} initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, margin: "0px 0px -10% 0px" }}
+      >
         <HeroProjectList style="grid" />
-      </section>
+      </motion.section>
 
-      <section className="full-width" id="cta">
-        <h2>Entre em contato</h2>
-        <p>Estou sempre aberto a discutir novos projetos, ideias criativas ou oportunidades de colaboração. Sinta-se à vontade para me enviar uma mensagem!</p>
-        <ul>
-          <li>
+      <motion.section
+        className="full-width"
+        id="cta"
+        variants={containerVariants} initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, margin: "0px 0px -10% 0px" }}
+      >
+        <motion.h2 variants={itemVariants}>Entre em contato</motion.h2>
+        <motion.p variants={itemVariants}>Estou sempre aberto a discutir novos projetos, ideias criativas ou oportunidades de colaboração. Sinta-se à vontade para me enviar uma mensagem!</motion.p >
+        <motion.ul variants={itemVariants}>
+          <motion.li variants={itemVariants}>
             <Link href="/contato" className="cta primary-cta">Enviar mensagem</Link>
-          </li>
-          <li>
+          </motion.li>
+          <motion.li variants={itemVariants}>
             <Link href="/projetos" className="cta secondary-cta">Ver projetos</Link>
-          </li>
-        </ul>
-      </section>
+          </motion.li>
+        </motion.ul>
+      </motion.section>
     </>
   )
 }

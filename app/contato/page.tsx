@@ -3,6 +3,7 @@ import { animate } from 'motion';
 import './page.css';
 import { useForm, ValidationError } from '@formspree/react';
 import { motion, AnimatePresence, useMotionValue } from 'motion/react';
+import { containerVariants, itemVariants } from '../constants/motionVariants';
 import { useState, useRef, useEffect } from 'react';
 import validator from 'validator';
 
@@ -105,13 +106,29 @@ export default function ContactPage() {
 
   return (
     <>
-      <section id="hero">
-        <h1>Toda boa ideia começa com uma boa história. Se você tem um projeto ou simplesmente quer dizer <span id="cursor-oi">oi</span>, este é o lugar certo :)</h1>
-        <p className="">Entre em contato via e-mail, LinkedIn ou pelo formulário abaixo. Dê tantos detalhes quanto sua imaginação permitir – vamos conversar!</p>
-      </section>
+      <motion.section id="hero"
+        variants={containerVariants} initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, margin: "0px 0px -10% 0px" }}
+      >
+        <motion.h1 variants={itemVariants}>Toda boa ideia começa com uma boa história. Se você tem um projeto ou simplesmente quer dizer <span id="cursor-oi">oi</span>, este é o lugar certo :)</motion.h1>
+        <motion.p className="" variants={itemVariants}>Entre em contato via e-mail, LinkedIn ou pelo formulário abaixo. Dê tantos detalhes quanto sua imaginação permitir – vamos conversar!</motion.p>
+      </motion.section>
       
-      <section className='full-width' id="form-section">
-        <form className={`contact-form ${isPulverizing ? 'pulverizing' : ''}`} onSubmit={customSubmit} ref={formRef} onInvalidCapture={handleInvalid}>
+      <motion.section
+        className='full-width'
+        id="form-section"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, margin: "0px 0px -10% 0px" }}
+      >
+        <motion.form
+          className={`contact-form ${isPulverizing ? 'pulverizing' : ''}`}
+          onSubmit={customSubmit}
+          ref={formRef}
+          onInvalidCapture={handleInvalid}
+          variants={itemVariants}>
           <svg style={{ position: 'absolute', width: 0, height: 0, pointerEvents: 'none' }}>
             <filter id="dust-filter" x="-20%" y="-20%" width="140%" height="140%">
               <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" result="noise" />
@@ -175,8 +192,8 @@ export default function ContactPage() {
               </motion.span>
             </AnimatePresence>
           </motion.button>
-        </form>
-      </section>
+        </motion.form>
+      </motion.section>
     </>
   )
 }

@@ -1,26 +1,46 @@
+
+"use client";
 import './page.css';
 import Link from "next/link";
 import { ProjectsProjectList } from "../components/ProjectList/ProjectList";
+import { motion } from 'motion/react';
+import { containerVariants, itemVariants } from '../constants/motionVariants';
 
 export default function ProjectsPage() {
   return (
     <>
-      <section>
-        <h1>Projetos</h1>
-        <p>Aqui estão alguns projetos profissionais, acadêmicos e pessoais que desenvolvi ao longo do tempo.</p>
-      </section>
+      <motion.section
+        variants={containerVariants} initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, margin: "0px 0px -10% 0px" }}
+      >
+        <motion.h1 variants={itemVariants}>Projetos</motion.h1>
+        <motion.p variants={itemVariants}>Aqui estão alguns projetos profissionais, acadêmicos e pessoais que desenvolvi ao longo do tempo.</motion.p>
+      </motion.section>
 
-      <ProjectsProjectList />
+      <motion.section
+        className="content-grid full-width"
+        variants={containerVariants} initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, margin: "0px 0px -10% 0px" }}
+      >
+        <ProjectsProjectList />
+      </motion.section>
 
-      <section className="full-width" id="cta">
-        <h2>Entre em contato</h2>
-        <p>Estou sempre aberto a discutir novos projetos, ideias criativas ou oportunidades de colaboração. Sinta-se à vontade para me enviar uma mensagem!</p>
-        <ul>
-          <li>
+      <motion.section
+        className="full-width" id="cta"
+        variants={containerVariants} initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, margin: "0px 0px -10% 0px" }}
+      >
+        <motion.h2 variants={itemVariants}>Entre em contato</motion.h2>
+        <motion.p variants={itemVariants}>Estou sempre aberto a discutir novos projetos, ideias criativas ou oportunidades de colaboração. Sinta-se à vontade para me enviar uma mensagem!</motion.p>
+        <motion.ul variants={itemVariants}>
+          <motion.li variants={itemVariants}>
             <Link href="/contato" className="cta primary-cta">Enviar mensagem</Link>
-          </li>
-        </ul>
-      </section>
+          </motion.li>
+        </motion.ul>
+      </motion.section>
     </>
   )
 }

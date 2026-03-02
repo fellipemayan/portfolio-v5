@@ -1,9 +1,12 @@
-"use client"
+"use client";
 import './ProjectList.css'
 import projectsData from '../../constants/projects.json'
 import Link from 'next/link';
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
+
+import { motion } from 'motion/react';
+import { containerVariants, itemVariants } from '../../constants/motionVariants';
 import { QueueListIcon, Squares2X2Icon } from '@heroicons/react/20/solid';
 
 export type ListStyle = 'grid' | 'list'
@@ -24,18 +27,16 @@ interface ProjectCardData {
   };
   tags: string[];
 }
-
-export function ProjectCard({ project, style }: { project: ProjectCardData, style?: ListStyle }) { 
-  
+export function ProjectCard({ project, style }: { project: ProjectCardData, style?: ListStyle }) {
   return (
-    <li className={`card-${style}`}>
+    <motion.li className={`card-${style}`} variants={itemVariants}>
       <Link href={`/projetos/${project.slug}`} data-cursor-text="Ver projeto"
-      data-cursor-icon="arrow-right" data-cursor-icon-pos="after">
+        data-cursor-icon="arrow-right" data-cursor-icon-pos="after">
         <div className='thumbnail-container'>
-          <Image 
-            src={project.thumbnailImage.url} 
+          <Image
+            src={project.thumbnailImage.url}
             alt={project.thumbnailImage.alt}
-            width={400} 
+            width={400}
             height={225}
             className='thumbnail'
             loading='eager' />
@@ -50,28 +51,17 @@ export function ProjectCard({ project, style }: { project: ProjectCardData, styl
           <p>{project.description}</p>
         </div>
       </Link>
-    </li>
-  )
+    </motion.li>
+  );
 }
 
-export function ProjectList({ projects, style }: { projects: ProjectCardData[], style?: ListStyle }) { 
-
+export function ProjectList({ projects, style }: { projects: ProjectCardData[], style?: ListStyle }) {
   return (
-    <ul className={`breakout project-list ${style}`}>
-      {projects.map(({
-        slug,
-        featured,
-        featuredOrder,
-        title,
-        category,
-        period: { end },
-        description,
-        tags,
-        thumbnailImage: {
-          url,
-          alt
-        },
-      }) => (
+    <motion.ul className={`breakout project-list ${style}`}
+      variants={containerVariants} initial="hidden" whileInView="show"
+      viewport={{ once: true, margin: "0px 0px -10% 0px" }}
+    >
+      {projects.map(({ slug, featured, featuredOrder, title, category, period: { end }, description, tags, thumbnailImage: { url, alt } }) => (
         <ProjectCard key={slug} project={{
           slug,
           title,
@@ -87,8 +77,8 @@ export function ProjectList({ projects, style }: { projects: ProjectCardData[], 
           }
         }} style={style} />
       ))}
-    </ul>
-  )
+    </motion.ul>
+  );
 }
 
 export function HeroProjectList({ style }: { style?: ListStyle }) { 
@@ -159,15 +149,20 @@ export function ProjectsProjectList() {
 
   return (
     <section className={`breakout project-list-container ${listStyle}`}>
-      <div className='project-list-controls'>
+      <motion.div
+        className='project-list-controls'
+        variants={itemVariants}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, margin: "0px 0px -10% 0px" }}
+      >
         <div className='filter-container tags-filter' role="group" aria-labelledby="tag-label">
-          {/* <span id="tag-label" className='pill-group-label'>Tag</span> */}
           <div className='pill-list' role='presentation'>
             {tagsWithAll.map((tag, index) => {
               const isSelected = selectedTag === tag;
 
               return (
-                <button
+                <motion.button
                   key={tag}
                   ref={(el) => { tagRefs.current[index] = el }}
                   tabIndex={isSelected ? 0 : -1}
@@ -175,18 +170,31 @@ export function ProjectsProjectList() {
                   onKeyDown={(e) => handleKeyDown(e, index)}
                   className={`pill ${isSelected ? 'active' : ''}`}
                   aria-pressed={isSelected}
+                  variants={itemVariants}
                 >
                   {tag}
-                </button>
+                </motion.button>
               )
             })}
           </div>
         </div>
         <div className='view-toggle-container'>
-          <button onClick={() => setListStyle('grid')} className={listStyle === 'grid' ? 'active' : ''}><Squares2X2Icon className="icon-md" /></button>
-          <button onClick={() => setListStyle('list')} className={listStyle === 'list' ? 'active' : ''}><QueueListIcon className="icon-md" /></button>
+          <motion.button
+            onClick={() => setListStyle('grid')}
+            className={listStyle === 'grid' ? 'active' : ''}
+            variants={itemVariants}
+          >
+            <Squares2X2Icon className="icon-md" />
+          </motion.button>
+          <motion.button
+            onClick={() => setListStyle('list')}
+            className={listStyle === 'list' ? 'active' : ''}
+            variants={itemVariants}
+          >
+            <QueueListIcon className="icon-md" />
+          </motion.button>
         </div>
-      </div>
+      </motion.div>
       {filteredProjects.length > 0 ? (
         <ProjectList projects={filteredProjects} style={listStyle} />
       ) : (

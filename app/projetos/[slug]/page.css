@@ -6,6 +6,10 @@
   font-size: var(--font-size-lg);
 }
 
+div:has(.back-link) {
+  margin-bottom: var(--gap-md);
+}
+
 .back-link {
   display: inline-flex;
   transform: translateX(calc(var(--spacing-sm) * -1));
@@ -41,7 +45,7 @@ img {
     font-weight: 500;
   }
 
-  > ul {
+  ul {
     display: flex;
     flex-direction: column;
     margin: 0;
@@ -165,7 +169,15 @@ img {
   }
 
   a {
+    font-family: var(--font-trispace);
+    text-transform: uppercase;
+    font-size: var(--font-size-sm);
     display: inline-flex;
+    color: var(--color-text-muted);
+
+    &:hover, &:focus {
+      color: var(--color-text-base);
+    }
   }
 }
 

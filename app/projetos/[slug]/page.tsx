@@ -8,6 +8,7 @@ import { ContentBlock } from '@/app/types/types';
 import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/20/solid';
 import ContentSummary from '@/app/components/ContentSummary/ContentSummary';
 import { ProjectHeader } from '@/app/components/ProjectHeader/ProjectHeader';
+import { RevealItem, RevealSection } from '@/app/components/MotionWrapper/MotionWrapper';
 
 export async function generateStaticParams() {
   return projectsData.map(project => ({
@@ -55,110 +56,141 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
     <>
       <ProjectHeader title={project.title} contentBlocks={contentBlocks} />
 
-      <section id="project-overview">
-        <Link href="/projetos" className='btn ghost-btn back-link'><ArrowLeftIcon className="icon-md"></ArrowLeftIcon> Voltar</Link>
-        <h1>{project.title}</h1>
-        <p className="project-subtitle">{project.description}</p>
-      </section>
+      <RevealSection id="project-overview">
+        <RevealItem>
+          <Link href="/projetos" className='btn ghost-btn back-link'><ArrowLeftIcon className="icon-md"></ArrowLeftIcon> Voltar</Link>
+        </RevealItem>
+        <RevealItem>
+          <h1>{project.title}</h1>
+        </RevealItem>
+        <RevealItem>
+          <p className="project-subtitle">{project.description}</p>
+        </RevealItem>
+      </RevealSection>
+      <RevealSection className='breakout'>
+        <RevealItem>
+          <Image 
+            src={project.thumbnailImage.url} 
+            alt={project.thumbnailImage.alt}
+            width={600}
+            height={300}
+            className='breakout project-image'
+            loading='eager'
+          />
+        </RevealItem>
+      </RevealSection>
 
-      <Image 
-        src={project.thumbnailImage.url} 
-        alt={project.thumbnailImage.alt}
-        width={600}
-        height={300}
-        className='breakout project-image'
-        loading='eager'
-      />
-
-      <section className="full-width" id='project-overview'>
+      <RevealSection className="full-width" id='project-overview'>
         <aside className="left" id="project-toc">
-          <ContentSummary contentBlocks={contentBlocks} />
+          <RevealItem>
+            <ContentSummary contentBlocks={contentBlocks} />
+          </RevealItem>
         </aside>
 
         <div className='right' id="projet-metadata">
-          <div>
-            <h2>Papel</h2>
-            <p className='metadata-role'>{project.role}</p>
-          </div>
+          <RevealItem>
+            <div>
+              <h2>Papel</h2>
+              <p className='metadata-role'>{project.role}</p>
+            </div>
+          </RevealItem>
           
-          <div>
-            <h2>Período</h2>
-            <p className='metadata-period'>{formattedDate}</p>
-          </div>
+          <RevealItem>
+            <div>
+              <h2>Período</h2>
+              <p className='metadata-period'>{formattedDate}</p>
+            </div>
+          </RevealItem>
 
-          <div>
-            <h2>Tags</h2>
-            <ul className='metadata-list'>
-              {project.tags.map(tag => (
-                <li key={tag} className='tag'>{tag}</li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h2>Ferramentas</h2>
-            <ul className='metadata-list'>
-              {project.toolsAndskills.map(tool => (
-                <li key={tool} className='tag'>{tool}</li>
-              ))}
-            </ul>
-          </div>  
-
-          <div>
-            <h2>Veja o projeto</h2>
-            {project.externalLinks && project.externalLinks.length > 0 ? (
-              <div className='external-links'>
-                {project.externalLinks.map(link => (
-                  <Link key={link.url} href={link.url} target="_blank" className="btn secondary-btn">
-                    {link.label}
-                  </Link>
+          <RevealItem>
+            <div>
+              <h2>Tags</h2>
+              <ul className='metadata-list'>
+                {project.tags.map(tag => (
+                  <li key={tag} className='tag'>{tag}</li>
                 ))}
-              </div>
-            ) : (
-              <p>Não há links externos disponíveis para este projeto :(</p>
-            )}
-          </div>
+              </ul>
+            </div>
+          </RevealItem>
+
+          <RevealItem>
+            <div>
+              <h2>Ferramentas</h2>
+              <ul className='metadata-list'>
+                {project.toolsAndskills.map(tool => (
+                  <li key={tool} className='tag'>{tool}</li>
+                ))}
+              </ul>
+            </div>  
+          </RevealItem>
+
+          <RevealItem>
+            <div>
+              <h2>Veja o projeto</h2>
+              {project.externalLinks && project.externalLinks.length > 0 ? (
+                <div className='external-links'>
+                  {project.externalLinks.map(link => (
+                    <Link key={link.url} href={link.url} target="_blank" className="external-link">
+                      {link.label}
+                    </Link>
+                  ))}
+                </div>
+              ) : (
+                <p>Não há links externos disponíveis para este projeto :(</p>
+                )}
+            </div>
+          </RevealItem>
         </div>
         
         {project.content && project.content.length > 0 && (
           <section className='content content-blocks'>
             {contentBlocks.map((block, index) => (
-              <ContentRenderer key={index} block={block} level={2} index={index} />
+              <RevealItem key={index}>
+                <ContentRenderer block={block} level={2} index={index} />
+              </RevealItem>
             ))}
           </section>
         )}
-      </section>
+      </RevealSection>
 
-      <section className="breakout" id='gallery'>
+      <RevealSection className="breakout" id='gallery'>
         {project.gallery && project.gallery.length > 0 && (
           project.gallery.map((image) => {
             return (
-              <Image
-                key={image.url}
-                src={image.url}
-                alt={image.alt}
-                width={600}
-                height={300}
-                className='gallery-image'
-                loading="eager"
-              />
+              <RevealItem key={image.url}>
+                <Image
+                  key={image.url}
+                  src={image.url}
+                  alt={image.alt}
+                  width={600}
+                  height={300}
+                  className='gallery-image'
+                  loading="eager"
+                />
+              </RevealItem>
             )
           })
         )}
-      </section>
+      </RevealSection>
 
-      <section className="full-width" id="cta">
-        <h2>Gostou do projeto?</h2>
-        <p>Estou sempre aberto a discutir novos projetos, ideias criativas ou oportunidades de colaboração. Sinta-se à vontade para me enviar uma mensagem!</p>
-        <ul>
-          <li>
-            <Link href="/contato" className="cta primary-cta">Enviar mensagem</Link>
-          </li>
-          <li>
-            <Link href={`/projetos/${nextProject.slug}`} className="cta secondary-cta">Próximo Projeto <ArrowRightIcon className="icon-md" ></ArrowRightIcon></Link>
-          </li>
-        </ul>
-      </section>
+      <RevealSection className="full-width" id="cta">
+        <RevealItem>
+          <h2>Gostou do projeto?</h2>
+        </RevealItem>
+        <RevealItem>
+          <p>Estou sempre aberto a discutir novos projetos, ideias criativas ou oportunidades de colaboração. Sinta-se à vontade para me enviar uma mensagem!</p>
+        </RevealItem>
+        <RevealItem>
+          <ul>
+            <li>
+              <Link href="/contato" className="cta primary-cta">Enviar mensagem</Link>
+            </li>
+            <li>
+              <Link href={`/projetos/${nextProject.slug}`} className="cta secondary-cta">Próximo Projeto <ArrowRightIcon className="icon-md" ></ArrowRightIcon></Link>
+            </li>
+          </ul>
+        </RevealItem>
+      </RevealSection>
     </>
   )
 }

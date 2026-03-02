@@ -247,10 +247,20 @@ input::-internal-autofill-selected {
 
 .four-o-four-link {
   display: inline-block;
+  text-decoration: underline;
   margin-top: var(--spacing-md);
   margin-right: var(--spacing-md);
+  transform: translateX(-16px);
 }
 
 .or-text {
   margin-top: var(--gap-lg);
+}
+
+.backup-link {
+  display: inline-block;
+
+  a {
+    color: var(--color-text-secondary);
+  }
 }
