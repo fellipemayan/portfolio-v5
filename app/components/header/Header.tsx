@@ -15,7 +15,7 @@ export function Header() {
     <>
       <header className="header full-width">
         <div className="left">
-          <Link href="/" className="name-link left">
+          <Link href="/" className="name-link left" data-cursor-text="Oi :)">
             Fellipe Mayan
           </Link>
         </div>

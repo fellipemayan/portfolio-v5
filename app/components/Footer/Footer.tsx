@@ -13,12 +13,32 @@ export function Footer() {
   })
   const currentTime = formatter.format(now)
 
+  const hourFormatter = new Intl.DateTimeFormat('pt-BR', {
+    timeZone,
+    hour: 'numeric',
+    hour12: false // Força o formato 24h
+  })
+  const currentHour = parseInt(hourFormatter.format(now), 10)
+  const isNight = currentHour >= 18 || currentHour < 6
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
   const currentWeather = useWeather()
 
+  const getWeatherIcon = (description: string) => {
+    const desc = description.toLowerCase()
+    
+    if (desc.includes('chuva') || desc.includes('garoa') || desc.includes('tempestade')) {
+      return 'cloud'
+    }
+    if (desc.includes('nublado') || desc.includes('nuven') || desc.includes('nuvem')) {
+      return 'cloud'
+    }
+    
+    return isNight ? 'moon' : 'sun'
+  }
   return (
     <footer className="full-width footer">
       <div className="left">
@@ -30,7 +50,7 @@ export function Footer() {
         <ul>
           {contactInfo.map((contact) => (
             <li key={contact.name}>
-              <a href={contact.url} target="_blank" rel="noopener noreferrer">
+              <a href={contact.url} target="_blank" rel="noopener noreferrer" className='external-link'>
                 {contact.name}
               </a>
             </li>
@@ -42,7 +62,11 @@ export function Footer() {
         <p>No momento são {currentTime}</p>
         {currentWeather?.data && (
           <p>
-            O clima está {currentWeather.data.description.toLowerCase()}, e
+            O clima está <span
+              id='weather-description'
+              data-cursor-icon={getWeatherIcon(currentWeather.data.description)}
+              data-cursor-icon-pos="only"
+            >{currentWeather.data.description.toLowerCase()}</span>, e
             fazem {currentWeather.data.temp}°C
           </p>
         )}

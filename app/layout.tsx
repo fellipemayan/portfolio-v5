@@ -3,6 +3,7 @@ import { Inter, Trispace } from 'next/font/google'
 import { Header } from './components/header/Header'
 import './globals.css'
 import { Footer } from './components/footer/Footer'
+import { CustomCursor } from './components/CustomCursor/CustomCursor'
 
 const inter = Inter({
   variable: '--font-inter',
@@ -53,6 +54,7 @@ export default function RootLayout({
         <Header />
         <main className="content-grid full-width">{children}</main>
         <Footer />
+        <CustomCursor />
       </body>
     </html>
   )

@@ -31,35 +31,20 @@
 
     a {
       display: inline;
-      color: var(--color-text);
+      color: var(--color-text-base);
       padding: var(--spacing-xs);
       border-radius: 4px;
       transition: color var(--transition-fast);
       font-family: var(--font-trispace);
       text-transform: uppercase;
 
-      &::after {
-        content: ' ↗';
-      }
 
       &:hover,
       &:focus {
-        background-color: var(--color-yellow);
-        color: var(--color-black);
+        color: var(--color-text-hover);
       }
     }
 
-    &:has(a:hover)::after,
-    &:has(a:focus)::after {
-      top: anchor(top);
-      left: anchor(left);
-      right: anchor(right);
-      bottom: anchor(bottom);
-
-      opacity: 1;
-
-      background-color: var(--color-black);
-    }
   }
 }
 

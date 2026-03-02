@@ -12,6 +12,7 @@ body {
   background-color: var(--color-bg-base);
   color: var(--color-text-base);
   font-family: var(--font-inter);
+  overflow-x: hidden;
 
   ::selection {
     background-color: var(--color-selection-bg);

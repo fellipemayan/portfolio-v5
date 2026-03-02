@@ -11,7 +11,7 @@ export default function Home() {
         <ul>
           {contactInfo.map((contact) => (
             <li key={contact.name}>
-              <a href={contact.url} target="_blank" rel="noopener noreferrer">
+              <a href={contact.url} target="_blank" rel="noopener noreferrer" className='external-link'>
                 {contact.name}
               </a>
             </li>

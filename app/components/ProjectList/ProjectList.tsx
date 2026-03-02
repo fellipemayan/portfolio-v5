@@ -26,10 +26,11 @@ interface ProjectCardData {
 }
 
 export function ProjectCard({ project, style }: { project: ProjectCardData, style?: ListStyle }) { 
-
+  
   return (
     <li className={`card-${style}`}>
-      <Link href={`/projetos/${project.slug}`}>
+      <Link href={`/projetos/${project.slug}`} data-cursor-text="Ver projeto"
+      data-cursor-icon="arrow-right" data-cursor-icon-pos="after">
         <div className='thumbnail-container'>
           <Image 
             src={project.thumbnailImage.url} 
@@ -160,7 +161,7 @@ export function ProjectsProjectList() {
     <section className={`breakout project-list-container ${listStyle}`}>
       <div className='project-list-controls'>
         <div className='filter-container tags-filter' role="group" aria-labelledby="tag-label">
-          <span id="tag-label" className='pill-group-label'>Tag</span>
+          {/* <span id="tag-label" className='pill-group-label'>Tag</span> */}
           <div className='pill-list' role='presentation'>
             {tagsWithAll.map((tag, index) => {
               const isSelected = selectedTag === tag;
