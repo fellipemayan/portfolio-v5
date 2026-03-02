@@ -1,6 +1,6 @@
 'use client'
 import { useEffect, useState } from 'react';
-import { motion, useMotionValue, useSpring } from 'framer-motion';
+import { motion, useMotionValue, useSpring } from 'motion/react';
 import { ArrowUpRightIcon, PlusIcon, MagnifyingGlassIcon, ArrowRightIcon, SunIcon, MoonIcon, CloudIcon } from '@heroicons/react/20/solid';
 import './CustomCursor.css';
 

@@ -227,7 +227,7 @@ select::after {
 }
 
 input::-internal-autofill-selected {
-  background-color: var(--color-yellow-light) !important;
+  background-color: none !important;
   background-image: none !important;
   color: var(--color-text-base) !important;
 }
