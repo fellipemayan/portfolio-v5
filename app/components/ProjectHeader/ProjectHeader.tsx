@@ -1,17 +1,30 @@
-"use client";
-import "./ProjectHeader.css";
-import { ArrowLeftIcon, ListBulletIcon, XMarkIcon } from "@heroicons/react/20/solid";
-import Link from "next/link";
-import ContentSummary from "../ContentSummary/ContentSummary";
-import { ContentBlock } from "@/app/types/types";
+'use client';
+import './ProjectHeader.css';
+import {
+  ArrowLeftIcon,
+  ListBulletIcon,
+  XMarkIcon,
+} from '@heroicons/react/20/solid';
+import Link from 'next/link';
+import ContentSummary from '../ContentSummary/ContentSummary';
+import { ContentBlock } from '@/app/types/types';
 
-export function ProjectHeader({title, contentBlocks}: {title: string, contentBlocks: ContentBlock[]}) {
+export function ProjectHeader({
+  title,
+  contentBlocks,
+}: {
+  title: string;
+  contentBlocks: ContentBlock[];
+}) {
   return (
     <>
-      <div
-        className="contianer-grid full-width project-header"
-      >
-        <Link href="/projetos" className='left btn ghost-btn back-link icon-only'><ArrowLeftIcon className="icon-md"></ArrowLeftIcon></Link>
+      <div className="contianer-grid full-width project-header">
+        <Link
+          href="/projetos"
+          className="left btn ghost-btn back-link icon-only"
+        >
+          <ArrowLeftIcon className="icon-md"></ArrowLeftIcon>
+        </Link>
         <h1>{title}</h1>
         <button
           popoverTarget="project-menu"
@@ -20,7 +33,7 @@ export function ProjectHeader({title, contentBlocks}: {title: string, contentBlo
           <ListBulletIcon className="icon-md" />
         </button>
       </div>
-      <div popover='auto' id="project-menu" className="project-menu">
+      <div popover="auto" id="project-menu" className="project-menu">
         <ContentSummary contentBlocks={contentBlocks} />
         <span
           aria-hidden="true"

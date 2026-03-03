@@ -7,7 +7,7 @@
 
 .contact-form {
   margin-bottom: 0;
-  
+
   ::selection {
     background-color: var(--color-black);
     color: var(--color-white);
@@ -108,5 +108,19 @@
       background-color: var(--color-white);
       color: var(--color-black);
     }
+  }
+}
+
+.copy,
+.external-link {
+  background-color: transparent;
+  border: none;
+  color: var(--color-text-base);
+  font-size: var(--font-size-md);
+  text-decoration: underline;
+  cursor: pointer;
+
+  @media (prefers-color-scheme: dark) {
+    font-weight: 300;
   }
 }

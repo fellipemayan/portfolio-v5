@@ -1,8 +1,11 @@
 // app/components/MotionWrappers.tsx
-"use client";
+'use client';
 import { motion } from 'motion/react';
 import { ReactNode } from 'react';
-import { containerVariants, itemVariants } from '@/app/constants/motionVariants'; // Ajuste o caminho se necessário
+import {
+  containerVariants,
+  itemVariants,
+} from '@/app/constants/motionVariants'; // Ajuste o caminho se necessário
 
 interface WrapperProps {
   children: ReactNode;
@@ -18,7 +21,7 @@ export function RevealSection({ children, className, id }: WrapperProps) {
       variants={containerVariants}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, margin: "0px 0px -10% 0px" }}
+      viewport={{ once: true, margin: '0px 0px -10% 0px' }}
     >
       {children}
     </motion.section>

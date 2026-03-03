@@ -1,5 +1,5 @@
 // Variants globais para animações motion
-import { Variants } from 'motion/react'
+import { Variants } from 'motion/react';
 
 export const containerVariants: Variants = {
   hidden: { opacity: 1 },
@@ -9,7 +9,7 @@ export const containerVariants: Variants = {
       staggerChildren: 0.1,
     },
   },
-}
+};
 
 export const itemVariants: Variants = {
   hidden: { opacity: 0, y: 32 },
@@ -21,4 +21,4 @@ export const itemVariants: Variants = {
       ease: [0.21, 0.47, 0.32, 0.98] as const,
     },
   },
-}
+};

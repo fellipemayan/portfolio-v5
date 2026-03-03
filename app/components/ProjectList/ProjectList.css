@@ -2,11 +2,11 @@
   list-style: none;
   padding: 0;
   margin: 0;
-  
-  li > a {  
+
+  li > a {
     text-decoration: none;
     color: inherit;
-  
+
     .thumbnail-container {
       width: 100%;
       aspect-ratio: 16 / 9;
@@ -15,21 +15,21 @@
       border: 1px solid var(--color-border-overlay);
       border-radius: 4px;
     }
-  
+
     .thumbnail {
       width: 100%;
-      height: 100%; 
+      height: 100%;
       object-fit: cover;
       object-position: center;
-      transition: transform 0.3s var(--transition-fast); 
+      transition: transform 0.3s var(--transition-fast);
     }
-  
+
     h3 {
       font-weight: 500;
       margin-bottom: var(--spacing-sm);
     }
-  
-    &:hover { 
+
+    &:hover {
       img {
         transform: scale(1.05);
       }
@@ -38,14 +38,13 @@
       }
     }
 
-  
     .tag-list {
       display: flex;
       flex-wrap: wrap;
       list-style: none;
       padding: 0;
       gap: var(--spacing-xs);
-  
+
       .tag {
         height: fit-content;
         background-color: var(--color-bg-secondary);
@@ -59,7 +58,7 @@
       }
     }
   }
-  
+
   li:focus-within {
     outline: 2px solid var(--color-text-base);
     outline-offset: 4px;
@@ -79,7 +78,7 @@
     .project-card-content {
       margin-top: var(--spacing-md);
     }
-  } 
+  }
 
   &.list {
     display: flex;
@@ -95,8 +94,7 @@
         flex: 1 0 200px;
         align-self: flex-start;
         aspect-ratio: 16 / 9;
-        
-      } 
+      }
 
       .project-card-content {
         flex: 2 1 200px;
@@ -179,8 +177,6 @@
     position-anchor: --hover-theme;
   }
 }
-
-
 
 @media (min-width: 768px) {
   .project-list.grid {

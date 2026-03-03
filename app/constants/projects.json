@@ -6,9 +6,7 @@
     "title": "Redesign Site UFC Quixadá",
     "description": "Reorganização e o redesign do site da Universidade Federal do Ceará, campus Quixadá.",
     "category": "Design",
-    "role": [
-      "UI/UX Designer"
-    ],
+    "role": ["UI/UX Designer"],
     "period": {
       "start": "2023-01",
       "end": "2023-12"
@@ -18,7 +16,6 @@
       "Arquitetura da Informação",
       "Engenharia Semiótica",
       "Figma"
-
     ],
     "toolsAndskills": [
       "Figma",
@@ -70,7 +67,7 @@
             "type": "paragraph",
             "content": "4. Integração com sistemas de pagamento: Oferece integração com diversos sistemas de pagamento, facilitando o processo de checkout para os clientes."
           },
-          { 
+          {
             "type": "image",
             "url": "/projects/mago-do-espaco/moodboard.png",
             "alt": "Moodboard do Mago do Espaço."
@@ -97,7 +94,7 @@
             "type": "paragraph",
             "content": "4. Integração com sistemas de pagamento: Oferece integração com diversos sistemas de pagamento, facilitando o processo de checkout para os clientes."
           },
-          { 
+          {
             "type": "image",
             "url": "/projects/mago-do-espaco/moodboard.png",
             "alt": "Moodboard do Mago do Espaço."
@@ -125,17 +122,12 @@
     "title": "Mago do espaço",
     "description": "Projeto de um sistema white label para que restaurantes gerenciem mesas, clientes, pedidos e entregas.",
     "category": "Branding",
-      "role": [
-        "UI/UX Designer"
-      ],
+    "role": ["UI/UX Designer"],
     "period": {
       "start": "2023-01",
       "end": "2023-12"
     },
-    "tags": [
-      "Branding",
-      "Identidade visual"
-    ],
+    "tags": ["Branding", "Identidade visual"],
     "toolsAndskills": [
       "Figma",
       "Design de Interface",
@@ -186,7 +178,7 @@
             "type": "paragraph",
             "content": "4. Integração com sistemas de pagamento: Oferece integração com diversos sistemas de pagamento, facilitando o processo de checkout para os clientes."
           },
-          { 
+          {
             "type": "image",
             "url": "/projects/mago-do-espaco/moodboard.png",
             "alt": "Moodboard do Mago do Espaço."
@@ -213,7 +205,7 @@
             "type": "paragraph",
             "content": "4. Integração com sistemas de pagamento: Oferece integração com diversos sistemas de pagamento, facilitando o processo de checkout para os clientes."
           },
-          { 
+          {
             "type": "image",
             "url": "/projects/mago-do-espaco/moodboard.png",
             "alt": "Moodboard do Mago do Espaço."

@@ -1,78 +1,79 @@
 {
   "experiences": [
     {
-      "_id":"911a5e2d-fef9-4e18-beef-1645405f92b5",
+      "_id": "911a5e2d-fef9-4e18-beef-1645405f92b5",
       "company": "Tecla T",
       "location": "Fortaleza, Brasil",
       "title": "Designer de Produto",
       "type": "Júnior",
-      "startYear":2021,
-      "endYear":2022,
-      "isPresent":false,
+      "startYear": 2021,
+      "endYear": 2022,
+      "isPresent": false,
       "description": "Desenvolvimento de aplicações web responsivas e aplicativos móveis",
       "order": 2
     },
     {
-      "_id":"922c234d-8047-4d3e-9613-b5d6b7b5a74b",
+      "_id": "922c234d-8047-4d3e-9613-b5d6b7b5a74b",
       "company": "Saltfix",
       "location": "Fortaleza, Brasil",
       "title": "Designer de Produto e Gráfico Pleno",
       "type": "Lead designer",
-      "startYear":2024,
-      "endYear":2025,
-      "isPresent":false,
+      "startYear": 2024,
+      "endYear": 2025,
+      "isPresent": false,
       "description": "Texto exemplo",
-      "order":1
-    },    
+      "order": 1
+    },
     {
-      "_id":"c11e05a7-503d-4efc-a404-159c86cd9966",
+      "_id": "c11e05a7-503d-4efc-a404-159c86cd9966",
       "company": "Fastef",
       "location": "Fortaleza, Brasil",
       "title": "Designer UX/UI",
       "type": "Estagiário",
-      "startYear":2025,
-      "endYear":2026,
-      "isPresent":false,
+      "startYear": 2025,
+      "endYear": 2026,
+      "isPresent": false,
       "description": "Pesquisa com usuário e avaliação de usabilidade e comunicabilidade em sistemas educacionais",
-      "order":0
+      "order": 0
     }
   ],
   "education": [
     {
-      "_id":"639c5242-e25d-40d5-863b-54f297ad7c1a",
+      "_id": "639c5242-e25d-40d5-863b-54f297ad7c1a",
       "title": "Design Digital",
       "type": "Bacharelado",
-      "institution":"Universidade Federal do Ceará - UFC",
-      "startYear":2021,
-      "endYear":2025,
-      "isPresent":false,
+      "institution": "Universidade Federal do Ceará - UFC",
+      "startYear": 2021,
+      "endYear": 2025,
+      "isPresent": false,
       "description": "Ênfase em Arquitetura da Informação, Interação Humano-Computador e Engenharia Semiótica",
-      "order":0
+      "order": 0
     },
-    {"_id":"e96b7d47-896b-4752-b9d7-8bb8ad2d512a",
-    "title": "Computação Gráfica",
-    "type": "Técnico",
-    "institution": "Instituto Federal do Ceará - IFCE",
-    "startYear":2019,
-    "endYear":2021,
-    "isPresent":false,
-    "description": "Ênfase em identidade visual e modelagem tridimensional",
-    "order":1
-   }
+    {
+      "_id": "e96b7d47-896b-4752-b9d7-8bb8ad2d512a",
+      "title": "Computação Gráfica",
+      "type": "Técnico",
+      "institution": "Instituto Federal do Ceará - IFCE",
+      "startYear": 2019,
+      "endYear": 2021,
+      "isPresent": false,
+      "description": "Ênfase em identidade visual e modelagem tridimensional",
+      "order": 1
+    }
   ],
   "research": [
     {
-      "_id":"41e156c4-1716-4693-8dae-c2c955e6bc52",
+      "_id": "41e156c4-1716-4693-8dae-c2c955e6bc52",
       "title": "MISplica – Uma Página Interativa de Apoio ao Ensino-Aprendizagem do Método de Inspeção Semiótica (MIS)",
       "description": "Desenvolvimento de página interativa educativa para ensino e aprendizagem dos conceitos e execução do método.",
       "publishingYear": 2025,
       "event": "TISE 2025",
       "location": "Recife, Brasil",
       "type": "Artigo curto",
-      "order":1
+      "order": 1
     },
     {
-      "_id":"bc3c7c69-3703-4f4b-94b8-fe513bb3123e",
+      "_id": "bc3c7c69-3703-4f4b-94b8-fe513bb3123e",
       "title": "Comunicabilidade em Gerenciadores de Referência: Avaliação da Emissão de Metacomunicação do Zotero",
       "description": "Avaliação de comunicabilidade do Zotero por meio do Método de Inspeção Semiótica (MIS).",
       "publishingYear": 2025,
@@ -82,12 +83,12 @@
       "order": 2
     },
     {
-      "_id":"982b0a42-8226-4842-ace1-62d496bd06cf",
-      "title":"Aurora: uma jornada de metodologia a meta-metodologia de design para o ensino superior",
+      "_id": "982b0a42-8226-4842-ace1-62d496bd06cf",
+      "title": "Aurora: uma jornada de metodologia a meta-metodologia de design para o ensino superior",
       "description": "Avaliação e relato de experiência de desenvolvimento e aplicação da metodologia Aurora em disciplinas de Projeto Integrado",
-      "publishingYear":2024,
+      "publishingYear": 2024,
       "event": "Designa 2024 Portugal",
-      "location":"Covilhã, Portugal",
+      "location": "Covilhã, Portugal",
       "type": "Artigo curto",
       "order": 3
     }

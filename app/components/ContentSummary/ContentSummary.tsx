@@ -1,7 +1,7 @@
-"use client";
+'use client';
 import './ContentSummary.css';
-import { useEffect, useState } from "react";
-import { ContentBlock, ContentImage } from "@/app/types/types";
+import { useEffect, useState } from 'react';
+import { ContentBlock, ContentImage } from '@/app/types/types';
 
 interface ContentSummaryProps {
   contentBlocks: ContentBlock[];
@@ -9,11 +9,11 @@ interface ContentSummaryProps {
 
 export default function ContentSummary({ contentBlocks }: ContentSummaryProps) {
   function isSubsection(block: ContentBlock): block is SubsectionBlock {
-    return block.type === "subsection" && typeof block.title === "string";
+    return block.type === 'subsection' && typeof block.title === 'string';
   }
   const sectionBlocks = contentBlocks
-  .map((block, idx) => ({ ...block, _idx: idx }))
-  .filter(isSubsection) as SubsectionBlock[];
+    .map((block, idx) => ({ ...block, _idx: idx }))
+    .filter(isSubsection) as SubsectionBlock[];
 
   const [activeIndex, setActiveIndex] = useState<number>(0);
 
@@ -21,7 +21,7 @@ export default function ContentSummary({ contentBlocks }: ContentSummaryProps) {
     const handleScroll = () => {
       const isMobile = window.innerWidth < 768;
       const offset = isMobile ? 60 : 240;
-      const offsets = sectionBlocks.map(section => {
+      const offsets = sectionBlocks.map((section) => {
         const el = document.getElementById(`content-block-${section._idx}`);
         if (!el) return Infinity;
         const rect = el.getBoundingClientRect();
@@ -31,19 +31,21 @@ export default function ContentSummary({ contentBlocks }: ContentSummaryProps) {
       const idx = offsets.indexOf(minOffset);
       setActiveIndex(idx);
     };
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
     handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, [sectionBlocks]);
 
   const handleTocClick = (idx: number) => {
-    const el = document.getElementById(`content-block-${sectionBlocks[idx]._idx}`);
+    const el = document.getElementById(
+      `content-block-${sectionBlocks[idx]._idx}`
+    );
     if (el) {
       const isMobile = window.innerWidth < 768;
       const offset = isMobile ? 144 : 80;
       const rect = el.getBoundingClientRect();
       const scrollTop = window.scrollY + rect.top - offset;
-      window.scrollTo({ top: scrollTop, behavior: "smooth" });
+      window.scrollTo({ top: scrollTop, behavior: 'smooth' });
     }
     // Fecha o popover do menu mobile, se existir
     const menu = document.getElementById('project-menu');
@@ -59,7 +61,7 @@ export default function ContentSummary({ contentBlocks }: ContentSummaryProps) {
         {sectionBlocks.map((section, idx) => (
           <li key={idx}>
             <a
-              className={activeIndex === idx ? "active" : ""}
+              className={activeIndex === idx ? 'active' : ''}
               onClick={() => handleTocClick(idx)}
             >
               {section.title}
@@ -73,7 +75,7 @@ export default function ContentSummary({ contentBlocks }: ContentSummaryProps) {
 
 type SubsectionBlock = {
   _idx: number;
-  type: "subsection";
+  type: 'subsection';
   title: string;
   content: ContentBlock[];
   gallery?: ContentImage[];

@@ -231,7 +231,6 @@ input::-internal-autofill-selected {
   margin-top: var(--gap-lg);
 }
 
-
 .single-project-list {
   list-style: none;
   padding: 0;

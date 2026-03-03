@@ -7,7 +7,12 @@
     "caption": "Reorganização e o redesign do site da Universidade Federal do Ceará, campus Quixadá. A página é um agregador de informações para alunos, professores e a comunidade em geral, e o objetivo é permitir que os usuários encontrem facilmente o que procuram.",
     "year": 2025,
     "myRole": "Lead UX/UI Designer, Pesquisador",
-    "tags": ["UX Design", "Arquitetura da Informação", "Responsividade", "Usabilidade"],
+    "tags": [
+      "UX Design",
+      "Arquitetura da Informação",
+      "Responsividade",
+      "Usabilidade"
+    ],
     "techniquesAndTools": [
       "Figma",
       "Trello",
@@ -101,7 +106,12 @@
     "year": 2024,
     "myRole": "Lead UX/UI Designer",
     "tags": ["UX Design", "UI Design", "Multiplataforma", "Responsividade"],
-    "techniquesAndTools": ["Figma", "Obsidian", "Benchmarking", "Atomic Design"],
+    "techniquesAndTools": [
+      "Figma",
+      "Obsidian",
+      "Benchmarking",
+      "Atomic Design"
+    ],
     "coverImage": {
       "url": "/media/projects/placeholder.jpg",
       "alt": "Tela inicial do aplicativo de receitas com imagens de pratos coloridos."
@@ -191,7 +201,13 @@
     "year": 2024,
     "myRole": "Lead UX/UI Designer, Pesquisador",
     "tags": ["UX Design", "Mobile", "Aplictivo", "Desenvolvimento"],
-    "techniquesAndTools": ["Figma", "Questionário", "Material Design", "React Native", "Expo"],
+    "techniquesAndTools": [
+      "Figma",
+      "Questionário",
+      "Material Design",
+      "React Native",
+      "Expo"
+    ],
     "completeCase": { "href": null, "title": "Em breve" },
     "coverImage": {
       "url": "/media/projects/va-la/thumbnail.png",

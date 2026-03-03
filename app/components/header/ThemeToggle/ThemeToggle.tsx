@@ -1,59 +1,60 @@
-'use client'
+'use client';
 import {
   ComputerDesktopIcon,
   MoonIcon,
   SunIcon,
-} from '@heroicons/react/20/solid'
-import './ThemeToggle.css'
-import { useEffect, useState } from 'react'
+} from '@heroicons/react/20/solid';
+import './ThemeToggle.css';
+import { useEffect, useState } from 'react';
 
-export type Theme = 'light' | 'dark' | 'system'
+export type Theme = 'light' | 'dark' | 'system';
 
-export function ThemeToggle() {  
+export function ThemeToggle() {
   const [theme, setTheme] = useState<Theme>(() => {
-    if (typeof window === 'undefined') return 'light'
-    const saved = localStorage.getItem('portfolio-theme') as Theme | null
-    if (saved) return saved
+    if (typeof window === 'undefined') return 'light';
+    const saved = localStorage.getItem('portfolio-theme') as Theme | null;
+    if (saved) return saved;
     return window.matchMedia('(prefers-color-scheme: dark)').matches
       ? 'dark'
-      : 'light'
-  })
+      : 'light';
+  });
 
   useEffect(() => {
-    if (typeof window === 'undefined') return
+    if (typeof window === 'undefined') return;
 
-    localStorage.setItem('portfolio-theme', theme)
+    localStorage.setItem('portfolio-theme', theme);
     document.documentElement.setAttribute(
-      'data-theme', theme === 'system'
+      'data-theme',
+      theme === 'system'
         ? window.matchMedia('(prefers-color-scheme: dark)').matches
           ? 'dark'
           : 'light'
         : theme
-    )
+    );
 
-    const buttons = document.querySelectorAll('.theme-toggle-btn')
+    const buttons = document.querySelectorAll('.theme-toggle-btn');
     buttons.forEach((btn) => {
       if (btn.id === `${theme}-theme`) {
-        btn.classList.add('active')
+        btn.classList.add('active');
       } else {
-        btn.classList.remove('active')
+        btn.classList.remove('active');
       }
-    })
-  }, [theme])
+    });
+  }, [theme]);
 
   return (
     <div
       className="theme-toggle-container"
       tabIndex={0}
       onKeyDown={(e) => {
-        const themes: Theme[] = ['light', 'dark', 'system']
-        const currentIndex = themes.indexOf(theme)
+        const themes: Theme[] = ['light', 'dark', 'system'];
+        const currentIndex = themes.indexOf(theme);
 
         if (e.key === ' ' || e.key === 'Enter' || e.key === 'ArrowRight') {
-          setTheme(themes[(currentIndex + 1) % themes.length])
+          setTheme(themes[(currentIndex + 1) % themes.length]);
         }
         if (e.key === 'ArrowLeft') {
-          setTheme(themes[(currentIndex - 1 + themes.length) % themes.length])
+          setTheme(themes[(currentIndex - 1 + themes.length) % themes.length]);
         }
       }}
     >
@@ -82,5 +83,5 @@ export function ThemeToggle() {
         <ComputerDesktopIcon className="icon-md" />
       </button>
     </div>
-  )
+  );
 }

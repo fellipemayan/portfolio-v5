@@ -19,7 +19,6 @@ header {
   font-weight: 500;
   letter-spacing: 0.01em;
 
-
   &:hover {
     color: var(--color-text-base-hover);
   }
@@ -69,7 +68,8 @@ header {
 
       transition: color var(--transition-medium);
 
-      &:hover, &:focus {
+      &:hover,
+      &:focus {
         color: var(--color-black);
       }
     }

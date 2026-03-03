@@ -1,20 +1,20 @@
-"use client";
-import './Header.css'
-import '../../globals.css'
-import Link from 'next/link'
-import { Bars3Icon } from '@heroicons/react/20/solid'
-import { ThemeToggle } from './ThemeToggle/ThemeToggle'
-import { MobileMenu } from './MobileMenu/MobileMenu'
-import { usePathname } from 'next/navigation'
-import { motion } from 'motion/react'
+'use client';
+import './Header.css';
+import '../../globals.css';
+import Link from 'next/link';
+import { Bars3Icon } from '@heroicons/react/20/solid';
+import { ThemeToggle } from './ThemeToggle/ThemeToggle';
+import { MobileMenu } from './MobileMenu/MobileMenu';
+import { usePathname } from 'next/navigation';
+import { motion } from 'motion/react';
 
 export function Header() {
-  const pathName = usePathname()
+  const pathName = usePathname();
   const isProjetosActive = pathName.startsWith('/projetos');
 
   return (
     <>
-      <motion.header 
+      <motion.header
         className="header full-width"
         initial={{ y: '-100%', opacity: 0 }}
         animate={{ y: '0%', opacity: 1 }}
@@ -28,22 +28,40 @@ export function Header() {
         <nav className="header-nav">
           <ul>
             <li>
-              <Link href="/" className={pathName === '/' ? 'active' : ''} onClick={e => e.currentTarget.blur()}>
+              <Link
+                href="/"
+                className={pathName === '/' ? 'active' : ''}
+                onClick={(e) => e.currentTarget.blur()}
+              >
                 Início
               </Link>
             </li>
             <li>
-              <Link href="/projetos" className={isProjetosActive ? 'active' : ''} onClick={e => e.currentTarget.blur()}>
+              <Link
+                href="/projetos"
+                className={isProjetosActive ? 'active' : ''}
+                onClick={(e) => e.currentTarget.blur()}
+              >
                 Projetos
               </Link>
             </li>
             <li>
-              <Link href="/sobre" className={pathName === '/sobre' ? 'active' : ''} onClick={e => e.currentTarget.blur()}>
+              <Link
+                href="/sobre"
+                className={pathName === '/sobre' ? 'active' : ''}
+                onClick={(e) => e.currentTarget.blur()}
+              >
                 Sobre
               </Link>
             </li>
             <li>
-              <Link href="/contato" className={pathName === '/contato' ? 'active' : ''} onClick={e => e.currentTarget.blur()}>Contato</Link>
+              <Link
+                href="/contato"
+                className={pathName === '/contato' ? 'active' : ''}
+                onClick={(e) => e.currentTarget.blur()}
+              >
+                Contato
+              </Link>
             </li>
           </ul>
         </nav>
@@ -61,5 +79,5 @@ export function Header() {
 
       <MobileMenu />
     </>
-  )
+  );
 }

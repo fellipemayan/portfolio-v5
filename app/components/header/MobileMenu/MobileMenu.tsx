@@ -1,6 +1,6 @@
-import Link from 'next/link'
-import './MobileMenu.css'
-import { XMarkIcon } from '@heroicons/react/20/solid'
+import Link from 'next/link';
+import './MobileMenu.css';
+import { XMarkIcon } from '@heroicons/react/20/solid';
 
 export function MobileMenu() {
   return (
@@ -42,5 +42,5 @@ export function MobileMenu() {
         <XMarkIcon className="icon-md" />
       </button>
     </div>
-  )
+  );
 }
