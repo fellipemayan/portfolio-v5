@@ -4,27 +4,12 @@ import { ArrowLeftIcon, ListBulletIcon, XMarkIcon } from "@heroicons/react/20/so
 import Link from "next/link";
 import ContentSummary from "../ContentSummary/ContentSummary";
 import { ContentBlock } from "@/app/types/types";
-import { useEffect, useState } from "react";
 
 export function ProjectHeader({title, contentBlocks}: {title: string, contentBlocks: ContentBlock[]}) {
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => {
-      if (window.scrollY > 200) {
-        setVisible(true);
-      } else {
-        setVisible(false);
-      }
-    };
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
   return (
     <>
       <div
-        className={`content-grid full-width project-header${visible ? " project-header-visible" : " project-header-hidden"}`}
+        className="contianer-grid full-width project-header"
       >
         <Link href="/projetos" className='left btn ghost-btn back-link icon-only'><ArrowLeftIcon className="icon-md"></ArrowLeftIcon></Link>
         <h1>{title}</h1>

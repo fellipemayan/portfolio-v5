@@ -1,43 +1,25 @@
 #hero {
-  
   ul {
-    display: block;
-    list-style: none;
-    padding: 0;
-    margin-bottom: var(--spacing-md);
-
-    li {
-      display: inline;
-      margin-right: var(--spacing-sm);
-    }
-    
     a {
-      display: inline;
-      color: var(--text-secondary);
-      text-decoration: none;
       font-size: var(--font-size-sm);
       font-family: var(--font-trispace);
       text-transform: uppercase;
-      transition: color 0.3s ease;
 
       &:hover {
-        color: var(--text-primary);
+        color: var(--color-text-primary);
         text-decoration: underline;
       }
-
     }
 
     :not(:last-child)::after {
       content: ' / ';
-      color: var(--text-muted);
-      margin-left: var(--space-sm);
+      color: var(--color-text-muted);
+      margin-left: var(--gap-xs);
     }
   }
 
   button {
     display: inline-block;
-    margin: var(--spacing-sm) var(--spacing-sm) 0 0;
+    margin: var(--gap-sm) var(--gap-sm) 0 0;
   }
 }
-
-

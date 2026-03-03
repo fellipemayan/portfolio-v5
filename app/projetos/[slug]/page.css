@@ -1,5 +1,5 @@
 #project-overview {
-  margin-top: 0
+  margin-top: var(--spacing-lg);
 }
 
 .project-subtitle {
@@ -19,7 +19,10 @@ div:has(.back-link) {
   width: 100%;
   ratio: 16/9;
   height: auto;
-  margin-bottom: var(--gap-lg);
+}
+
+div:has(img) {
+  margin-bottom: 0;
 }
 
 img {
@@ -58,12 +61,8 @@ img {
   }
 
   a {
-    display: block;
-    color: var(--color-text-base);
-    padding: var(--spacing-sm) var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-sm) var(--spacing-sm) var(--spacing-md);
     text-decoration: none;
-    cursor: pointer;
-    transition: color var(--transition-medium);
 
     &:hover, &:focus {
       color: var(--color-black);
@@ -77,10 +76,10 @@ img {
     background-color: var(--color-text-base);
     border-radius: 4px;
 
-    top: calc(anchor(top) + var(--spacing-sm));
+    top: calc(anchor(top) + var(--spacing-xs));
     left: calc(anchor(left));
     right: calc(anchor(left) - 2px);
-    bottom: calc(anchor(bottom) + var(--spacing-sm));
+    bottom: calc(anchor(bottom) + var(--spacing-xs));
 
     position-anchor: --default-anchor;
 
@@ -112,6 +111,10 @@ img {
   }
 }
 
+.desktop-only {
+  display: none; 
+}
+
 #projet-metadata {
   margin-bottom: var(--gap-md);
   h2 {
@@ -134,10 +137,7 @@ img {
   }
   
   ul {
-    padding: 0;
     padding-top: var(--spacing-sm);
-    margin: 0;
-    list-style: none;
     overflow: hidden;
   }
 
@@ -169,25 +169,29 @@ img {
   }
 
   a {
-    font-family: var(--font-trispace);
+    display: inline;
+    text-decoration: underline;
     text-transform: uppercase;
     font-size: var(--font-size-sm);
-    display: inline-flex;
-    color: var(--color-text-muted);
-
-    &:hover, &:focus {
-      color: var(--color-text-base);
-    }
+    font-family: var(--font-trispace);
   }
 }
 
 .content-blocks {
   p {
     text-wrap: wrap;
+    font-size: var(--font-size-md);
     line-height: var(--line-height-md);
   }
+
   > * {
-    margin-bottom: var(--gap-md);
+    margin-bottom: var(--gap-lg);
+  }
+
+  section {
+    > * {
+      margin-bottom: var(--gap-md);
+    }
   }
 
   & > *:last-child {
@@ -205,6 +209,13 @@ img {
     height: auto;
     border-radius: var(--spacing-sm);
     border: 1px solid var(--color-border-overlay);
+    margin: 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .desktop-only {
+    display: block; 
   }
 }
 

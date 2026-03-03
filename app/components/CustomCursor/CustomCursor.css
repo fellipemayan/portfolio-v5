@@ -1,8 +1,19 @@
-@media (pointer: fine) {
+@media (hover: none) and (pointer: coarse) {
+  .custom-cursor,
+  #custom-cursor {
+    display: none !important;
+  }
+
+  * {
+    cursor: auto !important;
+  }
+}
+
+/* @media (pointer: fine) {
   body {
     cursor: none;
   }
-}
+} */
 
 .custom-cursor-wrapper {
   position: fixed;
@@ -16,21 +27,23 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  box-sizing: border-box; 
-  transition: transform 150ms ease, opacity 150ms ease;
-  overflow: hidden; 
+  box-sizing: border-box;
+  transition:
+    transform 150ms ease,
+    opacity 150ms ease;
+  overflow: hidden;
 }
 
 .custom-cursor-content {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 6px; 
+  gap: 6px;
   padding: 0 var(--spacing-md);
-  white-space: nowrap; 
+  white-space: nowrap;
 }
 
-.custom-cursor-content[data-icon-only="true"] {
+.custom-cursor-content[data-icon-only='true'] {
   padding: 0;
 }
 

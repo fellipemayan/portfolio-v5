@@ -3,6 +3,8 @@ import contactInfo from '../../constants/contatInfo.json'
 import './Footer.css'
 import { useWeather } from '@/app/hooks/useWeather'
 import { ArrowUpIcon } from '@heroicons/react/16/solid'
+import { containerVariants, itemVariants } from '../../constants/motionVariants';
+import { motion } from 'motion/react'
 
 export function Footer() {
   const now = new Date()
@@ -40,42 +42,52 @@ export function Footer() {
     return isNight ? 'moon' : 'sun'
   }
   return (
-    <footer className="full-width footer">
-      <div className="left">
+    <motion.footer
+      className="full-width footer"
+      variants={containerVariants} initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, margin: "0px 0px -10% 0px" }}
+    >
+      <motion.div variants={itemVariants} className="left">
         <button className="btn primary-btn" onClick={scrollToTop}>
           <ArrowUpIcon className="icon-md" /> Topo
         </button>
-      </div>
-      <div className="middle-left">
-        <ul>
+      </motion.div>
+      <motion.div variants={itemVariants} className="middle-left">
+        <motion.ul 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "0px 0px -10% 0px" }}
+        >
           {contactInfo.map((contact) => (
-            <li key={contact.name}>
+            <motion.li variants={itemVariants} key={contact.name}>
               <a href={contact.url} target="_blank" rel="noopener noreferrer" className='external-link'>
                 {contact.name}
               </a>
-            </li>
+            </motion.li>
           ))}
-        </ul>
-      </div>
-      <div className="middle-right">
-        <p className="footer-location">Quixadá&ndash;CE</p>
-        <p>No momento são {currentTime}</p>
+        </motion.ul>
+      </motion.div>
+      <motion.div variants={itemVariants} className="middle-right">
+        <motion.p variants={itemVariants} className="footer-location">Quixadá&ndash;CE</motion.p>
+        <motion.p variants={itemVariants}>No momento são {currentTime}</motion.p>
         {currentWeather?.data && (
-          <p>
+          <motion.p>
             O clima está <span
               id='weather-description'
               data-cursor-icon={getWeatherIcon(currentWeather.data.description)}
               data-cursor-icon-pos="only"
             >{currentWeather.data.description.toLowerCase()}</span>, e
             fazem {currentWeather.data.temp}°C
-          </p>
+          </motion.p>
         )}
-      </div>
+      </motion.div>
 
-      <div className="copy-right">
+      <motion.div variants={itemVariants} className="copy-right">
         <p>&copy; {new Date().getFullYear()} Fellipe Mayan.</p>
         <p>Copyright & Afins.</p>
-      </div>
-    </footer>
+      </motion.div>
+    </motion.footer>
   )
 }

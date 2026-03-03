@@ -1,13 +1,13 @@
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
   transition:
     background-color var(--transition-fast),
     border-color var(--transition-fast);
 }
 
 body {
-  margin: 0;
-  padding: 0;
   scroll-behavior: smooth;
   background-color: var(--color-bg-base);
   color: var(--color-text-base);
@@ -27,6 +27,16 @@ main {
 
 main > section {
   margin-bottom: var(--gap-lg);
+
+  > * {
+    margin-bottom: var(--gap-sm);
+  }
+
+  > h1,
+  > h2 {
+    margin-bottom: var(--gap-md);
+  }
+
   &:first-child {
     margin-top: var(--gap-lg);
   }
@@ -36,21 +46,16 @@ main > section {
   ul {
     display: flex;
     flex-wrap: wrap;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    gap: var(--spacing-md);
-  }
-
-  li > a {
-    text-decoration: none;
+    gap: var(--gap-sm);
   }
 }
 
 @media (min-width: 768px) {
   :root {
     --gap-md: var(--spacing-md);
-    --gap-lg: var(--spacing-2xl);
-
+    --gap-lg: var(--spacing-2xl); 
+    --font-size-sm: 0.875rem;
+    --font-size-md: 1rem;
+    --font-size-lg: 1.25rem;
   }
 }

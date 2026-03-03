@@ -6,6 +6,7 @@ import { Bars3Icon } from '@heroicons/react/20/solid'
 import { ThemeToggle } from './ThemeToggle/ThemeToggle'
 import { MobileMenu } from './MobileMenu/MobileMenu'
 import { usePathname } from 'next/navigation'
+import { motion } from 'motion/react'
 
 export function Header() {
   const pathName = usePathname()
@@ -13,7 +14,12 @@ export function Header() {
 
   return (
     <>
-      <header className="header full-width">
+      <motion.header 
+        className="header full-width"
+        initial={{ y: '-100%', opacity: 0 }}
+        animate={{ y: '0%', opacity: 1 }}
+        transition={{ duration: 0.3, ease: [0.33, 1, 0.68, 1] }}
+      >
         <div className="left">
           <Link href="/" className="name-link left" data-cursor-text="Oi :)">
             Fellipe Mayan
@@ -51,7 +57,7 @@ export function Header() {
             <Bars3Icon className="icon-md" />
           </button>
         </div>
-      </header>
+      </motion.header>
 
       <MobileMenu />
     </>

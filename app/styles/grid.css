@@ -28,9 +28,13 @@
   grid-column: full-width;
   display: grid;
   grid-template-columns: inherit;
-  grid-template-areas:
-    "padding toc content metadata padding";
-  
+  grid-template-areas: 'padding toc content metadata padding';
+}
+
+@media (max-width: 1199px) {
+  .content-grid > .full-width {
+    grid-template-areas: none;
+  }
 }
 
 .content-grid > .breakout {
@@ -48,7 +52,7 @@
 .content-grid > .copy-right,
 .content-grid > .middle-left,
 .content-grid > .middle-right,
-.full-width > .copy-right{
+.full-width > .copy-right {
   grid-column: breakout;
 }
 
@@ -79,7 +83,8 @@
 }
 
 @media (min-width: 1024px) {
-  .content-grid, .full-width {
+  .content-grid,
+  .full-width {
     column-gap: var(--spacing-xl);
   }
   .content-grid > .left,
@@ -98,5 +103,4 @@
   .full-width > .copy-right {
     grid-column: content-end / breakout-end;
   }
-  
 }

@@ -5,10 +5,10 @@
   background-color: var(--color-bg-base);
   padding: var(--spacing-lg) var(--padding-inline);
   border: none;
-  border-bottom: 1px solid var(--color-border);
+  border-block: 1px solid var(--color-border);
   transform: translateX(100%);
   transform-origin: top;
-  top: calc(var(--header-height) + 5px);
+  top: var(--header-height);
   right: 0;
   width: 100%;
   display: none;
@@ -51,7 +51,6 @@
 
   a {
     display: block;
-    color: var(--color-text-base);
     padding-left: var(--spacing-sm);
     margin-left: var(--spacing-sm);
     text-decoration: none;

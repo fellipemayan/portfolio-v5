@@ -57,7 +57,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       <ProjectHeader title={project.title} contentBlocks={contentBlocks} />
 
       <RevealSection id="project-overview">
-        <RevealItem>
+        <RevealItem className='desktop-only'>
           <Link href="/projetos" className='btn ghost-btn back-link'><ArrowLeftIcon className="icon-md"></ArrowLeftIcon> Voltar</Link>
         </RevealItem>
         <RevealItem>

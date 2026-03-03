@@ -1,15 +1,18 @@
 #form-section {
   background-color: var(--color-yellow);
-  padding-block: var(--spacing-2xl);
+  padding-block: var(--spacing-xl);
   color: var(--color-black);
   margin-bottom: 0;
 }
 
 .contact-form {
+  margin-bottom: 0;
+  
   ::selection {
     background-color: var(--color-black);
     color: var(--color-white);
   }
+
   label {
     font-family: var(--font-trispace);
     font-size: var(--font-size-sm);
@@ -37,12 +40,13 @@
   &.pulverizing .input-wrapper input,
   &.pulverizing .input-wrapper textarea {
     opacity: 0;
-    transition: opacity 0.6s ease-out;
+    transition: opacity 0.6s var(--transition-medium);
   }
 
   &.input-wrapper:focus-within {
     border-color: var(--color-black);
   }
+
   .input-wrapper input,
   .input-wrapper textarea {
     width: 100%;

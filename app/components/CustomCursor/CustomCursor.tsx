@@ -19,8 +19,10 @@ export function CustomCursor() {
   const [text, setText] = useState('');
   const [icon, setIcon] = useState<{ name: string, pos: 'before'|'after'|'only' } | null>(null);
   const [theme, setTheme] = useState<'yellow' | 'black'>('yellow');
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
   const [isPressed, setIsPressed] = useState(false);
   const [btnRect, setBtnRect] = useState({ w: 0, h: 0, r: 0 });
+  const [hasMoved, setHasMoved] = useState(false);
 
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -31,6 +33,8 @@ export function CustomCursor() {
 
   useEffect(() => {
     const moveCursor = (e: MouseEvent) => {
+      if (!hasMoved) setHasMoved(true);
+
       const margin = 12;
       const clampedX = Math.max(margin, Math.min(e.clientX, window.innerWidth - margin));
       const clampedY = Math.max(margin, Math.min(e.clientY, window.innerHeight - margin));
@@ -114,7 +118,7 @@ export function CustomCursor() {
       window.removeEventListener('mousedown', handleMouseDown);
       window.removeEventListener('mouseup', handleMouseUp);
     };
-  }, [mouseX, mouseY]);
+  }, [mouseX, mouseY, hasMoved]);
 
   const activeColor = theme === 'black' ? 'var(--color-black)' : 'var(--color-yellow)';
   const contentColor = theme === 'black' ? 'var(--color-white)' : 'var(--color-black)'; 
@@ -131,6 +135,17 @@ export function CustomCursor() {
 
   const CurrentIcon = icon && ICONS_MAP[icon.name] ? ICONS_MAP[icon.name] : null;
   const showContent = cursorState === 'text' || cursorState === 'external' || cursorState === 'icon-only';
+
+  useEffect(() => {
+    const checkTouch = () => {
+      if (window.matchMedia("(hover: none) and (pointer: coarse)").matches) {
+        setIsTouchDevice(true);
+      }
+    };
+    
+    checkTouch();
+  }, []);
+  if (isTouchDevice) return null;
 
   return (
     <motion.div className="custom-cursor-wrapper" style={{ x: cursorX, y: cursorY }}>
