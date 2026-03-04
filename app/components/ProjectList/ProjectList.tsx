@@ -1,10 +1,10 @@
 'use client';
+
 import './ProjectList.css';
 import projectsData from '../../constants/projects.json';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
-
 import { motion } from 'motion/react';
 import {
   containerVariants,
@@ -28,8 +28,13 @@ interface ProjectCardData {
     url: string;
     alt: string;
   };
+  externalLinks?: Array<{
+    label: string;
+    url: string;
+  }>;
   tags: string[];
 }
+
 export function ProjectCard({
   project,
   style,
@@ -37,13 +42,28 @@ export function ProjectCard({
   project: ProjectCardData;
   style?: ListStyle;
 }) {
+  // Handler para tornar o article clicável
+  const handleArticleClick = (e: React.MouseEvent) => {
+    if ((e.target as HTMLElement).closest('.external-link, a')) return;
+    window.location.href = `/projetos/${project.slug}`;
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      window.location.href = `/projetos/${project.slug}`;
+    }
+  };
+
   return (
     <motion.li className={`card-${style}`} variants={itemVariants}>
-      <Link
-        href={`/projetos/${project.slug}`}
-        data-cursor-text="Ver projeto"
-        data-cursor-icon="arrow-right"
-        data-cursor-icon-pos="after"
+      <article
+        className="project-card-article"
+        tabIndex={0}
+        role="link"
+        aria-label={`Ver projeto: ${project.title}`}
+        onClick={handleArticleClick}
+        onKeyDown={handleKeyDown}
+        
       >
         <div className="thumbnail-container">
           <Image
@@ -56,7 +76,18 @@ export function ProjectCard({
           />
         </div>
         <div className="project-card-content">
-          <h3>{project.title}</h3>
+          <h3>
+            <Link
+              href={`/projetos/${project.slug}`}
+              tabIndex={0}
+              aria-label={`Ver projeto: ${project.title}`}
+              data-cursor-text="Ver projeto"
+              data-cursor-icon="arrow-right"
+              data-cursor-icon-pos="after"
+            >
+              {project.title}
+            </Link>
+          </h3>
           <ul className="tag-list">
             {project.tags.map((tag) => (
               <li key={tag} className="tag">
@@ -65,8 +96,23 @@ export function ProjectCard({
             ))}
           </ul>
           <p>{project.description}</p>
+          <ul className="link-list">
+            {project.externalLinks &&
+              project.externalLinks.map((link) => (
+                <li key={link.url}>
+                  <a
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="external-link"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+          </ul>
         </div>
-      </Link>
+      </article>
     </motion.li>
   );
 }
@@ -86,38 +132,9 @@ export function ProjectList({
       whileInView="show"
       viewport={{ once: true, margin: '0px 0px -10% 0px' }}
     >
-      {projects.map(
-        ({
-          slug,
-          featured,
-          featuredOrder,
-          title,
-          category,
-          period: { end },
-          description,
-          tags,
-          thumbnailImage: { url, alt },
-        }) => (
-          <ProjectCard
-            key={slug}
-            project={{
-              slug,
-              title,
-              featured,
-              featuredOrder,
-              category,
-              description,
-              period: { end },
-              tags,
-              thumbnailImage: {
-                url,
-                alt,
-              },
-            }}
-            style={style}
-          />
-        )
-      )}
+      {projects.map((project) => (
+        <ProjectCard key={project.slug} project={project} style={style} />
+      ))}
     </motion.ul>
   );
 }

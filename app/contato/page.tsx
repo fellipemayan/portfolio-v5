@@ -34,13 +34,13 @@ export default function ContactPage() {
     let timerReset: NodeJS.Timeout;
     if (state.succeeded) {
       timerFakeLoading = setTimeout(() => {
-        setStatus('success'); // O botão vira "Enviado!"
+        setStatus('success');
       }, 800);
 
       timerSuccessRead = setTimeout(() => {
         setIsPulverizing(true);
         animate(pulverizeScale, 20, { duration: 0.6, ease: 'easeOut' });
-      }, 1800); // 800ms do loading + 1000ms de leitura
+      }, 1800); 
 
       timerReset = setTimeout(() => {
         formRef.current?.reset();
@@ -148,7 +148,7 @@ export default function ContactPage() {
             rel="noopener noreferrer"
             className="linkedin external-link"
           >
-            Linkedin
+            LinkedIn
           </a>{' '}
           ou através do formulário abaixo. Sinta-se à vontade para compartilhar
           tantos detalhes quanto desejar; o objetivo é entender como posso somar

@@ -86,7 +86,7 @@
     transition: color var(--transition-medium);
 
     &:hover,
-    &:focus {
+    &:focus-visible {
       color: var(--color-black);
     }
   }

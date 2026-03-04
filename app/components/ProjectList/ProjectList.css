@@ -3,9 +3,12 @@
   padding: 0;
   margin: 0;
 
-  li > a {
+  li > article {
+    display: grid;
+    grid-row: span 5;
     text-decoration: none;
     color: inherit;
+    cursor: pointer;
 
     .thumbnail-container {
       width: 100%;
@@ -44,6 +47,7 @@
       list-style: none;
       padding: 0;
       gap: var(--spacing-xs);
+      margin-bottom: var(--spacing-md);
 
       .tag {
         height: fit-content;
@@ -56,6 +60,16 @@
         border-radius: 4px;
         font-size: var(--font-size-sm);
       }
+    }
+    .link-list {
+      margin-top: var(--gap-md);
+      font-size: var(--font-size-sm);
+      font-family: var(--font-trispace);
+      text-transform: uppercase;
+      text-decoration: underline;
+      display: flex;
+      fex-wrap: wrap;
+      gap: var(--spacing-md);
     }
   }
 
@@ -152,7 +166,7 @@
   }
 
   button:hover,
-  button:focus {
+  button:focus-visible {
     anchor-name: --hover-theme;
   }
 
@@ -186,19 +200,19 @@
   }
   .card-grid {
     display: grid;
-    grid-row: span 4;
+    grid-row: span 5;
     grid-template-rows: subgrid;
     column-gap: var(--spacing-md);
     row-gap: 0;
   }
   .card-grid a {
     display: grid;
-    grid-row: span 4;
+    grid-row: span 5;
     grid-template-rows: subgrid;
   }
   .card-grid .project-card-content {
     display: grid;
-    grid-row: span 3;
+    grid-row: span 4;
     grid-template-rows: subgrid;
   }
   .project-list-controls {

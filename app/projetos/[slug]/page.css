@@ -67,7 +67,7 @@ img {
     text-decoration: none;
 
     &:hover,
-    &:focus {
+    &:focus-visible {
       color: var(--color-black);
     }
   }

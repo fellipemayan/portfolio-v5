@@ -6,11 +6,20 @@ import { Bars3Icon } from '@heroicons/react/20/solid';
 import { ThemeToggle } from './ThemeToggle/ThemeToggle';
 import { MobileMenu } from './MobileMenu/MobileMenu';
 import { usePathname } from 'next/navigation';
+import { useEffect } from 'react';
 import { motion } from 'motion/react';
 
 export function Header() {
   const pathName = usePathname();
   const isProjetosActive = pathName.startsWith('/projetos');
+
+  // Fecha o menu mobile ao trocar de página
+  useEffect(() => {
+    const menu = document.getElementById('mobile-menu');
+    if (menu && typeof (menu as any).hidePopover === 'function') {
+      (menu as any).hidePopover();
+    }
+  }, [pathName]);
 
   return (
     <>

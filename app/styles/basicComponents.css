@@ -132,7 +132,7 @@ a {
       background-color: var(--color-bg-secondary-hover);
     }
 
-    &:focus {
+    &:focus-visible  {
       outline: none;
       border-color: var(--color-primary);
     }

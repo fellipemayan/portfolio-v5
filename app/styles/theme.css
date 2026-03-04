@@ -93,10 +93,10 @@
   );
 
   --header-height: 56px;
-  --gap-xs: var(--spacing-xs);
-  --gap-sm: var(--spacing-md);
-  --gap-md: var(--spacing-lg);
-  --gap-lg: var(--spacing-xl);
+  --gap-xs: 0.25rem;
+  --gap-sm: 1.25rem;
+  --gap-md: 1.375rem;
+  --gap-lg: 3rem;
 }
 
 :root[data-theme='light'],
@@ -110,5 +110,15 @@
 
   p {
     font-weight: 300;
+  }
+}
+
+@media (min-width: 768px) {
+  :root {
+    --gap-md: var(--spacing-md);
+    --gap-lg: var(--spacing-2xl);
+    --font-size-sm: 0.875rem;
+    --font-size-md: 1rem;
+    --font-size-lg: 1.25rem;
   }
 }

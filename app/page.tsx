@@ -33,7 +33,7 @@ export default function Home() {
             data-cursor-icon-pos="after"
             onClick={scrollToManifesto}
           >
-            full-stack
+            fullstack
           </em>{' '}
           que{' '}
           <span data-cursor-icon="idea" data-cursor-icon-pos="only">

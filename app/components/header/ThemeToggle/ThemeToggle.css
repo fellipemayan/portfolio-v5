@@ -27,7 +27,7 @@
   }
 
   button:hover,
-  button:focus {
+  button:focus-visible {
     anchor-name: --hover-theme;
   }
 

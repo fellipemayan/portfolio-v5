@@ -141,7 +141,7 @@ export function CustomCursor() {
       } else if (externalEl) {
         const rect = externalEl.getBoundingClientRect();
         setCursorState('external');
-
+        setText(''); 
         setIcon({ name: 'arrow-up-right', pos: 'only' });
 
         const offset = 8;
