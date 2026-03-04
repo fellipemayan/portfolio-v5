@@ -87,19 +87,27 @@
   &.grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: var(--spacing-lg);
+    grid-template-rows: subgrid;
+    gap: 0;
+
+    li > article {
+      display: grid;
+      grid-row: span 5;
+    }
 
     .project-card-content {
+      display: grid;
+      grid-template-rows: subgrid;
       margin-top: var(--spacing-md);
     }
   }
 
   &.list {
-    display: flex;
+    display: flex !important;
     flex-direction: column;
     gap: var(--spacing-xl);
 
-    li > a {
+    li > article {
       display: flex;
       flex-wrap: wrap;
       gap: var(--spacing-md);
@@ -115,6 +123,10 @@
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
+      }
+
+      .link-list {
+        margin-top: auto;
       }
     }
   }
