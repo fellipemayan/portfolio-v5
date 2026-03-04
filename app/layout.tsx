@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { Inter, Trispace } from 'next/font/google';
 import { Header } from './components/header/Header';
 import './globals.css';
-import { Footer } from './components/footer/Footer';
+import { Footer } from './components/Footer/Footer';
 import { CustomCursor } from './components/CustomCursor/CustomCursor';
 import { Colophon } from './components/Colophon/Colophon';
 
