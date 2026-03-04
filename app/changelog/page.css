@@ -1,0 +1,15 @@
+.changelog-page {
+  ul {
+    padding-left: var(--spacing-lg);
+
+    ::marker {
+      content: '✦';
+      color: var(--color-primary);
+    }
+
+    li {
+      padding-left: var(--spacing-md);
+      margin-bottom: var(--gap-sm);
+    }
+  }
+}

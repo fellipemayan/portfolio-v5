@@ -1,10 +1,14 @@
 'use client';
 import './Colophon.css';
+
 import { motion } from 'motion/react';
 import {
   containerVariants,
   itemVariants,
 } from '@/app/constants/motionVariants';
+
+const VERSION = process.env.NEXT_PUBLIC_VERSION || 'v1.0.0';
+const LAST_UPDATE = process.env.NEXT_PUBLIC_LAST_UPDATE || '03/03/2026';
 
 export function Colophon() {
   return (
@@ -57,7 +61,11 @@ export function Colophon() {
       <hr />
 
       <motion.p variants={itemVariants}>
-        v1.0.0 <a href="">[Ver changelog]</a>.{' '}
+        {VERSION} | Última atualização em {LAST_UPDATE} | &nbsp;
+        <a href="/changelog" style={{ fontSize: '0.95em' }}>
+          Changelog
+        </a>
+        &nbsp; | &nbsp;
         <span data-cursor-text=":)">:)</span>
       </motion.p>
     </motion.section>

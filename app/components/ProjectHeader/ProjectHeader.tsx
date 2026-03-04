@@ -10,7 +10,6 @@ import ContentSummary from '../ContentSummary/ContentSummary';
 import { ContentBlock } from '@/app/types/types';
 
 export function ProjectHeader({
-  title,
   contentBlocks,
 }: {
   title: string;
@@ -25,7 +24,6 @@ export function ProjectHeader({
         >
           <ArrowLeftIcon className="icon-md"></ArrowLeftIcon>
         </Link>
-        <h1>{title}</h1>
         <button
           popoverTarget="project-menu"
           className="menu-btn btn secondary-btn icon-only"

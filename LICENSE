@@ -1,0 +1,33 @@
+MIT License
+
+Copyright (c) 2026 Fellipe Mayan
+
+# Licença
+
+Este repositório opera sob um modelo de licenciamento dual para separar a lógica do software do conteúdo proprietário.
+
+---
+
+## 1. Código-fonte (Licença MIT)
+
+Copyright (c) 2026 Fellipe Mayan
+
+O código-fonte deste projeto (arquivos `.js`, `.ts`, `.tsx`, `.css`, arquivos de configuração e demais lógicas de programação) está licenciado sob a **Licença MIT**.
+
+É concedida permissão, gratuitamente, a qualquer pessoa que obtenha uma cópia deste software e arquivos de documentação associados, para lidar com o software sem restrição, incluindo, sem limitação, os direitos de usar, copiar, modificar, mesclar, publicar, distribuir, sublicenciar e/ou vender cópias do software, desde que o aviso de copyright acima e este aviso de permissão sejam incluídos em todas as cópias ou partes substanciais do software.
+
+---
+
+## 2. Conteúdo e Propriedade Intelectual (Copyright Reservado)
+
+**Esta seção NÃO está coberta pela licença MIT.**
+
+Todos os arquivos de conteúdo, incluindo, mas não se limitando a:
+
+* **Textos:** Estudos de caso, descrições de projetos e cópias biográficas (ex: arquivos em `app/constants/` ou diretórios de dados);
+* **Ativos Visuais:** Imagens, fotografias, logotipos e vídeos (ex: em `public/assets/` ou similares);
+* **Identidade:** A organização específica da Arquitetura da Informação e o "copy" autoral do site.
+
+**São de propriedade exclusiva de Fellipe Mayan.**
+
+A licença MIT deste repositório **não concede** permissão para reutilizar, reproduzir ou distribuir o conteúdo pessoal e os ativos de projetos aqui contidos. Caso este repositório seja utilizado como base (fork ou clone) para outros portfólios, todo o conteúdo proprietário **deve ser removido e substituído** por dados próprios antes de qualquer publicação.

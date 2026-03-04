@@ -35,9 +35,10 @@
       margin-bottom: var(--spacing-md);
     }
     a {
+      font-size: var(--font-size-sm);
+      color: var(--color-black);
       text-decoration: underline;
       &:hover {
-        color: var(--color-black);
         text-decoration-style: wavy;
       }
     }

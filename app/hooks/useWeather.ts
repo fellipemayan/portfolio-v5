@@ -67,7 +67,6 @@ export function useWeather(
           error: null,
         });
       } catch (err) {
-        console.log('Error fetching weather data:', err);
         setWeatherData({
           data: null,
           loading: false,

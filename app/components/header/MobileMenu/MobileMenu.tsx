@@ -14,18 +14,41 @@ export function MobileMenu() {
       <nav className="mobile-nav content">
         <ul>
           <li>
-            <Link href="/" className="active">
+            <Link
+              href="/"
+              className="active"
+              popoverTarget="mobile-menu"
+              popoverTargetAction="hide"
+            >
               Início
             </Link>
           </li>
           <li>
-            <Link href="/projetos">Projetos</Link>
+            <Link
+              href="/projetos"
+              popoverTarget="mobile-menu"
+              popoverTargetAction="hide"
+            >
+              Projetos
+            </Link>
           </li>
           <li>
-            <Link href="/sobre">Sobre</Link>
+            <Link
+              href="/sobre"
+              popoverTarget="mobile-menu"
+              popoverTargetAction="hide"
+            >
+              Sobre
+            </Link>
           </li>
           <li>
-            <Link href="/contato">Contato</Link>
+            <Link
+              href="/contato"
+              popoverTarget="mobile-menu"
+              popoverTargetAction="hide"
+            >
+              Contato
+            </Link>
           </li>
         </ul>
         <span
