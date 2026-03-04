@@ -1,0 +1,229 @@
+[
+  {
+    "slug": "site-ufc-quixada",
+    "featured": true,
+    "featuredOrder": 2,
+    "title": "Redesign Site UFC Quixadá",
+    "description": "Reorganização e o redesign do site da Universidade Federal do Ceará, campus Quixadá.",
+    "category": "Design",
+    "role": ["UI/UX Designer"],
+    "period": {
+      "start": "2023-01",
+      "end": "2023-12"
+    },
+    "tags": [
+      "Interface",
+      "Arquitetura da Informação",
+      "Engenharia Semiótica",
+      "Figma"
+    ],
+    "toolsAndskills": [
+      "Figma",
+      "Design de Interface",
+      "Arquitetura da Informação"
+    ],
+    "thumbnailImage": {
+      "url": "/projects/site-ufc/thumbnail.png",
+      "alt": "Proposta de interface para a página inicial do site da UFC Quixadá, com destaque para a navegação simplificada."
+    },
+    "externalLinks": [
+      {
+        "label": "Visitar site",
+        "url": "https://magodoespaco.com.br/"
+      }
+    ],
+    "content": [
+      {
+        "type": "paragraph",
+        "content": "O Mago do Espaço é um sistema white label desenvolvido para atender às necessidades de restaurantes, permitindo que eles gerenciem suas mesas, clientes, pedidos e entregas de forma eficiente. O sistema é projetado para ser flexível e personalizável, adaptando-se às especificidades de cada estabelecimento."
+      },
+      {
+        "type": "paragraph",
+        "content": "Com uma interface intuitiva e fácil de usar, o Mago do Espaço oferece funcionalidades como reserva de mesas, gerenciamento de cardápio, acompanhamento de pedidos em tempo real e integração com sistemas de pagamento. O objetivo é proporcionar uma experiência fluida tanto para os funcionários quanto para os clientes, otimizando as operações do restaurante e melhorando a satisfação dos clientes."
+      },
+      {
+        "type": "subsection",
+        "title": "Funcionalidades principais",
+        "content": [
+          {
+            "type": "subsection",
+            "title": "Gerenciamento de mesas",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": "1. Gerenciamento de mesas: Permite que os restaurantes organizem suas mesas, atribuam status (disponível, ocupada, reservada) e gerenciem reservas de forma eficiente."
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": "2. Gerenciamento de clientes: Facilita o cadastro e acompanhamento dos clientes, permitindo que os restaurantes ofereçam um atendimento personalizado."
+          },
+          {
+            "type": "paragraph",
+            "content": "3. Gerenciamento de pedidos: Permite que os funcionários registrem pedidos de forma rápida e acompanhem o status dos pedidos em tempo real, desde a preparação até a entrega."
+          },
+          {
+            "type": "paragraph",
+            "content": "4. Integração com sistemas de pagamento: Oferece integração com diversos sistemas de pagamento, facilitando o processo de checkout para os clientes."
+          },
+          {
+            "type": "image",
+            "url": "/projects/mago-do-espaco/moodboard.png",
+            "alt": "Moodboard do Mago do Espaço."
+          }
+        ]
+      },
+      {
+        "type": "subsection",
+        "title": "Funcionalidades esperadas",
+        "content": [
+          {
+            "type": "paragraph",
+            "content": "1. Gerenciamento de mesas: Permite que os restaurantes organizem suas mesas, atribuam status (disponível, ocupada, reservada) e gerenciem reservas de forma eficiente."
+          },
+          {
+            "type": "paragraph",
+            "content": "2. Gerenciamento de clientes: Facilita o cadastro e acompanhamento dos clientes, permitindo que os restaurantes ofereçam um atendimento personalizado."
+          },
+          {
+            "type": "paragraph",
+            "content": "3. Gerenciamento de pedidos: Permite que os funcionários registrem pedidos de forma rápida e acompanhem o status dos pedidos em tempo real, desde a preparação até a entrega."
+          },
+          {
+            "type": "paragraph",
+            "content": "4. Integração com sistemas de pagamento: Oferece integração com diversos sistemas de pagamento, facilitando o processo de checkout para os clientes."
+          },
+          {
+            "type": "image",
+            "url": "/projects/mago-do-espaco/moodboard.png",
+            "alt": "Moodboard do Mago do Espaço."
+          }
+        ]
+      }
+    ],
+    "gallery": [
+      {
+        "type": "image",
+        "url": "/projects/mago-do-espaco/sample.png",
+        "alt": "Interface de gerenciamento de mesas do Mago do Espaço."
+      },
+      {
+        "type": "image",
+        "url": "/projects/mago-do-espaco/logo.png",
+        "alt": "Logo do Mago do Espaço."
+      }
+    ]
+  },
+  {
+    "slug": "mago-do-espaco",
+    "featured": true,
+    "featuredOrder": 1,
+    "title": "Mago do espaço",
+    "description": "Projeto de um sistema white label para que restaurantes gerenciem mesas, clientes, pedidos e entregas.",
+    "category": "Branding",
+    "role": ["UI/UX Designer"],
+    "period": {
+      "start": "2023-01",
+      "end": "2023-12"
+    },
+    "tags": ["Branding", "Identidade visual"],
+    "toolsAndskills": [
+      "Figma",
+      "Design de Interface",
+      "Arquitetura da Informação"
+    ],
+    "thumbnailImage": {
+      "url": "/projects/mago-do-espaco/thumbnail.png",
+      "alt": "Proposta de interface para a página inicial do site da UFC Quixadá, com destaque para a navegação simplificada."
+    },
+    "externalLinks": [
+      {
+        "label": "Visitar site",
+        "url": "https://magodoespaco.com.br/"
+      }
+    ],
+    "content": [
+      {
+        "type": "paragraph",
+        "content": "O Mago do Espaço é um sistema white label desenvolvido para atender às necessidades de restaurantes, permitindo que eles gerenciem suas mesas, clientes, pedidos e entregas de forma eficiente. O sistema é projetado para ser flexível e personalizável, adaptando-se às especificidades de cada estabelecimento."
+      },
+      {
+        "type": "paragraph",
+        "content": "Com uma interface intuitiva e fácil de usar, o Mago do Espaço oferece funcionalidades como reserva de mesas, gerenciamento de cardápio, acompanhamento de pedidos em tempo real e integração com sistemas de pagamento. O objetivo é proporcionar uma experiência fluida tanto para os funcionários quanto para os clientes, otimizando as operações do restaurante e melhorando a satisfação dos clientes."
+      },
+      {
+        "type": "subsection",
+        "title": "Funcionalidades principais",
+        "content": [
+          {
+            "type": "subsection",
+            "title": "Gerenciamento de mesas",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": "1. Gerenciamento de mesas: Permite que os restaurantes organizem suas mesas, atribuam status (disponível, ocupada, reservada) e gerenciem reservas de forma eficiente."
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": "2. Gerenciamento de clientes: Facilita o cadastro e acompanhamento dos clientes, permitindo que os restaurantes ofereçam um atendimento personalizado."
+          },
+          {
+            "type": "paragraph",
+            "content": "3. Gerenciamento de pedidos: Permite que os funcionários registrem pedidos de forma rápida e acompanhem o status dos pedidos em tempo real, desde a preparação até a entrega."
+          },
+          {
+            "type": "paragraph",
+            "content": "4. Integração com sistemas de pagamento: Oferece integração com diversos sistemas de pagamento, facilitando o processo de checkout para os clientes."
+          },
+          {
+            "type": "image",
+            "url": "/projects/mago-do-espaco/moodboard.png",
+            "alt": "Moodboard do Mago do Espaço."
+          }
+        ]
+      },
+      {
+        "type": "subsection",
+        "title": "Funcionalidades esperadas",
+        "content": [
+          {
+            "type": "paragraph",
+            "content": "1. Gerenciamento de mesas: Permite que os restaurantes organizem suas mesas, atribuam status (disponível, ocupada, reservada) e gerenciem reservas de forma eficiente."
+          },
+          {
+            "type": "paragraph",
+            "content": "2. Gerenciamento de clientes: Facilita o cadastro e acompanhamento dos clientes, permitindo que os restaurantes ofereçam um atendimento personalizado."
+          },
+          {
+            "type": "paragraph",
+            "content": "3. Gerenciamento de pedidos: Permite que os funcionários registrem pedidos de forma rápida e acompanhem o status dos pedidos em tempo real, desde a preparação até a entrega."
+          },
+          {
+            "type": "paragraph",
+            "content": "4. Integração com sistemas de pagamento: Oferece integração com diversos sistemas de pagamento, facilitando o processo de checkout para os clientes."
+          },
+          {
+            "type": "image",
+            "url": "/projects/mago-do-espaco/moodboard.png",
+            "alt": "Moodboard do Mago do Espaço."
+          }
+        ]
+      }
+    ],
+    "gallery": [
+      {
+        "type": "image",
+        "url": "/projects/mago-do-espaco/sample.png",
+        "alt": "Interface de gerenciamento de mesas do Mago do Espaço."
+      },
+      {
+        "type": "image",
+        "url": "/projects/mago-do-espaco/logo.png",
+        "alt": "Logo do Mago do Espaço."
+      }
+    ]
+  }
+]

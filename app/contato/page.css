@@ -1,0 +1,126 @@
+#form-section {
+  background-color: var(--color-yellow);
+  padding-block: var(--spacing-xl);
+  color: var(--color-black);
+  margin-bottom: 0;
+}
+
+.contact-form {
+  margin-bottom: 0;
+
+  ::selection {
+    background-color: var(--color-black);
+    color: var(--color-white);
+  }
+
+  label {
+    font-family: var(--font-trispace);
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--spacing-xs);
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+
+  .input-wrapper {
+    width: 100%;
+    padding-block: var(--spacing-sm);
+    border: none;
+    border-bottom: 1px solid var(--color-black);
+    background-color: transparent;
+    color: var(--color-black);
+    margin-bottom: var(--spacing-lg);
+
+    &:focus-within {
+      outline: 2px solid var(--color-black);
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+  }
+
+  &.pulverizing .input-wrapper input,
+  &.pulverizing .input-wrapper textarea {
+    opacity: 0;
+    transition: opacity 0.6s var(--transition-medium);
+  }
+
+  &.input-wrapper:focus-within {
+    border-color: var(--color-black);
+  }
+
+  .input-wrapper input,
+  .input-wrapper textarea {
+    width: 100%;
+    border: none !important;
+    background-color: transparent !important;
+    outline: none !important;
+    color: var(--color-black);
+    font-family: var(--font-geist-mono);
+    font-size: var(--font-size-md);
+    transition: border-color var(--transition-medium);
+    overflow: hidden;
+    filter: url(#dust-filter);
+
+    &::placeholder {
+      color: var(--color-black);
+      opacity: 0.6;
+    }
+  }
+
+  .lgpd-notice {
+    flex: 1;
+    font-weight: 400 !important;
+    font-size: var(--font-size-sm);
+    margin: 0;
+  }
+
+  .form-footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-md);
+  }
+
+  .submit-btn {
+    display: inline-block;
+    background-color: var(--color-black);
+    color: var(--color-white);
+    font-family: var(--font-trispace);
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    transition:
+      background-color var(--transition-medium),
+      color var(--transition-medium),
+      width var(--transition-medium);
+
+    &:hover {
+      background-color: var(--color-white);
+      color: var(--color-black);
+    }
+
+    &.success {
+      background-color: var(--color-white);
+      color: var(--color-black);
+    }
+
+    &.error {
+      background-color: var(--color-white);
+      color: var(--color-black);
+    }
+  }
+}
+
+.copy,
+.external-link {
+  background-color: transparent;
+  border: none;
+  color: var(--color-text-base);
+  font-size: var(--font-size-md);
+  text-decoration: underline;
+  cursor: pointer;
+
+  @media (prefers-color-scheme: dark) {
+    font-weight: 300;
+  }
+}

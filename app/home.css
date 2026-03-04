@@ -1,0 +1,84 @@
+#hero {
+  em {
+    cursor: pointer;
+  }
+
+  ul {
+    a {
+      font-size: var(--font-size-sm);
+      font-family: var(--font-trispace);
+      text-transform: uppercase;
+
+      &:hover {
+        color: var(--color-text-primary);
+        text-decoration: underline;
+      }
+    }
+
+    &.areas > :not(:last-child)::after {
+      content: ' | ';
+      color: var(--color-text-muted);
+      margin-left: var(--gap-xs);
+    }
+
+    &.contact-info > :not(:last-child)::after {
+      content: ' / ';
+      color: var(--color-text-muted);
+      margin-left: var(--gap-xs);
+    }
+  }
+
+  button {
+    display: inline-block;
+    margin: var(--gap-sm) var(--gap-sm) 0 0;
+  }
+}
+
+#manifesto {
+  background-color: var(--color-bg-secondary);
+  padding-block: var(--spacing-2xl);
+}
+
+#manifesto-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  column-gap: var(--padding-inline);
+  margin-block: 0;
+
+  li {
+    margin-top: var(--spacing-2xl);
+    flex: 1 1 300px;
+    display: grid;
+    grid-template-rows: subgrid;
+    row-gap: 0;
+    grid-row: span 5;
+    position: relative;
+
+    > :not(:last-child) {
+      margin-bottom: var(--gap-md);
+    }
+
+    h3 {
+      margin-bottom: var(--gap-sm);
+    }
+
+    .manifesto-subtitle {
+      font-size: var(--font-size-sm);
+      font-family: var(--font-trispace);
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .manifesto-value {
+      margin-top: var(--gap-md);
+      font-size: var(--font-size-lg);
+      font-weight: 500;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  #manifesto-list {
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  }
+}

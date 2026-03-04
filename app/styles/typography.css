@@ -1,0 +1,39 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--color-text-heading);
+  line-height: var(--line-height-xs);
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+h1 {
+  font-size: var(--font-size-3xl);
+  font-weight: 300;
+}
+
+h2 {
+  font-size: var(--font-size-2xl);
+  font-weight: 300;
+}
+
+h3 {
+  font-size: var(--font-size-xl);
+  font-weight: 400;
+}
+
+p {
+  text-wrap: balance;
+}
+
+.highlight-text {
+  font-family: var(--font-trispace);
+  color: var(--color-text-primary);
+}

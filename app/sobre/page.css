@@ -1,0 +1,111 @@
+.endeavors-list {
+  padding-left: var(--spacing-lg);
+  margin: 0;
+
+  ::marker {
+    content: '✦';
+    color: var(--color-primary);
+  }
+
+  li {
+    padding-left: var(--spacing-md);
+    margin-bottom: var(--gap-xs);
+  }
+}
+
+.resume-list {
+  position: relative;
+
+  li {
+    > :not(:first-child) {
+      padding-left: var(--spacing-xl);
+    }
+    &:not(:last-child) {
+      margin-bottom: var(--spacing-xl);
+    }
+  }
+
+  h3 {
+    font-weight: 500;
+    text-wrap: auto;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .info {
+    padding-top: var(--spacing-sm);
+    position: relative;
+    anchor-name: --card-title;
+
+    .metadata {
+      --para-anchor: --resume-metadata;
+      anchor-name: var(--para-anchor);
+      margin-bottom: var(--spacing-sm);
+      font-size: var(--font-size-sm);
+      font-family: var(--font-trispace);
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+
+      p {
+        display: inline;
+        margin: 0;
+
+        &:first-child {
+          color: var(--color-text);
+          font-weight: 500;
+        }
+      }
+
+      p:not(:last-child)::after {
+        content: '✦';
+        color: var(--color-primary);
+        margin-inline: var(--spacing-sm);
+      }
+    }
+
+    .description {
+      --para-anchor: --resume-description;
+      anchor-name: var(--para-anchor);
+      margin: 0;
+    }
+
+    > ::before {
+      content: '';
+      position: absolute;
+      width: 8px;
+      border-left: 1px solid var(--color-text-muted);
+      border-bottom: 1px solid var(--color-text-muted);
+      border-radius: 0 0 0 8px;
+      left: 16px;
+      top: anchor(--card-title top, 0);
+      bottom: calc(anchor(var(--para-anchor) top, 0) - 10px);
+    }
+  }
+}
+
+#client-section {
+  background-color: var(--color-yellow);
+  color: var(--color-black);
+  padding-block: var(--spacing-xl);
+
+  h2 {
+    color: var(--color-black);
+  }
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+
+    li {
+      flex: 1 0 240px;
+      padding-block: var(--spacing-sm);
+      font-family: var(--font-trispace);
+      font-size: var(--font-size-sm);
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--color-black);
+
+      &:hover {
+        font-weight: 600;
+      }
+    }
+  }
+}
