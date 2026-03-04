@@ -5,6 +5,13 @@ import './globals.css';
 import { Footer } from './components/Footer/Footer';
 import { CustomCursor } from './components/CustomCursor/CustomCursor';
 import { Colophon } from './components/Colophon/Colophon';
+import { client } from '@/sanity/lib/client';
+
+const settings = await client.fetch(`*[_type == "settings"][0]{
+  email,
+  socialLinks,
+  "resumeUrl": resume.asset->url
+}`);
 
 const inter = Inter({
   variable: '--font-inter',

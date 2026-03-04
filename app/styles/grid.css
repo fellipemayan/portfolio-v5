@@ -104,3 +104,8 @@
     grid-column: content-end / breakout-end;
   }
 }
+
+#sanity {
+  grid-column: full-width;
+  z-index: 0;
+}
