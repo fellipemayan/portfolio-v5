@@ -21,7 +21,7 @@ body {
 }
 
 main {
-  min-height: calc(100dvh - var(--header-height));
+  /* min-height: calc(100dvh - var(--header-height)); */
   background-color: var(--color-bg-base);
 }
 

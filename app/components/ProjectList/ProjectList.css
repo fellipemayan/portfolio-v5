@@ -5,7 +5,6 @@
 
   li > article {
     display: grid;
-    grid-row: span 5;
     text-decoration: none;
     color: inherit;
     cursor: pointer;
@@ -59,6 +58,7 @@
         padding: 4px 6px;
         border-radius: 4px;
         font-size: var(--font-size-sm);
+        margin-bottom: 0;
       }
     }
     .link-list {
@@ -68,7 +68,7 @@
       text-transform: uppercase;
       text-decoration: underline;
       display: flex;
-      fex-wrap: wrap;
+      flex-wrap: wrap;
       gap: var(--spacing-md);
     }
   }
@@ -87,17 +87,8 @@
   &.grid {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: subgrid;
-    gap: 0;
-
-    li > article {
-      display: grid;
-      grid-row: span 5;
-    }
-
+    row-gap: var(--gap-lg);
     .project-card-content {
-      display: grid;
-      grid-template-rows: subgrid;
       margin-top: var(--spacing-md);
     }
   }
@@ -208,24 +199,24 @@
   .project-list.grid {
     grid-template-columns: 1fr 1fr;
     column-gap: var(--spacing-xl);
-    row-gap: var(--spacing-xl);
-  }
-  .card-grid {
-    display: grid;
-    grid-row: span 5;
-    grid-template-rows: subgrid;
-    column-gap: var(--spacing-md);
-    row-gap: 0;
-  }
-  .card-grid a {
-    display: grid;
-    grid-row: span 5;
-    grid-template-rows: subgrid;
-  }
-  .card-grid .project-card-content {
-    display: grid;
-    grid-row: span 4;
-    grid-template-rows: subgrid;
+
+    li {
+      display: grid;
+      grid-template-rows: subgrid;
+      grid-row: span 5;
+      row-gap: 0;
+    }
+    .project-card-article {
+      display: grid;
+      grid-template-rows: subgrid;
+      grid-row: span 5;
+
+      .project-card-content {
+        display: grid;
+        grid-template-rows: subgrid;
+        grid-row: span 4;
+      }
+    }
   }
   .project-list-controls {
     flex-direction: row;

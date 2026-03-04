@@ -1,8 +1,11 @@
 import Link from 'next/link';
 import './MobileMenu.css';
 import { XMarkIcon } from '@heroicons/react/20/solid';
+import { usePathname } from 'next/navigation';
 
 export function MobileMenu() {
+  const pathName = usePathname();
+  const isProjetosActive = pathName.startsWith('/projetos');
   return (
     <div
       popover="auto"
@@ -16,7 +19,7 @@ export function MobileMenu() {
           <li>
             <Link
               href="/"
-              className="active"
+              className={pathName === '/' ? 'active' : ''}
               popoverTarget="mobile-menu"
               popoverTargetAction="hide"
             >
@@ -26,6 +29,7 @@ export function MobileMenu() {
           <li>
             <Link
               href="/projetos"
+              className={isProjetosActive ? 'active' : ''}
               popoverTarget="mobile-menu"
               popoverTargetAction="hide"
             >
@@ -35,6 +39,7 @@ export function MobileMenu() {
           <li>
             <Link
               href="/sobre"
+              className={pathName === '/sobre' ? 'active' : ''}
               popoverTarget="mobile-menu"
               popoverTargetAction="hide"
             >
@@ -44,6 +49,7 @@ export function MobileMenu() {
           <li>
             <Link
               href="/contato"
+              className={pathName === '/contato' ? 'active' : ''}
               popoverTarget="mobile-menu"
               popoverTargetAction="hide"
             >
