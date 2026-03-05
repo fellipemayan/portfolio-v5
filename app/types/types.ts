@@ -11,7 +11,9 @@ export interface ProjectCardData {
   };
   thumbnailImage: {
     url: string;
-    alt: string;
+    alt:
+      | string
+      | { pt?: string; en?: string; [key: string]: string | undefined };
   };
   externalLinks?: Array<{
     label: string;
