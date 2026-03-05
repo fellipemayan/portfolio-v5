@@ -56,18 +56,18 @@ export default function AboutClient({
         <motion.ul className="resume-list" variants={itemVariants}>
           {experiences.map((experience: any, index: number) => (
             <motion.li key={index} variants={itemVariants}>
-              <motion.h3 variants={itemVariants}>
-                {experience.title?.pt || experience.title}
-              </motion.h3>
+              <motion.div variants={itemVariants} className="item-header">
+                <h3>{experience.title?.pt || experience.title}</h3>
+                <p className="metadata-duration">
+                  {experience.startYear} -{' '}
+                  {experience.isPresent ? 'Presente' : experience.endYear}
+                </p>
+              </motion.div>
               <motion.div className="info" variants={itemVariants}>
                 <div className="metadata">
                   <p>{experience.company?.pt || experience.company}</p>
                   <p>{experience.type?.pt || experience.type}</p>
                   <p>{experience.location?.pt || experience.location}</p>
-                  <p>
-                    {experience.startYear} -{' '}
-                    {experience.isPresent ? 'Presente' : experience.endYear}
-                  </p>
                 </div>
                 <p className="description">
                   {experience.description?.pt || experience.description}
@@ -94,13 +94,15 @@ export default function AboutClient({
         >
           {education.map((edu: any, index: number) => (
             <motion.li key={index} variants={itemVariants}>
-              <h3>{edu.title?.pt || edu.title}</h3>
+              <motion.div variants={itemVariants} className="item-header">
+                <h3>{edu.title?.pt || edu.title}</h3>
+                <p className="metadata-duration">
+                  {edu.startYear} - {edu.isPresent ? 'Presente' : edu.endYear}
+                </p>
+              </motion.div>
               <div className="info">
                 <div className="metadata">
                   <p>{edu.institution?.pt || edu.institution}</p>
-                  <p>
-                    {edu.startYear} - {edu.isPresent ? 'Presente' : edu.endYear}
-                  </p>
                 </div>
                 <p className="description">
                   {edu.description?.pt || edu.description}

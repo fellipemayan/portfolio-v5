@@ -25,12 +25,24 @@
     }
   }
 
+  .item-header {
+    display: flex;
+    align-items: baseline;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+
   h3 {
     font-weight: 500;
     text-wrap: auto;
     margin-bottom: var(--spacing-sm);
   }
 
+  .metadata-duration {
+    font-size: var(--font-size-sm);
+    font-family: var(--font-family-mono);
+    color: var(--color-text-muted);
+  }
   .info {
     padding-top: var(--spacing-sm);
     position: relative;
