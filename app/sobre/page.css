@@ -29,7 +29,6 @@
     font-weight: 500;
     text-wrap: auto;
     margin-bottom: var(--spacing-sm);
-
   }
 
   .info {
@@ -48,6 +47,7 @@
       p {
         display: inline;
         margin: 0;
+        text-wrap: wrap;
 
         &:first-child {
           color: var(--color-text);
