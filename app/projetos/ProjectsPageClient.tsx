@@ -48,7 +48,12 @@ export default function ProjectsPageClient({
         whileInView="show"
         viewport={{ once: true, margin: '0px 0px -10% 0px' }}
       >
-        <motion.div className="projects-filters" variants={itemVariants}>
+        <motion.div
+          className="projects-filters"
+          variants={itemVariants}
+          initial="hidden"
+          whileInView="show"
+        >
           <motion.button
             className={!selectedTag ? 'active' : ''}
             onClick={() => setSelectedTag('')}

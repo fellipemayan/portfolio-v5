@@ -6,11 +6,11 @@
   background: var(--color-bg-base);
   color: var(--color-text);
   font-family: var(--font-trispace);
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-md);
   padding: var(--spacing-xs) var(--spacing-sm);
   text-transform: uppercase;
-  font-weight: 300;
-  border-radius: 4px;
+  font-weight: 400;
+  border-radius: 3px;
   z-index: 3;
   pointer-events: none;
 }
