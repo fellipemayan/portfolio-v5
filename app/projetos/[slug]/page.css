@@ -150,7 +150,7 @@ img {
     margin-bottom: var(--spacing-sm);
     font-size: var(--font-size-sm);
     font-family: var(--font-trispace);
-    text-transform: uppercase;
+    text-transform: uppercase !important;
     color: var(--color-text-muted);
     padding-left: var(--spacing-xl);
   }
@@ -166,10 +166,6 @@ img {
     position-anchor: --project-metadata-list;
     top: anchor(--project-metadata-list top, -100px);
     bottom: 50%;
-  }
-
-  .metadata-period {
-    text-transform: capitalize;
   }
 
   a {

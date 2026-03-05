@@ -160,7 +160,7 @@ export default async function ProjectPage({
         </RevealItem>
       </RevealSection>
 
-      <RevealSection className="full-width" id="project-overview">
+      <RevealSection className="full-width" >
         <aside className="left" id="project-toc">
           <SummaryWithGallery
             content={project.content?.pt}
@@ -170,21 +170,13 @@ export default async function ProjectPage({
 
         <div className="right" id="projet-metadata">
           <RevealItem>
-            <div>
-              <h2>Ano</h2>
-              <p className="metadata-period">{project.year || '—'}</p>
-            </div>
+            <h2>Ano</h2>
+            <ul className="metadata-list">
+              <li className="metadata-period">{project.year || '—'}</li>
+            </ul>
           </RevealItem>
 
           <RevealItem>
-            <div>
-              <h2>Equipe</h2>
-              <p className="metadata-role">{project.team || '—'}</p>
-            </div>
-          </RevealItem>
-
-          <RevealItem>
-            <div>
               <h2>Papel</h2>
               <ul className="metadata-list">
                 {Array.isArray(project.role)
@@ -195,18 +187,16 @@ export default async function ProjectPage({
                     ))
                   : null}
               </ul>
-            </div>
           </RevealItem>
 
           <RevealItem>
-            <div>
               <h2>Duração</h2>
-              <p className="metadata-period">{formattedDuration || '—'}</p>
-            </div>
+              <ul className="metadata-list">
+                <li className="metadata-period">{formattedDuration || '—'}</li>
+              </ul>
           </RevealItem>
 
           <RevealItem>
-            <div>
               <h2>Tags</h2>
               {project.tags && project.tags.length > 0 ? (
                 <ul className="metadata-list">
@@ -219,11 +209,9 @@ export default async function ProjectPage({
               ) : (
                 <p>Nenhuma tag cadastrada para este projeto.</p>
               )}
-            </div>
           </RevealItem>
 
           <RevealItem>
-            <div>
               <h2>Ferramentas</h2>
               <ul className="metadata-list">
                 {project.toolsAndskills && project.toolsAndskills.length > 0 ? (
@@ -236,29 +224,27 @@ export default async function ProjectPage({
                   <li>Nenhuma ferramenta cadastrada.</li>
                 )}
               </ul>
-            </div>
           </RevealItem>
 
           <RevealItem>
-            <div>
               <h2>Veja o projeto</h2>
               {project.externalLinks && project.externalLinks.length > 0 ? (
-                <div className="external-links">
+                <ul className="metadata-list">
                   {project.externalLinks.map((link: any) => (
-                    <Link
-                      key={link.url}
-                      href={link.url}
-                      target="_blank"
-                      className="external-link"
-                    >
-                      {link.label}
-                    </Link>
+                    <li key={link.url}>
+                      <a
+                        href={link.url}
+                        target="_blank"
+                        className="external-link"
+                      >
+                        {link.label}
+                      </a>
+                    </li>
                   ))}
-                </div>
+                </ul>
               ) : (
                 <p>Não há links externos disponíveis para este projeto :(</p>
               )}
-            </div>
           </RevealItem>
         </div>
 
