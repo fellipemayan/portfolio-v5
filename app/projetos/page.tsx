@@ -1,62 +1,67 @@
-'use client';
-import './page.css';
-import Link from 'next/link';
-import { ProjectsProjectList } from '../components/ProjectList/ProjectList';
-import { motion } from 'motion/react';
-import { containerVariants, itemVariants } from '../constants/motionVariants';
+import ProjectsPageClient from './ProjectsPageClient';
+import { client } from '@/sanity/lib/client';
+import { groq } from 'next-sanity';
 
-export default function ProjectsPage() {
-  return (
-    <>
-      <motion.section
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, margin: '0px 0px -10% 0px' }}
-      >
-        <motion.h1 variants={itemVariants}>
-          Projetos e Casos de Estudo
-        </motion.h1>
-        <motion.p variants={itemVariants}>
-          Uma seleção de projetos profissionais, acadêmicos e pessoais que
-          desenvolvi ao longo do tempo, em que participei ou encabecei.
-        </motion.p>
-      </motion.section>
+export const revalidate = 60;
 
-      <motion.section
-        className="content-grid full-width"
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, margin: '0px 0px -10% 0px' }}
-      >
-        <ProjectsProjectList />
-      </motion.section>
-
-      <motion.section
-        className="full-width"
-        id="cta"
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, margin: '0px 0px -10% 0px' }}
-      >
-        <motion.h2 variants={itemVariants}>
-          Em busca de design que conversa com código?
-        </motion.h2>
-        <motion.p variants={itemVariants}>
-          Estou sempre aberto a discutir novos projetos, ideias criativas ou
-          oportunidades de colaboração. Sinta-se à vontade para me enviar uma
-          mensagem!
-        </motion.p>
-        <motion.ul variants={itemVariants}>
-          <motion.li variants={itemVariants}>
-            <Link href="/contato" className="cta primary-cta">
-              Entrar em contato
-            </Link>
-          </motion.li>
-        </motion.ul>
-      </motion.section>
-    </>
+async function getAllProjects() {
+  const locale = 'pt';
+  const projects = await client.fetch(
+    groq`*[_type == "project"] | order(period.end desc) {
+      title,
+      slug,
+      featured,
+      featuredOrder,
+      description,
+      category,
+      period,
+      isComingSoon,
+      thumbnailImage {
+        asset->{url},
+        alt,
+      },
+      externalLinks,
+      tags[]-> { _id, title, slug },
+      toolsAndskills[]-> { _id, title },
+    }`
   );
+  // Adaptar multilíngue
+  function getLocaleString(val: any) {
+    if (!val) return '';
+    if (typeof val === 'string') return val;
+    if (val.pt) return val.pt;
+    if (val.en) return val.en;
+    return '';
+  }
+  return projects.map((p: any) => ({
+    ...p,
+    title: getLocaleString(p.title),
+    description: p.description?.[locale] || '',
+    category: p.category?.[locale] || '',
+    thumbnailImage: {
+      url: p.thumbnailImage?.asset?.url || '',
+      alt: p.thumbnailImage?.alt?.[locale] || '',
+    },
+    tags: (p.tags || []).map((t: any) => {
+      if (typeof t === 'string') return t;
+      if (t && typeof t.title === 'object' && t.title[locale])
+        return t.title[locale];
+      if (t && typeof t.slug === 'string') return t.slug;
+      if (t && typeof t._id === 'string') return t._id;
+      return '';
+    }),
+    toolsAndskills: (p.toolsAndskills || []).map((t: any) => {
+      if (typeof t === 'string') return t;
+      if (t && typeof t.title === 'object' && t.title[locale])
+        return t.title[locale];
+      if (t && typeof t._id === 'string') return t._id;
+      return '';
+    }),
+    isComingSoon: !!p.isComingSoon,
+  }));
+}
+
+export default async function ProjectsPage() {
+  const projects = await getAllProjects();
+  return <ProjectsPageClient projects={projects} />;
 }

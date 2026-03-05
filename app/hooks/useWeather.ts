@@ -1,13 +1,11 @@
 'use client';
 import { useEffect, useState } from 'react';
-
 interface WeatherData {
   temp: number;
   minTemp: number;
   maxTemp: number;
   description: string;
 }
-
 interface WeatherAPIState {
   data: WeatherData | null;
   loading: boolean;

@@ -1,6 +1,5 @@
 'use client';
 import projects from './constants/projects.json';
-import { ProjectCard } from './components/ProjectList/ProjectList';
 import { motion } from 'motion/react';
 import { containerVariants, itemVariants } from './constants/motionVariants';
 import Link from 'next/link';
@@ -39,7 +38,14 @@ export default function NotFound() {
         Ou confira um projeto aleatório:
       </motion.h2>
       <motion.ul variants={itemVariants} className="single-project-list">
-        <ProjectCard project={project} style="grid" />
+        <li>
+          <Link
+            href={`/projetos/${project.slug}`}
+            className="btn four-o-four-link"
+          >
+            Ver projeto aleatório: {project.title}
+          </Link>
+        </li>
       </motion.ul>
     </motion.section>
   );

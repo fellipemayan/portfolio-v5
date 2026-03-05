@@ -1,5 +1,4 @@
 'use client';
-import contactInfo from '../../constants/contatInfo.json';
 import './Footer.css';
 import { useWeather } from '@/app/hooks/useWeather';
 import { ArrowUpIcon } from '@heroicons/react/16/solid';
@@ -9,7 +8,14 @@ import {
 } from '../../constants/motionVariants';
 import { motion } from 'motion/react';
 
-export function Footer() {
+interface FooterProps {
+  socialLinks?: {
+    name: string;
+    url: string;
+  }[];
+}
+
+export function Footer({ socialLinks }: FooterProps) {
   const now = new Date();
   const timeZone = 'America/Fortaleza';
   const formatter = new Intl.DateTimeFormat('pt-BR', {
@@ -72,15 +78,15 @@ export function Footer() {
           whileInView="show"
           viewport={{ once: true, margin: '0px 0px -10% 0px' }}
         >
-          {contactInfo.map((contact) => (
-            <motion.li variants={itemVariants} key={contact.name}>
+          {socialLinks?.map((link) => (
+            <motion.li variants={itemVariants} key={link.name}>
               <a
-                href={contact.url}
+                href={link.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="external-link"
               >
-                {contact.name}
+                {link.name}
               </a>
             </motion.li>
           ))}

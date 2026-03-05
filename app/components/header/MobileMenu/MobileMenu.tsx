@@ -3,9 +3,12 @@ import './MobileMenu.css';
 import { XMarkIcon } from '@heroicons/react/20/solid';
 import { usePathname } from 'next/navigation';
 
-export function MobileMenu() {
+export function MobileMenu({
+  navLinks = [],
+}: {
+  navLinks: Array<{ label: string; path: string }>;
+}) {
   const pathName = usePathname();
-  const isProjetosActive = pathName.startsWith('/projetos');
   return (
     <div
       popover="auto"
@@ -16,46 +19,18 @@ export function MobileMenu() {
       <h1 className="content">Menu</h1>
       <nav className="mobile-nav content">
         <ul>
-          <li>
-            <Link
-              href="/"
-              className={pathName === '/' ? 'active' : ''}
-              popoverTarget="mobile-menu"
-              popoverTargetAction="hide"
-            >
-              Início
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/projetos"
-              className={isProjetosActive ? 'active' : ''}
-              popoverTarget="mobile-menu"
-              popoverTargetAction="hide"
-            >
-              Projetos
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/sobre"
-              className={pathName === '/sobre' ? 'active' : ''}
-              popoverTarget="mobile-menu"
-              popoverTargetAction="hide"
-            >
-              Sobre
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/contato"
-              className={pathName === '/contato' ? 'active' : ''}
-              popoverTarget="mobile-menu"
-              popoverTargetAction="hide"
-            >
-              Contato
-            </Link>
-          </li>
+          {navLinks.map((item, idx) => (
+            <li key={typeof item.path === 'string' ? item.path : idx}>
+              <Link
+                href={item.path}
+                className={pathName === item.path ? 'active' : ''}
+                popoverTarget="mobile-menu"
+                popoverTargetAction="hide"
+              >
+                {item.label}
+              </Link>
+            </li>
+          ))}
         </ul>
         <span
           aria-hidden="true"

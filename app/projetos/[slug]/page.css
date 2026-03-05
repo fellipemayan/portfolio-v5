@@ -189,7 +189,7 @@ img {
   }
 
   > * {
-    margin-bottom: var(--gap-lg);
+    margin-bottom: var(--gap-md);
   }
 
   section {

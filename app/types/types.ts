@@ -1,3 +1,26 @@
+export interface ProjectCardData {
+  slug: string | { current: string };
+  featured?: boolean;
+  featuredOrder?: number;
+  title: string;
+  description: string;
+  category: string;
+  period?: {
+    start?: string;
+    end?: string;
+  };
+  thumbnailImage: {
+    url: string;
+    alt: string;
+  };
+  externalLinks?: Array<{
+    label: string;
+    url: string;
+  }>;
+  tags: string[];
+  toolsAndskills?: string[];
+  isComingSoon?: boolean;
+}
 export interface ContentParagraph {
   type: 'paragraph';
   content: string;

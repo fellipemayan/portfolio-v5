@@ -1,0 +1,118 @@
+'use client';
+
+import '../home.css';
+import contactInfo from '../constants/contatInfo.json';
+import Link from 'next/link';
+import { motion } from 'motion/react';
+import { containerVariants, itemVariants } from '../constants/motionVariants';
+import HeroProjectListClient from '../components/ProjectList/HeroProjectListClient';
+
+interface HomeHeroClientProps {
+  projects: any[];
+  resumeUrl?: string;
+  scrollToManifesto?: () => void;
+}
+
+export default function HomeHeroClient({
+  projects,
+  resumeUrl,
+  scrollToManifesto,
+}: HomeHeroClientProps) {
+  return (
+    <>
+      <motion.section
+        id="hero"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, margin: '0px 0px -10% 0px' }}
+      >
+        <motion.h1 variants={itemVariants}>
+          Designer{' '}
+          <em
+            className="highlight"
+            data-cursor-text="Mais em breve :)"
+            onClick={scrollToManifesto}
+          >
+            fullstack
+          </em>{' '}
+          que{' '}
+          <span data-cursor-icon="idea" data-cursor-icon-pos="only">
+            planeja
+          </span>
+          ,{' '}
+          <span data-cursor-icon="pencil" data-cursor-icon-pos="only">
+            projeta
+          </span>
+          ,{' '}
+          <span data-cursor-icon="code" data-cursor-icon-pos="only">
+            desenvolve
+          </span>{' '}
+          e{' '}
+          <span data-cursor-icon="search" data-cursor-icon-pos="only">
+            refina
+          </span>{' '}
+          produtos digitais
+        </motion.h1>
+        <motion.ul variants={itemVariants} className="areas horizontal">
+          <li>Arquitetura da Informação</li>
+          <li>UX/UI</li>
+          <li>Gráfico & Editorial</li>
+          <li>Front-end</li>
+        </motion.ul>
+        <motion.ul variants={itemVariants} className="contact-info horizontal">
+          {contactInfo.map((contact) => (
+            <li key={contact.name}>
+              <a
+                href={contact.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="external-link"
+              >
+                {contact.name}
+              </a>
+            </li>
+          ))}
+        </motion.ul>
+        <motion.div
+          variants={itemVariants}
+          style={{
+            display: 'inline-block',
+            marginRight: '12px',
+            marginTop: '16px',
+          }}
+        >
+          <Link href="/contato" className="btn primary-btn">
+            Entre em contato
+          </Link>
+        </motion.div>
+        <motion.div
+          variants={itemVariants}
+          style={{ display: 'inline-block', marginTop: '16px' }}
+        >
+          {resumeUrl && (
+            <a
+              href={resumeUrl}
+              className="btn secondary-btn"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Currículo
+            </a>
+          )}
+        </motion.div>
+      </motion.section>
+
+      <motion.section
+        className="content-grid full-width"
+        id="projects"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, margin: '0px 0px -10% 0px' }}
+      >
+        <HeroProjectListClient projects={projects} style="grid" />
+      </motion.section>
+    </>
+  );
+}

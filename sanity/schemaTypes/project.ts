@@ -5,7 +5,7 @@ export const project = defineType({
   title: 'Projetos',
   type: 'document',
   fields: [
-    defineField({ name: 'title', title: 'Título', type: 'string' }),
+    defineField({ name: 'title', title: 'Título', type: 'localeString' }),
     defineField({
       name: 'slug',
       title: 'Slug',
@@ -61,19 +61,28 @@ export const project = defineType({
 
     // Metadados do Projeto
     defineField({
+      name: 'year',
+      title: 'Ano',
+      type: 'number',
+      validation: (Rule) => Rule.required().min(1900).max(2100),
+    }),
+    defineField({
+      name: 'team',
+      title: 'Equipe',
+      type: 'string',
+      description: 'Exemplo: "2 Designers", "1 designer e 3 devs"',
+    }),
+    defineField({
+      name: 'duration',
+      title: 'Duração',
+      type: 'localeString',
+      description: 'Exemplo: "X semanas", "Y meses" (multilíngue)',
+    }),
+    defineField({
       name: 'role',
       title: 'Papel / Função',
       type: 'array',
       of: [{ type: 'string' }],
-    }),
-    defineField({
-      name: 'period',
-      title: 'Período',
-      type: 'object',
-      fields: [
-        { name: 'start', title: 'Início', type: 'string' },
-        { name: 'end', title: 'Fim', type: 'string' },
-      ],
     }),
     defineField({
       name: 'tags',
@@ -85,7 +94,7 @@ export const project = defineType({
       name: 'toolsAndskills',
       title: 'Ferramentas e Habilidades',
       type: 'array',
-      of: [{ type: 'reference', to: [{ type: 'toolSkill' }] }],
+      of: [{ type: 'reference', to: [{ type: 'tool' }] }],
     }),
 
     // Mídias

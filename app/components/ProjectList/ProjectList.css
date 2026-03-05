@@ -1,3 +1,74 @@
+
+.coming-soon-tag {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  background: var(--color-bg-base);
+  color: var(--color-text);
+  font-family: var(--font-trispace);
+  font-size: var(--font-size-sm);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  text-transform: uppercase;
+  font-weight: 300;
+  border-radius: 4px;
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* Texto do cursor customizado ao hover na imagem e h3 */
+.card-cursor-text {
+  display: none;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  font-size: 1.1em;
+  font-weight: 600;
+  padding: 8px 18px;
+  border-radius: 8px;
+  pointer-events: none;
+  z-index: 10;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.96;
+  transition: opacity 0.15s;
+}
+.thumbnail-container:hover .card-cursor-text,
+.project-title-with-cursor:hover .card-cursor-text-title {
+  display: block;
+}
+.project-title-with-cursor {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.card-cursor-text-title {
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%) translateX(12px);
+  background: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  font-size: 1em;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 8px;
+  pointer-events: none;
+  z-index: 10;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.96;
+  transition: opacity 0.15s;
+  display: none;
+}
+.project-title-with-cursor:hover .card-cursor-text-title {
+  display: block;
+}
 .project-list {
   list-style: none;
   padding: 0;
@@ -47,6 +118,7 @@
       padding: 0;
       gap: var(--spacing-xs);
       margin-bottom: var(--spacing-md);
+      align-self: start;
 
       .tag {
         height: fit-content;
@@ -202,19 +274,11 @@
 
     li {
       display: grid;
-      grid-template-rows: subgrid;
-      grid-row: span 5;
       row-gap: 0;
-    }
-    .project-card-article {
-      display: grid;
-      grid-template-rows: subgrid;
-      grid-row: span 5;
+      align-self: start;
 
-      .project-card-content {
-        display: grid;
-        grid-template-rows: subgrid;
-        grid-row: span 4;
+      p {
+        min-height: 3lh;
       }
     }
   }

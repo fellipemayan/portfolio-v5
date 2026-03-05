@@ -9,11 +9,13 @@ import { usePathname } from 'next/navigation';
 import { useEffect } from 'react';
 import { motion } from 'motion/react';
 
-export function Header() {
+export function Header({
+  navLinks = [],
+}: {
+  navLinks: Array<{ label: string; path: string }>;
+}) {
   const pathName = usePathname();
-  const isProjetosActive = pathName.startsWith('/projetos');
 
-  // Fecha o menu mobile ao trocar de página
   useEffect(() => {
     const menu = document.getElementById('mobile-menu');
     if (menu && typeof (menu as any).hidePopover === 'function') {
@@ -36,42 +38,24 @@ export function Header() {
         </div>
         <nav className="header-nav">
           <ul>
-            <li>
-              <Link
-                href="/"
-                className={pathName === '/' ? 'active' : ''}
-                onClick={(e) => e.currentTarget.blur()}
-              >
-                Início
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/projetos"
-                className={isProjetosActive ? 'active' : ''}
-                onClick={(e) => e.currentTarget.blur()}
-              >
-                Projetos
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/sobre"
-                className={pathName === '/sobre' ? 'active' : ''}
-                onClick={(e) => e.currentTarget.blur()}
-              >
-                Sobre
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/contato"
-                className={pathName === '/contato' ? 'active' : ''}
-                onClick={(e) => e.currentTarget.blur()}
-              >
-                Contato
-              </Link>
-            </li>
+            {navLinks.map((item) => {
+              const isRoot = item.path === '/';
+              const isActive = isRoot
+                ? pathName === '/'
+                : pathName === item.path ||
+                  pathName.startsWith(item.path + '/');
+              return (
+                <li key={item.path}>
+                  <Link
+                    href={item.path}
+                    className={isActive ? 'active' : ''}
+                    onClick={(e) => e.currentTarget.blur()}
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
         </nav>
 
@@ -86,7 +70,7 @@ export function Header() {
         </div>
       </motion.header>
 
-      <MobileMenu />
+      <MobileMenu navLinks={navLinks} />
     </>
   );
 }
