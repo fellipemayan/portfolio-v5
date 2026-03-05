@@ -1,13 +1,7 @@
 #colophon {
   padding: var(--padding-inline);
   background-color: var(--color-bg-secondary);
-  /* color: var(--color-black); */
-
-  ::selection {
-    background-color: var(--color-black);
-    color: var(--color-black);
-  }
-
+  
   p {
     font-size: var(--font-size-sm);
     font-family: var(--font-family-mono);

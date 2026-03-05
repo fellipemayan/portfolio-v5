@@ -1,6 +1,7 @@
 'use client';
 import { motion } from 'motion/react';
 import { containerVariants, itemVariants } from '../constants/motionVariants';
+import Link from 'next/link';
 
 export default function AboutClient({
   experiences,
@@ -60,18 +61,15 @@ export default function AboutClient({
               </motion.h3>
               <motion.div className="info" variants={itemVariants}>
                 <div className="metadata">
-                  <p >
-                    {experience.company?.pt || experience.company}
-                  </p>
-                  <p >
-                    {experience.location?.pt || experience.location}
-                  </p>
-                  <p >
+                  <p>{experience.company?.pt || experience.company}</p>
+                  <p>{experience.type?.pt || experience.type}</p>
+                  <p>{experience.location?.pt || experience.location}</p>
+                  <p>
                     {experience.startYear} -{' '}
                     {experience.isPresent ? 'Presente' : experience.endYear}
                   </p>
                 </div>
-                <p className="description" >
+                <p className="description">
                   {experience.description?.pt || experience.description}
                 </p>
               </motion.div>
@@ -160,6 +158,36 @@ export default function AboutClient({
           </motion.ul>
         </motion.section>
       )}
+
+      <motion.section
+        className="full-width"
+        id="cta"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, margin: '0px 0px -10% 0px' }}
+      >
+        <motion.h2 variants={itemVariants}>
+          Em busca de design que conversa com código?
+        </motion.h2>
+        <motion.p variants={itemVariants}>
+          Estou sempre aberto a discutir novos projetos, ideias criativas ou
+          oportunidades de colaboração. Sinta-se à vontade para me enviar uma
+          mensagem!
+        </motion.p>
+        <motion.ul variants={itemVariants}>
+          <motion.li variants={itemVariants}>
+            <Link href="/contato" className="cta primary-cta">
+              Entrar em contato
+            </Link>
+          </motion.li>
+          <motion.li variants={itemVariants}>
+            <Link href="/projetos" className="cta secondary-cta">
+              Ver projetos
+            </Link>
+          </motion.li>
+        </motion.ul>
+      </motion.section>
     </>
   );
 }

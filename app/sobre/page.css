@@ -29,6 +29,7 @@
     font-weight: 500;
     text-wrap: auto;
     margin-bottom: var(--spacing-sm);
+
   }
 
   .info {
@@ -65,6 +66,12 @@
       --para-anchor: --resume-description;
       anchor-name: var(--para-anchor);
       margin: 0;
+    }
+
+    &:hover {
+      h3 {
+        text-decoration: wavy underline var(--color-primary);
+      }
     }
 
     > ::before {

@@ -62,22 +62,27 @@ export default function HomeHeroClient({
           <li>Front-end</li>
         </motion.ul>
         <motion.ul variants={itemVariants} className="contact-info horizontal">
-          {socialLinks?.filter((link) => link.isVisible).map((contact) => (
-            <li key={contact.name}>
-              <a
-                href={contact.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="external-link"
-              >
-                {contact.name}
-              </a>
-            </li>
-          )).sort((a, b) => {
-            const orderA = socialLinks?.find(link => link.name === a.key)?.order || 0;
-            const orderB = socialLinks?.find(link => link.name === b.key)?.order || 0;
-            return orderA - orderB;
-          })}
+          {socialLinks
+            ?.filter((link) => link.isVisible)
+            .map((contact) => (
+              <li key={contact.name}>
+                <a
+                  href={contact.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="external-link"
+                >
+                  {contact.name}
+                </a>
+              </li>
+            ))
+            .sort((a, b) => {
+              const orderA =
+                socialLinks?.find((link) => link.name === a.key)?.order || 0;
+              const orderB =
+                socialLinks?.find((link) => link.name === b.key)?.order || 0;
+              return orderA - orderB;
+            })}
         </motion.ul>
         <motion.div
           variants={itemVariants}
@@ -117,6 +122,36 @@ export default function HomeHeroClient({
         viewport={{ once: true, margin: '0px 0px -10% 0px' }}
       >
         <HeroProjectListClient projects={projects} style="grid" />
+      </motion.section>
+
+      <motion.section
+        className="full-width"
+        id="cta"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, margin: '0px 0px -10% 0px' }}
+      >
+        <motion.h2 variants={itemVariants}>
+          Sua busca por um designer fullstack termina aqui
+        </motion.h2>
+        <motion.p variants={itemVariants}>
+          Estou sempre aberto a discutir novos projetos, ideias criativas ou
+          oportunidades de colaboração. Sinta-se à vontade para me enviar uma
+          mensagem!
+        </motion.p>
+        <motion.ul variants={itemVariants}>
+          <motion.li variants={itemVariants}>
+            <Link href="/contato" className="cta primary-cta">
+              Entrar em contato
+            </Link>
+          </motion.li>
+          <motion.li variants={itemVariants}>
+            <Link href="/projetos" className="cta secondary-cta">
+              Ver projetos
+            </Link>
+          </motion.li>
+        </motion.ul>
       </motion.section>
     </>
   );

@@ -1,7 +1,7 @@
 .footer {
   padding-block: var(--padding-inline);
   border-top: 1px solid var(--color-border);
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-sm) !important;
   z-index: 5;
   background-color: var(--color-bg-secondary);
   row-gap: var(--gap-lg);
@@ -24,8 +24,9 @@
 
     a {
       font-family: var(--font-family-mono);
+      font-size: var(--font-size-sm) !important;
       text-decoration: underline;
-      text-transform: uppercase;
+      text-transform: uppercase;  
       border-radius: 4px;
     }
   }

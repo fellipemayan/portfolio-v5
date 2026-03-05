@@ -143,7 +143,7 @@ export default function ContactPage() {
           </button>
           ,{' '}
           <a
-            href="https://www.linkedin.com/in/felipemayan/"
+            href="https://www.linkedin.com/in/fellipemayan/"
             target="_blank"
             rel="noopener noreferrer"
             className="linkedin external-link"
