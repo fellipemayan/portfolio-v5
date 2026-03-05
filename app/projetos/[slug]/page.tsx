@@ -124,13 +124,8 @@ export default async function ProjectPage({
 
   return (
     <>
-      <ProjectHeader
-        title={getLocaleString(project.title)}
-        contentBlocks={[]}
-      />
-
       <RevealSection id="project-overview">
-        <RevealItem className="desktop-only">
+        <RevealItem>
           <Link href="/projetos" className="btn ghost-btn back-link">
             <ArrowLeftIcon className="icon-md"></ArrowLeftIcon> Voltar
           </Link>
