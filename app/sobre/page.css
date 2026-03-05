@@ -29,6 +29,10 @@
     display: flex;
     align-items: baseline;
     gap: var(--spacing-xs);
+    p > :not(:last-child)::after {
+      content: ' ✦ ';
+      color: var(--color-primary);
+    }
   }
 
   h3 {
@@ -65,12 +69,6 @@
           color: var(--color-text);
           font-weight: 500;
         }
-      }
-
-      p:not(:last-child)::after {
-        content: '✦';
-        color: var(--color-primary);
-        margin-inline: var(--spacing-sm);
       }
     }
 
