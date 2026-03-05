@@ -23,7 +23,7 @@
     }
 
     a {
-      font-family: var(--font-trispace);
+      font-family: var(--font-family-mono);
       text-decoration: underline;
       text-transform: uppercase;
       border-radius: 4px;
@@ -34,8 +34,7 @@
 .footer-location {
   color: var(--color-text-heading) !important;
   font-weight: 500;
-  font-family: var(--font-trispace);
-  text-transform: uppercase;
+  font-family: var(--font-family-mono);
 }
 
 @media (min-width: 1024px) {

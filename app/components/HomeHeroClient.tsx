@@ -1,7 +1,6 @@
 'use client';
 
 import '../home.css';
-import contactInfo from '../constants/contatInfo.json';
 import Link from 'next/link';
 import { motion } from 'motion/react';
 import { containerVariants, itemVariants } from '../constants/motionVariants';

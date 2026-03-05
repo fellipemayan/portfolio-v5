@@ -1,12 +1,11 @@
-
 .coming-soon-tag {
   position: absolute;
   left: 12px;
   bottom: 12px;
   background: var(--color-bg-base);
   color: var(--color-text);
-  font-family: var(--font-trispace);
-  font-size: var(--font-size-md);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-sm);
   padding: var(--spacing-xs) var(--spacing-sm);
   text-transform: uppercase;
   font-weight: 400;
@@ -124,9 +123,8 @@
         height: fit-content;
         background-color: var(--color-bg-secondary);
         color: var(--color-tag-text);
-        font-family: var(--font-trispace);
+        font-family: var(--font-family-mono);
         font-weight: 400;
-        text-transform: uppercase;
         padding: 4px 6px;
         border-radius: 4px;
         font-size: var(--font-size-sm);
@@ -136,7 +134,7 @@
     .link-list {
       margin-top: var(--gap-md);
       font-size: var(--font-size-sm);
-      font-family: var(--font-trispace);
+      font-family: var(--font-family-mono);
       text-transform: uppercase;
       text-decoration: underline;
       display: flex;

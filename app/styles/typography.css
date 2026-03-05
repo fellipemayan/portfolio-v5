@@ -1,13 +1,49 @@
+/* Fonte mono personalizada: NKDuyMono */
+@font-face {
+  font-family: 'NKDuyMono';
+  src: url('/fonts/Mono/NKDuyMono[wght].ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Mozilla Text';
+  src: url('/fonts/Mono/MozillaText[wght].ttf') format('truetype');
+  font-weight: 200 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ZalandoSans';
+  src: url('/fonts/SansSerif/ZalandoSans/ZalandoSans[wdth,wght].ttf')
+    format('truetype');
+  font-weight: 100 900;
+  font-stretch: 75% 125%;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'ZalandoSans';
+  src: url('/fonts/SansSerif/ZalandoSans/ZalandoSans-Italic[wdth,wght].ttf')
+    format('truetype');
+  font-weight: 100 900;
+  font-stretch: 75% 125%;
+  font-style: italic;
+  font-display: swap;
+}
+
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
+  font-family: var(--font-family-heading);
   color: var(--color-text-heading);
   line-height: var(--line-height-xs);
   letter-spacing: -0.02em;
   text-wrap: balance;
+  font-stretch: 95%;
 
   &:first-child {
     margin-top: 0;
@@ -29,23 +65,29 @@ h3 {
   font-weight: 400;
 }
 
+body {
+  font-family:
+    'ZalandoSans', 'Geist', 'Inter', 'Roboto', Arial, Helvetica, sans-serif;
+  font-variation-settings: 'wght' 400;
+}
+
 p {
   font-size: var(--font-size-md);
   text-wrap: balance;
 }
 
 .highlight-text {
-  font-family: var(--font-trispace);
+  font-family: 'Mozilla Text', monospace;
   color: var(--color-text-primary);
 }
 
 @media (min-width: 768px) {
-  h1, h2 {
-    font-weight: 300;
+  h1,
+  h2 {
+    font-weight: 400;
   }
 
   h3 {
     font-weight: 400;
   }
-
 }

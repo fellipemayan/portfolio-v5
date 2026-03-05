@@ -10,7 +10,7 @@
     }
     a {
       font-size: var(--font-size-sm);
-      font-family: var(--font-trispace);
+      font-family: var(--font-family-mono);
       text-transform: uppercase;
 
       &:hover {
@@ -68,7 +68,7 @@
 
     .manifesto-subtitle {
       font-size: var(--font-size-sm);
-      font-family: var(--font-trispace);
+      font-family: var(--font-family-mono);
       text-transform: uppercase;
       font-weight: 500;
     }

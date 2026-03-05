@@ -31,9 +31,9 @@ a {
   padding-block: var(--spacing-sm);
   padding-inline: var(--spacing-md);
   border-radius: var(--spacing-sm);
-  font-family: var(--font-trispace);
+  font-family: var(--font-family-mono);
   font-size: var(--font-size-sm);
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   text-decoration: none;
   text-wrap: nowrap;
   height: 2.5rem;
@@ -107,7 +107,7 @@ a {
   position: relative;
 
   label {
-    font-family: var(--font-trispace);
+    font-family: var(--font-family-mono);
     text-transform: uppercase;
     font-size: var(--font-size-sm);
     color: var(--color-text-secondary);
@@ -132,7 +132,7 @@ a {
       background-color: var(--color-bg-secondary-hover);
     }
 
-    &:focus-visible  {
+    &:focus-visible {
       outline: none;
       border-color: var(--color-primary);
     }
@@ -157,7 +157,7 @@ select::after {
 
 .pill-group-label {
   display: block;
-  font-family: var(--font-trispace);
+  font-family: var(--font-family-mono);
   text-transform: uppercase;
   font-size: var(--font-size-sm);
   color: var(--color-text-secondary);
@@ -214,7 +214,7 @@ input::-internal-autofill-selected {
   position: absolute;
   color: var(--color-bg-secondary);
   z-index: -1;
-  font-family: var(--font-trispace);
+  font-family: var(--font-family-mono);
   font-weight: 300;
   font-size: clamp(2rem, 10vw, 10rem);
 }
@@ -279,7 +279,7 @@ input::-internal-autofill-selected {
   height: fit-content;
   background-color: var(--color-bg-secondary);
   color: var(--color-tag-text);
-  font-family: var(--font-trispace);
+  font-family: var(--font-family-mono);
   font-weight: 400;
   text-transform: uppercase;
   padding: 4px 6px;

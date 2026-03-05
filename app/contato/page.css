@@ -14,7 +14,7 @@
   }
 
   label {
-    font-family: var(--font-trispace);
+    font-family: var(--font-family-mono);
     font-size: var(--font-size-sm);
     margin-bottom: var(--spacing-xs);
     font-weight: 500;
@@ -90,8 +90,7 @@
     display: inline-block;
     background-color: var(--color-black);
     color: var(--color-white);
-    font-family: var(--font-trispace);
-    text-transform: uppercase;
+    font-family: var(--font-family-mono);
     border: none;
     cursor: pointer;
     transition:
@@ -125,5 +124,4 @@
   font-size: var(--font-size-md);
   text-decoration: underline;
   cursor: pointer;
-
 }

@@ -64,8 +64,9 @@
   --spacing-2xl: 4rem;
 
   /* Tipografia */
+  --font-family-heading: 'ZalandoSans', 'Geist', 'Inter', sans-serif;
   --font-family-sans: var(--font-geist-sans), 'Inter', sans-serif;
-  --font-family-mono: var(--font-trispace) 'Fira Code', monospace;
+  --font-family-mono: 'NKDuyMono', 'Geist Mono', 'Fira Code', monospace;
 
   --font-size-xs: 0.75rem;
   --font-size-sm: 1rem;

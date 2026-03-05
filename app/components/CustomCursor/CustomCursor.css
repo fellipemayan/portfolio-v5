@@ -48,8 +48,8 @@
 }
 
 .cursor-text {
-  font-size: var(--font-size-md);
-  font-family: var(--font-trispace);
+  font-size: var(--font-size-sm);
+  font-family: var(--font-family-mono);
   text-transform: uppercase;
   margin-top: 1px;
 }

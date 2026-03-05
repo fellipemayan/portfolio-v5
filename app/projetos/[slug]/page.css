@@ -55,8 +55,7 @@ img {
     margin: 0;
     padding: 0;
     list-style: none;
-    font-family: var(--font-trispace);
-    text-transform: uppercase;
+    font-family: var(--font-family-mono);
     font-weight: 400;
     font-size: var(--font-size-sm);
   }
@@ -135,8 +134,7 @@ img {
   .metadata-period {
     position: relative;
     font-size: var(--font-size-sm);
-    font-family: var(--font-trispace);
-    text-transform: uppercase;
+    font-family: var(--font-family-mono);
     color: var(--color-text-muted);
   }
 
@@ -149,8 +147,7 @@ img {
     position: relative;
     margin-bottom: var(--spacing-sm);
     font-size: var(--font-size-sm);
-    font-family: var(--font-trispace);
-    text-transform: uppercase !important;
+    font-family: var(--font-family-mono);
     color: var(--color-text-muted);
     padding-left: var(--spacing-xl);
   }
@@ -171,9 +168,8 @@ img {
   a {
     display: inline;
     text-decoration: underline;
-    text-transform: uppercase;
     font-size: var(--font-size-sm);
-    font-family: var(--font-trispace);
+    font-family: var(--font-family-mono);
   }
 }
 
