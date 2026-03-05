@@ -73,7 +73,6 @@ body {
 
 p {
   font-size: var(--font-size-md);
-  text-wrap: balance;
 }
 
 .highlight-text {

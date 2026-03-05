@@ -175,7 +175,7 @@ img {
 
 .content-blocks {
   p {
-    text-wrap: wrap;
+    text-wrap: balance;
     font-size: var(--font-size-md);
     line-height: var(--line-height-md);
   }
