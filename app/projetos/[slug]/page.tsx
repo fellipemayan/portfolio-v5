@@ -273,10 +273,13 @@ export default async function ProjectPage({
                     components={{
                       block: {
                         normal: ({ children }) => <p>{children}</p>,
-                        h2: ({ children, node }) => {
+                        h2: ({ children, ...props }) => {
                           // Adiciona id para navegação
+                          const key = props.value?._key || undefined;
                           return (
-                            <h2 id={`pt-block-${node._key}`}>{children}</h2>
+                            <h2 id={key ? `pt-block-${key}` : undefined}>
+                              {children}
+                            </h2>
                           );
                         },
                         h3: ({ children }) => <h3>{children}</h3>,
