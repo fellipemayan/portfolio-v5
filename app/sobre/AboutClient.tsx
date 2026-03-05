@@ -127,11 +127,11 @@ export default function AboutClient({
                 {item.title?.pt || item.title}
               </motion.h3>
               <motion.div className="info" variants={itemVariants}>
-                <div className="metadata">
-                  <p className="first-item">{item.event?.pt || item.event}</p>
-                  <p>{item.location?.pt || item.location}</p>
-                  <p>{item.publishingYear}</p>
-                </div>
+                <p className="metadata">
+                  <span className="first-item">{item.event?.pt || item.event}</span>
+                  <span>{item.location?.pt || item.location}</span>
+                  <span>{item.publishingYear}</span>
+                </p>
                 <p className="description">
                   {item.description?.pt || item.description}
                 </p>
