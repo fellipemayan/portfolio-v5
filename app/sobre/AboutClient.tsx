@@ -64,11 +64,11 @@ export default function AboutClient({
                 </p>
               </motion.div>
               <motion.div className="info" variants={itemVariants}>
-                <div className="metadata">
-                  <p>{experience.company?.pt || experience.company}</p>
-                  <p>{experience.type?.pt || experience.type}</p>
-                  <p>{experience.location?.pt || experience.location}</p>
-                </div>
+                <p className="metadata">
+                  <span>{experience.company?.pt || experience.company}</span>
+                  <span>{experience.type?.pt || experience.type}</span>
+                  <span>{experience.location?.pt || experience.location}</span>
+                </p>
                 <p className="description">
                   {experience.description?.pt || experience.description}
                 </p>
@@ -101,9 +101,9 @@ export default function AboutClient({
                 </p>
               </motion.div>
               <div className="info">
-                <div className="metadata">
-                  <p>{edu.institution?.pt || edu.institution}</p>
-                </div>
+                <p className="metadata">
+                  <span>{edu.institution?.pt || edu.institution}</span>
+                </p>
                 <p className="description">
                   {edu.description?.pt || edu.description}
                 </p>
