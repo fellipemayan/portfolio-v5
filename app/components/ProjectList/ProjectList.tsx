@@ -56,9 +56,12 @@ export function ProjectCard({
             alt={
               typeof project.thumbnailImage.alt === 'string'
                 ? project.thumbnailImage.alt
-                : project.thumbnailImage.alt?.pt ||
-                  project.thumbnailImage.alt?.en ||
-                  ''
+                : typeof project.thumbnailImage.alt === 'object' &&
+                    project.thumbnailImage.alt !== null
+                  ? project.thumbnailImage.alt.pt ||
+                    project.thumbnailImage.alt.en ||
+                    ''
+                  : ''
             }
             width={400}
             height={225}
