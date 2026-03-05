@@ -1,0 +1,14 @@
+.cta-section {
+  background-color: var(--color-bg-secondary);
+  padding-block: var(--gap-lg);
+  margin-bottom: 0;
+
+}
+
+.cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+}

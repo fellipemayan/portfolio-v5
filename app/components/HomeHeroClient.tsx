@@ -10,12 +10,14 @@ import HeroProjectListClient from '../components/ProjectList/HeroProjectListClie
 interface HomeHeroClientProps {
   projects: any[];
   resumeUrl?: string;
+  socialLinks?: { name: string; url: string; order: number; isVisible: boolean }[];
   scrollToManifesto?: () => void;
 }
 
 export default function HomeHeroClient({
   projects,
   resumeUrl,
+  socialLinks,
   scrollToManifesto,
 }: HomeHeroClientProps) {
   return (
@@ -61,7 +63,7 @@ export default function HomeHeroClient({
           <li>Front-end</li>
         </motion.ul>
         <motion.ul variants={itemVariants} className="contact-info horizontal">
-          {contactInfo.map((contact) => (
+          {socialLinks?.filter((link) => link.isVisible).map((contact) => (
             <li key={contact.name}>
               <a
                 href={contact.url}
@@ -72,7 +74,11 @@ export default function HomeHeroClient({
                 {contact.name}
               </a>
             </li>
-          ))}
+          )).sort((a, b) => {
+            const orderA = socialLinks?.find(link => link.name === a.key)?.order || 0;
+            const orderB = socialLinks?.find(link => link.name === b.key)?.order || 0;
+            return orderA - orderB;
+          })}
         </motion.ul>
         <motion.div
           variants={itemVariants}

@@ -116,7 +116,7 @@ export default function RootLayout({
       >
         <Header navLinks={settings?.navLinks || []} />
         <main className="content-grid full-width">{children}</main>
-        <Footer socialLinks={settings?.socialLinks || []} />
+        <Footer socialLinks={(settings?.socialLinks || []).filter((link: {isVisible: boolean}) => link.isVisible).sort((a: {order: number}, b: {order: number}) => a.order - b.order)} />
         <Colophon colophon={settings?.colophon} />
         <CustomCursor />
       </body>

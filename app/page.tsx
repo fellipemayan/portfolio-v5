@@ -48,8 +48,16 @@ export default async function Home() {
   const projects = await getFeaturedProjects();
   // Buscar a URL do currículo do Sanity
   const siteSettings = await client.fetch(
-    groq`*[_type == "siteSettings"][0]{ "resumeUrl": resumes.pt.asset->url }`
+    groq`*[_type == "siteSettings"][0]{ "resumeUrl": resumes.pt.asset->url,
+    socialLinks[] {
+      name,
+      url,
+      order,
+      isVisible
+    } }`
   );
   const resumeUrl = siteSettings?.resumeUrl || '';
-  return <HomeHeroClient projects={projects} resumeUrl={resumeUrl} />;
+  const socialLinks = (siteSettings?.socialLinks || []).filter((link: {name: string, url: string, order: number, isVisible: boolean}) => link.isVisible).sort((a: {order: number}, b: {order: number}) => a.order - b.order);
+
+  return <HomeHeroClient projects={projects} resumeUrl={resumeUrl} socialLinks={socialLinks} />;
 }
