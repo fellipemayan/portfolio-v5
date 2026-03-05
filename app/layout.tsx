@@ -41,7 +41,7 @@ const trispace = Trispace({
 });
 
 // Função utilitária para pegar string multilíngue
-function getLocaleString(val: string, locale: string) {
+function getLocaleString(val: string | Record<string, string>, locale: string) {
   if (!val) return '';
   if (typeof val === 'string') return val;
   return val[locale] || val.pt || val.en || '';
@@ -116,7 +116,13 @@ export default function RootLayout({
       >
         <Header navLinks={settings?.navLinks || []} />
         <main className="content-grid full-width">{children}</main>
-        <Footer socialLinks={(settings?.socialLinks || []).filter((link: {isVisible: boolean}) => link.isVisible).sort((a: {order: number}, b: {order: number}) => a.order - b.order)} />
+        <Footer
+          socialLinks={(settings?.socialLinks || [])
+            .filter((link: { isVisible: boolean }) => link.isVisible)
+            .sort(
+              (a: { order: number }, b: { order: number }) => a.order - b.order
+            )}
+        />
         <Colophon colophon={settings?.colophon} />
         <CustomCursor />
       </body>
