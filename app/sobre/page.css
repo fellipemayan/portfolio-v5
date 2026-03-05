@@ -29,10 +29,7 @@
     display: flex;
     align-items: baseline;
     gap: var(--spacing-xs);
-    p > :not(:last-child)::after {
-      content: ' ✦ ';
-      color: var(--color-primary);
-    }
+    
   }
 
   h3 {
@@ -60,15 +57,10 @@
       font-family: var(--font-family-mono);
       color: var(--color-text-muted);
 
-      p {
-        display: inline;
-        margin: 0;
-        text-wrap: wrap;
-
-        &:first-child {
-          color: var(--color-text);
-          font-weight: 500;
-        }
+      > :not(:last-child)::after {
+        content: ' ✦ ';
+        color: var(--color-primary);
+      
       }
     }
 
