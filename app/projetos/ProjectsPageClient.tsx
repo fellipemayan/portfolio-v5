@@ -41,71 +41,50 @@ export default function ProjectsPageClient({
 
   return (
     <>
-      <motion.div
+      <motion.section
         className="breakout projects-controls-row"
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, margin: '0px 0px -10% 0px' }}
+        initial={{ opacity: 0, y: -40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: 'easeOut' }}
       >
-        <motion.div
-          className="projects-filters"
-          variants={itemVariants}
-          initial="hidden"
-          whileInView="show"
-        >
-          <motion.button
+        <div className="projects-filters">
+          <button
             className={!selectedTag ? 'active' : ''}
             onClick={() => setSelectedTag('')}
-            variants={itemVariants}
-            whileHover={{ scale: 1.08 }}
-            whileTap={{ scale: 0.96 }}
           >
             Todos
-          </motion.button>
+          </button>
           {allTags.map((tag) => (
-            <motion.button
+            <button
               key={tag}
               className={selectedTag === tag ? 'active' : ''}
               onClick={() => setSelectedTag(tag)}
-              variants={itemVariants}
-              whileHover={{ scale: 1.08 }}
-              whileTap={{ scale: 0.96 }}
             >
               {tag}
-            </motion.button>
+            </button>
           ))}
-        </motion.div>
-        <motion.div className="projects-view-toggle" variants={itemVariants}>
-          <motion.button
+        </div>
+        <div className="projects-view-toggle">
+          <button
             className={view === 'grid' ? 'active' : ''}
             onClick={() => setView('grid')}
             aria-label="Visualização em grade"
-            variants={itemVariants}
-            whileHover={{ scale: 1.08 }}
-            whileTap={{ scale: 0.96 }}
           >
             <Squares2X2Icon className="icon-md" />
-          </motion.button>
-          <motion.button
+          </button>
+          <button
             className={view === 'list' ? 'active' : ''}
             onClick={() => setView('list')}
             aria-label="Visualização em lista"
-            variants={itemVariants}
-            whileHover={{ scale: 1.08 }}
-            whileTap={{ scale: 0.96 }}
           >
             <QueueListIcon className="icon-md" />
-          </motion.button>
-        </motion.div>
-      </motion.div>
+          </button>
+        </div>
+      </motion.section>
 
       <motion.section
         className="content-grid full-width"
         variants={containerVariants}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, margin: '0px 0px -10% 0px' }}
       >
         <ProjectsProjectListClient
           projects={filteredProjects}

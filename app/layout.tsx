@@ -41,7 +41,7 @@ const trispace = Trispace({
 });
 
 // Função utilitária para pegar string multilíngue
-function getLocaleString(val: any, locale: string) {
+function getLocaleString(val: string, locale: string) {
   if (!val) return '';
   if (typeof val === 'string') return val;
   return val[locale] || val.pt || val.en || '';

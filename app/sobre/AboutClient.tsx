@@ -58,23 +58,23 @@ export default function AboutClient({
               <motion.h3 variants={itemVariants}>
                 {experience.title?.pt || experience.title}
               </motion.h3>
-              <div className="info">
+              <motion.div className="info" variants={itemVariants}>
                 <div className="metadata">
-                  <motion.p variants={itemVariants}>
+                  <p >
                     {experience.company?.pt || experience.company}
-                  </motion.p>
-                  <motion.p variants={itemVariants}>
+                  </p>
+                  <p >
                     {experience.location?.pt || experience.location}
-                  </motion.p>
-                  <motion.p variants={itemVariants}>
+                  </p>
+                  <p >
                     {experience.startYear} -{' '}
                     {experience.isPresent ? 'Presente' : experience.endYear}
-                  </motion.p>
+                  </p>
                 </div>
-                <motion.p className="description" variants={itemVariants}>
+                <p className="description" >
                   {experience.description?.pt || experience.description}
-                </motion.p>
-              </div>
+                </p>
+              </motion.div>
             </motion.li>
           ))}
         </motion.ul>
@@ -126,16 +126,16 @@ export default function AboutClient({
               <motion.h3 variants={itemVariants}>
                 {item.title?.pt || item.title}
               </motion.h3>
-              <div className="info">
+              <motion.div className="info" variants={itemVariants}>
                 <div className="metadata">
                   <p className="first-item">{item.event?.pt || item.event}</p>
                   <p>{item.location?.pt || item.location}</p>
                   <p>{item.publishingYear}</p>
                 </div>
-                <motion.p className="description" variants={itemVariants}>
+                <p className="description">
                   {item.description?.pt || item.description}
-                </motion.p>
-              </div>
+                </p>
+              </motion.div>
             </motion.li>
           ))}
         </motion.ul>
