@@ -28,7 +28,6 @@
   .item-header {
     display: flex;
     align-items: baseline;
-    flex-direction: column;
     gap: var(--spacing-xs);
   }
 
