@@ -18,7 +18,8 @@ async function getFeaturedProjects() {
       period,
       isComingSoon,
       thumbnailImage {
-        asset->{url},
+        horizontal { asset->{url} },
+        vertical { asset->{url} },
         alt,
       },
       externalLinks,
@@ -33,8 +34,16 @@ async function getFeaturedProjects() {
     description: p.description?.[locale] || '',
     category: p.category?.[locale] || '',
     thumbnailImage: {
-      url: p.thumbnailImage?.asset?.url || '',
-      alt: p.thumbnailImage?.alt?.[locale] || '',
+      horizontal: {
+        asset: { url: p.thumbnailImage?.horizontal?.asset?.url || '' },
+      },
+      vertical: {
+        asset: { url: p.thumbnailImage?.vertical?.asset?.url || '' },
+      },
+      alt:
+        typeof p.thumbnailImage?.alt === 'string'
+          ? p.thumbnailImage.alt
+          : p.thumbnailImage?.alt?.[locale] || '',
     },
     tags: (p.tags || []).map((t: any) => t.title?.[locale] || ''),
     toolsAndskills: (p.toolsAndskills || []).map(
@@ -57,7 +66,22 @@ export default async function Home() {
     } }`
   );
   const resumeUrl = siteSettings?.resumeUrl || '';
-  const socialLinks = (siteSettings?.socialLinks || []).filter((link: {name: string, url: string, order: number, isVisible: boolean}) => link.isVisible).sort((a: {order: number}, b: {order: number}) => a.order - b.order);
+  const socialLinks = (siteSettings?.socialLinks || [])
+    .filter(
+      (link: {
+        name: string;
+        url: string;
+        order: number;
+        isVisible: boolean;
+      }) => link.isVisible
+    )
+    .sort((a: { order: number }, b: { order: number }) => a.order - b.order);
 
-  return <HomeHeroClient projects={projects} resumeUrl={resumeUrl} socialLinks={socialLinks} />;
+  return (
+    <HomeHeroClient
+      projects={projects}
+      resumeUrl={resumeUrl}
+      socialLinks={socialLinks}
+    />
+  );
 }

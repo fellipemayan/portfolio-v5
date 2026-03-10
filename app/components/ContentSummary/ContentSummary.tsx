@@ -56,7 +56,7 @@ export default function ContentSummary({ contentBlocks }: ContentSummaryProps) {
 
   return (
     <>
-      <h2>Sumário</h2>
+      <h2>Nesta página</h2>
       <ul className="project-summary">
         {sectionBlocks.map((section, idx) => (
           <li key={idx}>

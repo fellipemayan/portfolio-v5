@@ -17,7 +17,8 @@ async function getAllProjects() {
       period,
       isComingSoon,
       thumbnailImage {
-        asset->{url},
+        horizontal { asset->{url} },
+        vertical { asset->{url} },
         alt,
       },
       externalLinks,
@@ -39,8 +40,16 @@ async function getAllProjects() {
     description: p.description?.[locale] || '',
     category: p.category?.[locale] || '',
     thumbnailImage: {
-      url: p.thumbnailImage?.asset?.url || '',
-      alt: p.thumbnailImage?.alt?.[locale] || '',
+      horizontal: {
+        asset: { url: p.thumbnailImage?.horizontal?.asset?.url || '' },
+      },
+      vertical: {
+        asset: { url: p.thumbnailImage?.vertical?.asset?.url || '' },
+      },
+      alt:
+        typeof p.thumbnailImage?.alt === 'string'
+          ? p.thumbnailImage.alt
+          : p.thumbnailImage?.alt?.[locale] || '',
     },
     tags: (p.tags || []).map((t: any) => {
       if (typeof t === 'string') return t;

@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/20/solid';
-import { ProjectHeader } from '@/app/components/ProjectHeader/ProjectHeader';
 import { PortableText } from '@portabletext/react';
 import {
   RevealItem,
@@ -31,7 +30,11 @@ export default async function ProjectPage({
       tags[]->{_id, title},
       toolsAndskills[]->{_id, title},
       externalLinks,
-      thumbnailImage{asset->{url}, alt},
+      thumbnailImage{
+        horizontal{asset->{url}},
+        vertical{asset->{url}},
+        alt
+      },
       content{
         pt[]{
           ...,
@@ -41,7 +44,11 @@ export default async function ProjectPage({
           }
         }
       },
-      gallery[]{alt, "url": asset->url},
+      gallery[]{
+        horizontal{asset->{url}},
+        vertical{asset->{url}},
+        alt
+      },
       isComingSoon
     }`,
     { slug }
@@ -134,6 +141,17 @@ export default async function ProjectPage({
           <h1>{getLocaleString(project.title)}</h1>
         </RevealItem>
         <RevealItem>
+          {project.tags && project.tags.length > 0 && (
+            <ul className="tag-list">
+              {project.tags.map((tag: { _id?: string; title: string }, idx: number) => (
+                <li key={tag._id || idx} className="tag">
+                  {getLocaleString(tag.title)}
+                </li>
+              ))}
+            </ul>
+          )}
+        </RevealItem>
+        <RevealItem>
           <p className="project-subtitle">
             {getLocaleString(project.description)}
           </p>
@@ -141,21 +159,43 @@ export default async function ProjectPage({
       </RevealSection>
       <RevealSection className="breakout">
         <RevealItem>
-          <Image
-            src={project.thumbnailImage?.asset?.url || ''}
-            alt={
+          {(() => {
+            const verticalUrl = project.thumbnailImage?.vertical?.asset?.url;
+            const horizontalUrl =
+              project.thumbnailImage?.horizontal?.asset?.url;
+            const altText =
               getLocaleString(project.thumbnailImage?.alt) ||
-              getLocaleString(project.title)
-            }
-            width={600}
-            height={300}
-            className="breakout project-image"
-            loading="eager"
-          />
+              getLocaleString(project.title);
+            if (!verticalUrl && !horizontalUrl) return null;
+            return (
+              <picture>
+                {verticalUrl && (
+                  <source media="(max-width: 767px)" srcSet={verticalUrl} />
+                )}
+                {horizontalUrl && (
+                  <source media="(min-width: 768px)" srcSet={horizontalUrl} />
+                )}
+                <img
+                  src={horizontalUrl || verticalUrl}
+                  alt={altText}
+                  className="breakout project-image"
+                  loading="eager"
+                  style={{
+                    aspectRatio:
+                      typeof window !== 'undefined' && window.innerWidth <= 767
+                        ? '4/5'
+                        : '16/9',
+                    width: '100%',
+                    height: 'auto',
+                  }}
+                />
+              </picture>
+            );
+          })()}
         </RevealItem>
       </RevealSection>
 
-      <RevealSection className="full-width" >
+      <RevealSection className="full-width">
         <aside className="left" id="project-toc">
           <SummaryWithGallery
             content={project.content?.pt}
@@ -172,74 +212,63 @@ export default async function ProjectPage({
           </RevealItem>
 
           <RevealItem>
-              <h2>Papel</h2>
-              <ul className="metadata-list">
-                {Array.isArray(project.role)
-                  ? project.role.map((role: string, idx: number) => (
-                      <li key={role || idx} className="tag">
-                        {role}
-                      </li>
-                    ))
-                  : null}
-              </ul>
+            <h2>Duração</h2>
+            <ul className="metadata-list">
+              <li className="metadata-period">{formattedDuration || '—'}</li>
+            </ul>
           </RevealItem>
 
           <RevealItem>
-              <h2>Duração</h2>
-              <ul className="metadata-list">
-                <li className="metadata-period">{formattedDuration || '—'}</li>
-              </ul>
-          </RevealItem>
-
-          <RevealItem>
-              <h2>Tags</h2>
-              {project.tags && project.tags.length > 0 ? (
-                <ul className="metadata-list">
-                  {project.tags.map((tag: any, idx: number) => (
-                    <li key={tag._id || idx} className="tag">
-                      {getLocaleString(tag.title)}
+            <h2>Papel</h2>
+            <ul className="metadata-list">
+              {Array.isArray(project.role)
+                ? project.role.map((role: string, idx: number) => (
+                    <li key={role || idx} className="tag">
+                      {role}
                     </li>
-                  ))}
-                </ul>
-              ) : (
-                <p>Nenhuma tag cadastrada para este projeto.</p>
-              )}
+                  ))
+                : null}
+            </ul>
           </RevealItem>
 
           <RevealItem>
-              <h2>Ferramentas</h2>
-              <ul className="metadata-list">
-                {project.toolsAndskills && project.toolsAndskills.length > 0 ? (
-                  project.toolsAndskills.map((tool: any, idx: number) => (
+            <h2>Ferramentas</h2>
+            <ul className="metadata-list">
+              {project.toolsAndskills && project.toolsAndskills.length > 0 ? (
+                project.toolsAndskills.map(
+                  (tool: { _id: string; title: string }, idx: number) => (
                     <li key={tool._id || idx} className="tag">
                       {getLocaleString(tool.title)}
                     </li>
-                  ))
-                ) : (
-                  <li>Nenhuma ferramenta cadastrada.</li>
-                )}
-              </ul>
+                  )
+                )
+              ) : (
+                <li>Nenhuma ferramenta cadastrada.</li>
+              )}
+            </ul>
           </RevealItem>
 
           <RevealItem>
-              <h2>Veja o projeto</h2>
-              {project.externalLinks && project.externalLinks.length > 0 ? (
+            {project.externalLinks && project.externalLinks.length > 0 ? (
+              <>
+                <h2>Veja o projeto</h2>
                 <ul className="metadata-list">
-                  {project.externalLinks.map((link: any) => (
-                    <li key={link.url}>
-                      <a
-                        href={link.url}
-                        target="_blank"
-                        className="external-link"
-                      >
-                        {link.label}
-                      </a>
-                    </li>
-                  ))}
+                  {project.externalLinks.map(
+                    (link: { url: string; href: string; label: string }) => (
+                      <li key={link.url}>
+                        <a
+                          href={link.url}
+                          target="_blank"
+                          className="external-link"
+                        >
+                          {link.label}
+                        </a>
+                      </li>
+                    )
+                  )}
                 </ul>
-              ) : (
-                <p>Não há links externos disponíveis para este projeto :(</p>
-              )}
+              </>
+            ) : null}
           </RevealItem>
         </div>
 
@@ -324,19 +353,39 @@ export default async function ProjectPage({
       <RevealSection className="breakout" id="gallery">
         {project.gallery &&
           project.gallery.length > 0 &&
-          project.gallery.map((image: any) => (
-            <RevealItem key={image.url}>
-              <Image
-                key={image.url}
-                src={image.url}
-                alt={image.alt}
-                width={600}
-                height={300}
-                className="gallery-image"
-                loading="eager"
-              />
-            </RevealItem>
-          ))}
+          project.gallery.map((image: { vertical?: { asset?: { url?: string } }; horizontal?: { asset?: { url?: string } }; alt?: string }, idx: number) => {
+            const verticalUrl = image?.vertical?.asset?.url;
+            const horizontalUrl = image?.horizontal?.asset?.url;
+            const altText = getLocaleString(image?.alt) || '';
+            if (!verticalUrl && !horizontalUrl) return null;
+            return (
+              <RevealItem key={horizontalUrl || verticalUrl || idx}>
+                <picture>
+                  {verticalUrl && (
+                    <source media="(max-width: 767px)" srcSet={verticalUrl} />
+                  )}
+                  {horizontalUrl && (
+                    <source media="(min-width: 768px)" srcSet={horizontalUrl} />
+                  )}
+                  <img
+                    src={horizontalUrl || verticalUrl}
+                    alt={altText}
+                    className="gallery-image"
+                    loading="eager"
+                    style={{
+                      aspectRatio:
+                        typeof window !== 'undefined' &&
+                        window.innerWidth <= 767
+                          ? '4/5'
+                          : '16/9',
+                      width: '100%',
+                      height: 'auto',
+                    }}
+                  />
+                </picture>
+              </RevealItem>
+            );
+          })}
       </RevealSection>
 
       <RevealSection className="full-width" id="cta">

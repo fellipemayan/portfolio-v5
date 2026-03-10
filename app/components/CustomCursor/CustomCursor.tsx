@@ -17,6 +17,7 @@ import {
 } from '@heroicons/react/20/solid';
 import './CustomCursor.css';
 import { ClipboardDocumentIcon } from '@heroicons/react/24/outline';
+import { useCursorContext } from '@/app/context/CursorContext';
 
 const ICONS_MAP: Record<string, React.ElementType> = {
   'arrow-up-right': ArrowUpRightIcon,
@@ -55,6 +56,7 @@ export function CustomCursor() {
   const [isPressed, setIsPressed] = useState(false);
   const [btnRect, setBtnRect] = useState({ w: 0, h: 0, r: 0 });
   const [hasMoved, setHasMoved] = useState(false);
+  const { dynamicText } = useCursorContext();
 
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -79,32 +81,7 @@ export function CustomCursor() {
 
       const target = e.target as HTMLElement;
 
-      let needsContrast = !!target.closest('#client-section, #form-section');
-
-      if (!needsContrast) {
-        const colophon = document.getElementById('colophon');
-        if (colophon) {
-          const rect = colophon.getBoundingClientRect();
-
-          const isInsideFooterRect =
-            e.clientX >= rect.left &&
-            e.clientX <= rect.right &&
-            e.clientY >= rect.top &&
-            e.clientY <= rect.bottom;
-
-          if (isInsideFooterRect) {
-            const topElement = document.elementFromPoint(e.clientX, e.clientY);
-
-            if (
-              topElement === document.body ||
-              topElement === document.documentElement ||
-              colophon.contains(topElement)
-            ) {
-              needsContrast = true;
-            }
-          }
-        }
-      }
+      const needsContrast = !!target.closest('#client-section, #form-section');
 
       setTheme(needsContrast ? 'black' : 'yellow');
 
@@ -190,6 +167,12 @@ export function CustomCursor() {
         );
       } else if (interactable) {
         setCursorState('interactive');
+        const inFormSection = target.closest('#form-section');
+        if (inFormSection && dynamicText) {
+          setCursorState('text');
+          setText(dynamicText);
+          setIcon(null);
+        }
         mouseX.set(clampedX);
         mouseY.set(clampedY);
       } else {
@@ -211,7 +194,7 @@ export function CustomCursor() {
       window.removeEventListener('mousedown', handleMouseDown);
       window.removeEventListener('mouseup', handleMouseUp);
     };
-  }, [mouseX, mouseY, hasMoved]);
+  }, [mouseX, mouseY, hasMoved, dynamicText]);
 
   const activeColor =
     theme === 'black' ? 'var(--color-black)' : 'var(--color-yellow)';

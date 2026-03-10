@@ -14,7 +14,15 @@ export const ALL_DATA_QUERY = `*[_type == "siteSettings"][0] {
     description,
     "tags": tags[]->title,
     "tools": toolsAndskills[]->title,
-    "thumbnail": thumbnailImage.asset->url
+    "thumbnailImage": {
+      "horizontal": {
+        "asset": { "url": thumbnailImage.horizontal.asset->url }
+      },
+      "vertical": {
+        "asset": { "url": thumbnailImage.vertical.asset->url }
+      },
+      "alt": thumbnailImage.alt
+    }
   },
   "experiences": *[_type == "experience"] | order(order asc),
   "education": *[_type == "education"] | order(order asc),

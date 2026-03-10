@@ -5,6 +5,7 @@ import './globals.css';
 import { Footer } from './components/Footer/Footer';
 import { CustomCursor } from './components/CustomCursor/CustomCursor';
 import { Colophon } from './components/Colophon/Colophon';
+import { CursorProvider } from './context/CursorContext';
 import { client } from '@/sanity/lib/client';
 
 const locale = 'pt'; // ou 'en', conforme desejado
@@ -109,22 +110,24 @@ export default function RootLayout({
       </head>
       <body
         className={`
-          ${inter.variable} 
+          ${inter.variable}
           ${trispace.variable}
           content-grid
         `}
       >
-        <Header navLinks={settings?.navLinks || []} />
-        <main className="content-grid full-width">{children}</main>
-        <Footer
-          socialLinks={(settings?.socialLinks || [])
-            .filter((link: { isVisible: boolean }) => link.isVisible)
-            .sort(
-              (a: { order: number }, b: { order: number }) => a.order - b.order
-            )}
-        />
-        <Colophon colophon={settings?.colophon} />
-        <CustomCursor />
+        <CursorProvider>
+          <Header navLinks={settings?.navLinks || []} />
+          <main className="content-grid full-width">{children}</main>
+          <Footer
+            socialLinks={(settings?.socialLinks || [])
+              .filter((link: { isVisible: boolean }) => link.isVisible)
+              .sort(
+                (a: { order: number }, b: { order: number }) => a.order - b.order
+              )}
+          />
+          <Colophon colophon={settings?.colophon} />
+          <CustomCursor />
+        </CursorProvider>
       </body>
     </html>
   );

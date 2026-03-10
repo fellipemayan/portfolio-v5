@@ -122,6 +122,32 @@
   border: none;
   color: var(--color-text-base) !important;
   font-size: var(--font-size-md);
-  text-decoration: underline;
+  text-decoration: underline 1px var(--color-text-muted);  ;
   cursor: pointer;
+
+  &:hover {
+    text-decoration: underline 1px wavy var(--color-primary);
+    color: var(--color-primary) !important;
+  }
+}
+
+.contact-info {
+  li {
+    a {
+      font-size: var(--font-size-sm);
+      font-family: var(--font-family-mono);
+      text-decoration: underline 1px var(--color-text-muted);
+      
+      &:hover {
+        text-decoration: underline 1px wavy var(--color-primary);
+        color: var(--color-primary) !important;
+      }
+    }
+  }
+
+  :not(:last-child)::after {
+    content: '/';
+    color: var(--color-text-muted);
+    margin-left: var(--gap-xs);
+  }
 }

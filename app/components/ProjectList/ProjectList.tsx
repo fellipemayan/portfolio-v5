@@ -1,6 +1,6 @@
 import './ProjectList.css';
 import Link from 'next/link';
-import Image from 'next/image';
+// import Image from 'next/image';
 import { motion } from 'motion/react';
 import {
   containerVariants,
@@ -51,26 +51,63 @@ export function ProjectCard({
         style={project.isComingSoon ? { opacity: 0.95 } : {}}
       >
         <div className="thumbnail-container">
-          <Image
-            src={project.thumbnailImage.url}
-            alt={
-              typeof project.thumbnailImage.alt === 'string'
+          {(() => {
+            const verticalUrl = project.thumbnailImage?.vertical?.asset?.url;
+            const horizontalUrl =
+              project.thumbnailImage?.horizontal?.asset?.url;
+            const altText =
+              typeof project.thumbnailImage?.alt === 'string'
                 ? project.thumbnailImage.alt
-                : typeof project.thumbnailImage.alt === 'object' &&
-                    project.thumbnailImage.alt !== null
-                  ? project.thumbnailImage.alt.pt ||
-                    project.thumbnailImage.alt.en ||
-                    ''
-                  : ''
+                : project.thumbnailImage?.alt?.pt ||
+                  project.thumbnailImage?.alt?.en ||
+                  '';
+            // Debug log
+            if (!verticalUrl && !horizontalUrl) {
+              console.warn('Projeto sem imagem válida:', project);
             }
-            width={400}
-            height={225}
-            className="thumbnail"
-            loading="eager"
-            data-cursor-text={
-              project.isComingSoon ? 'Em breve...' : 'Ver projeto'
+            if (verticalUrl || horizontalUrl) {
+              return (
+                <picture>
+                  {verticalUrl && (
+                    <source
+                      media="(max-width: 767px)"
+                      srcSet={verticalUrl}
+                      width="320"
+                      height="400"
+                    />
+                  )}
+                  {horizontalUrl && (
+                    <source
+                      media="(min-width: 768px)"
+                      srcSet={horizontalUrl}
+                      width="400"
+                      height="225"
+                    />
+                  )}
+                  <img
+                    src={horizontalUrl || verticalUrl}
+                    alt={altText}
+                    className="thumbnail"
+                    loading="eager"
+                    data-cursor-text={
+                      project.isComingSoon ? 'Em breve...' : 'Ver projeto'
+                    }
+                    style={{
+                      aspectRatio:
+                        typeof window !== 'undefined' &&
+                        window.innerWidth <= 767
+                          ? '4/5'
+                          : '16/9',
+                      width: '100%',
+                      height: 'auto',
+                    }}
+                  />
+                </picture>
+              );
             }
-          />
+            // Fallback visual
+            return <div className="thumbnail-missing">Sem imagem</div>;
+          })()}
           {/* Tag Em breve no canto inferior esquerdo */}
           {project.isComingSoon && (
             <span className="coming-soon-tag" aria-label="Em breve">
@@ -143,6 +180,10 @@ export function ProjectList({
   projects: ProjectCardData[];
   style?: ListStyle;
 }) {
+  // Filtra projetos invisíveis
+  const visibleProjects = projects.filter(
+    (project) => project.isVisible !== false
+  );
   return (
     <motion.ul
       className={`breakout project-list ${style}`}
@@ -151,7 +192,7 @@ export function ProjectList({
       whileInView="show"
       viewport={{ once: true, margin: '0px 0px -10% 0px' }}
     >
-      {projects.map((project, idx) => {
+      {visibleProjects.map((project, idx) => {
         const slug =
           typeof project.slug === 'string'
             ? project.slug

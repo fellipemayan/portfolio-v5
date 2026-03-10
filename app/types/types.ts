@@ -10,11 +10,27 @@ export interface ProjectCardData {
     end?: string;
   };
   thumbnailImage: {
-    url: string;
-    alt:
+    horizontal?: {
+      asset?: { url?: string };
+    };
+    vertical?: {
+      asset?: { url?: string };
+    };
+    alt?:
       | string
       | { pt?: string; en?: string; [key: string]: string | undefined };
   };
+  gallery?: Array<{
+    horizontal?: {
+      asset?: { url?: string };
+    };
+    vertical?: {
+      asset?: { url?: string };
+    };
+    alt?:
+      | string
+      | { pt?: string; en?: string; [key: string]: string | undefined };
+  }>;
   externalLinks?: Array<{
     label: string;
     url: string;
@@ -22,6 +38,7 @@ export interface ProjectCardData {
   tags: string[];
   toolsAndskills?: string[];
   isComingSoon?: boolean;
+  isVisible?: boolean;
 }
 export interface ContentParagraph {
   type: 'paragraph';

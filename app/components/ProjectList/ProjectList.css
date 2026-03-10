@@ -81,11 +81,17 @@
 
     .thumbnail-container {
       width: 100%;
-      aspect-ratio: 16 / 9;
       position: relative;
       overflow: hidden;
       border: 1px solid var(--color-border-overlay);
       border-radius: 4px;
+      transition: aspect-ratio 0.2s;
+    }
+
+    @media (max-width: 767px) {
+      .thumbnail-container {
+        aspect-ratio: 4 / 5;
+      }
     }
 
     .thumbnail {
@@ -177,6 +183,12 @@
         flex: 1 0 200px;
         align-self: flex-start;
         aspect-ratio: 16 / 9;
+        transition: aspect-ratio 0.2s;
+      }
+      @media (max-width: 767px) {
+        .thumbnail-container {
+          aspect-ratio: 4 / 5;
+        }
       }
 
       .project-card-content {

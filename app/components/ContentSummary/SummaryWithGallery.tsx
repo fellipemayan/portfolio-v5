@@ -33,6 +33,28 @@ export function SummaryWithGallery({
       .filter((h): h is { text: string; key: string } => Boolean(h));
   }, [content]);
 
+  const [activeKey, setActiveKey] = React.useState<string | null>(null);
+
+  React.useEffect(() => {
+    if (!headings.length) return;
+    const handleScroll = () => {
+      let foundKey = headings[0]?.key;
+      for (let i = 0; i < headings.length; i++) {
+        const el = document.getElementById(`pt-block-${headings[i].key}`);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= 100) {
+            foundKey = headings[i].key;
+          }
+        }
+      }
+      setActiveKey(foundKey);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [headings]);
+
   const handleClick = (key: string) => {
     const el = document.getElementById(`pt-block-${key}`);
     if (el) {
@@ -46,10 +68,10 @@ export function SummaryWithGallery({
 
   return (
     <nav>
-      <h2>Sumário</h2>
+      <h2>Nesta página</h2>
       <ul className="project-summary">
         {headings.map((h) => (
-          <li key={h.key}>
+          <li key={h.key} className={activeKey === h.key ? 'active' : ''}>
             <a onClick={() => handleClick(h.key)}>{h.text}</a>
           </li>
         ))}

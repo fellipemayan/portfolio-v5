@@ -16,7 +16,6 @@ interface HomeHeroClientProps {
 export default function HomeHeroClient({
   projects,
   resumeUrl,
-  socialLinks,
   scrollToManifesto,
 }: HomeHeroClientProps) {
   return (
@@ -61,29 +60,7 @@ export default function HomeHeroClient({
           <li>Gráfico & Editorial</li>
           <li>Front-end</li>
         </motion.ul>
-        <motion.ul variants={itemVariants} className="contact-info horizontal">
-          {socialLinks
-            ?.filter((link) => link.isVisible)
-            .map((contact) => (
-              <li key={contact.name}>
-                <a
-                  href={contact.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="external-link"
-                >
-                  {contact.name}
-                </a>
-              </li>
-            ))
-            .sort((a, b) => {
-              const orderA =
-                socialLinks?.find((link) => link.name === a.key)?.order || 0;
-              const orderB =
-                socialLinks?.find((link) => link.name === b.key)?.order || 0;
-              return orderA - orderB;
-            })}
-        </motion.ul>
+        
         <motion.div
           variants={itemVariants}
           style={{

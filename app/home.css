@@ -24,12 +24,6 @@
       color: var(--color-text-muted);
       margin-left: var(--gap-xs);
     }
-
-    &.contact-info > :not(:last-child)::after {
-      content: ' / ';
-      color: var(--color-text-muted);
-      margin-left: var(--gap-xs);
-    }
   }
 
   button {

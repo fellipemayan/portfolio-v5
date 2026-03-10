@@ -29,6 +29,13 @@ export const project = defineType({
 
     // Flags de Estado
     defineField({
+      name: 'isVisible',
+      title: 'Visível?',
+      type: 'boolean',
+      initialValue: true,
+      description: 'Se desmarcado, o projeto ficará oculto no site.',
+    }),
+    defineField({
       name: 'isComingSoon',
       title: 'Em breve?',
       type: 'boolean',
@@ -60,6 +67,12 @@ export const project = defineType({
     }),
 
     // Metadados do Projeto
+    defineField({
+      name: 'status',
+      title: 'Status do Projeto',
+      type: 'reference',
+      to: [{ type: 'projectStatus' }],
+    }),
     defineField({
       name: 'year',
       title: 'Ano',
@@ -101,9 +114,20 @@ export const project = defineType({
     defineField({
       name: 'thumbnailImage',
       title: 'Imagem de Capa',
-      type: 'image',
-      options: { hotspot: true },
+      type: 'object',
       fields: [
+        {
+          name: 'horizontal',
+          title: 'Horizontal (16:9)',
+          type: 'image',
+          options: { hotspot: true },
+        },
+        {
+          name: 'vertical',
+          title: 'Vertical (4:5)',
+          type: 'image',
+          options: { hotspot: true },
+        },
         { name: 'alt', title: 'Texto Alternativo', type: 'localeString' },
       ],
     }),
@@ -113,8 +137,20 @@ export const project = defineType({
       type: 'array',
       of: [
         {
-          type: 'image',
+          type: 'object',
           fields: [
+            {
+              name: 'horizontal',
+              title: 'Horizontal (16:9)',
+              type: 'image',
+              options: { hotspot: true },
+            },
+            {
+              name: 'vertical',
+              title: 'Vertical (4:5)',
+              type: 'image',
+              options: { hotspot: true },
+            },
             { name: 'alt', title: 'Texto Alternativo', type: 'localeString' },
           ],
         },
@@ -144,4 +180,16 @@ export const project = defineType({
       type: 'localeRichText',
     }),
   ],
+  preview: {
+    select: {
+      title: 'title.pt',
+      media: 'thumbnailImage.horizontal',
+    },
+    prepare(selection) {
+      return {
+        title: selection.title || 'Projeto sem título',
+        media: selection.media,
+      };
+    },
+  },
 });
