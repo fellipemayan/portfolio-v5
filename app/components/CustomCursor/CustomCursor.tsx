@@ -67,8 +67,6 @@ export function CustomCursor() {
 
   useEffect(() => {
     const moveCursor = (e: MouseEvent) => {
-      if (!hasMoved) setHasMoved(true);
-
       const margin = 12;
       const clampedX = Math.max(
         margin,
@@ -78,6 +76,15 @@ export function CustomCursor() {
         margin,
         Math.min(e.clientY, window.innerHeight - margin)
       );
+
+      if (!hasMoved) {
+        // Prevent first-frame flash at (0,0) by snapping the spring to the pointer.
+        cursorX.jump(clampedX);
+        cursorY.jump(clampedY);
+        mouseX.set(clampedX);
+        mouseY.set(clampedY);
+        setHasMoved(true);
+      }
 
       const target = e.target as HTMLElement;
 
@@ -194,7 +201,7 @@ export function CustomCursor() {
       window.removeEventListener('mousedown', handleMouseDown);
       window.removeEventListener('mouseup', handleMouseUp);
     };
-  }, [mouseX, mouseY, hasMoved, dynamicText]);
+  }, [mouseX, mouseY, cursorX, cursorY, hasMoved, dynamicText]);
 
   const activeColor =
     theme === 'black' ? 'var(--color-black)' : 'var(--color-yellow)';
@@ -290,8 +297,12 @@ export function CustomCursor() {
         style={{
           x: '-50%',
           y: '-50%',
-          scale: isPressed && cursorState !== 'hidden' ? 0.9 : 1,
-          opacity: isPressed && cursorState !== 'hidden' ? 0.5 : 1,
+          scale: hasMoved ? (isPressed && cursorState !== 'hidden' ? 0.9 : 1) : 0,
+          opacity: hasMoved
+            ? isPressed && cursorState !== 'hidden'
+              ? 0.5
+              : 1
+            : 0,
         }}
       >
         <motion.div
