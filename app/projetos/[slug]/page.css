@@ -17,7 +17,6 @@ div:has(.back-link) {
 
 .project-image {
   width: 100%;
-  ratio: 16/9;
   height: auto;
 }
 

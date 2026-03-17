@@ -180,14 +180,6 @@ export default async function ProjectPage({
                   alt={altText}
                   className="breakout project-image"
                   loading="eager"
-                  style={{
-                    aspectRatio:
-                      typeof window !== 'undefined' && window.innerWidth <= 767
-                        ? '4/5'
-                        : '16/9',
-                    width: '100%',
-                    height: 'auto',
-                  }}
                 />
               </picture>
             );
@@ -373,11 +365,6 @@ export default async function ProjectPage({
                     className="gallery-image"
                     loading="eager"
                     style={{
-                      aspectRatio:
-                        typeof window !== 'undefined' &&
-                        window.innerWidth <= 767
-                          ? '4/5'
-                          : '16/9',
                       width: '100%',
                       height: 'auto',
                     }}
